@@ -1,5 +1,5 @@
 <template>
-  <CurvedBottomNavigation :options="options" v-model="selected" foreground-color='#B411D4'
+  <CurvedBottomNavigation :options="options" v-model="selected" foreground-color='#F23AC1'
   badge-color='#FBC02D'
   background-color='#FFFFFF'
   icon-color='#0000008A'>
@@ -20,11 +20,7 @@
 
 <script>
     import { CurvedBottomNavigation } from "bottom-navigation-vue";
-    import "bottom-navigation-vue/dist/style.css";
-    import { library } from '@fortawesome/fontawesome-svg-core';
-    import { faTwitter as fasTwitter } from '@fortawesome/free-brands-svg-icons';
-    
-    library.add(fasTwitter);
+    import "bottom-navigation-vue/dist/style.css"; 
 
     export default {
       components: { CurvedBottomNavigation },
@@ -34,23 +30,34 @@
           {
             id: 1,
             icon: "fas fa-home",
-            title: "Home"
+            title: "Home",
+            path: "/Home",
           },
           { id: 2,
-            icon: "fas fa-wallet",
-            title: "Wallet"
+            icon: "fas fa-bars",
+            title: "Timeline",
+            path: './components/Events/Events.vue'
           },
           {
             id: 3,
             icon: "fas fa-plus",
-            title: "Setting"
+            title: "Create",
           },
           { id: 4,
-            icon: "fas fa-bell",
-            title: "Notification"
+            icon: "fas fa-comment",
+            title: "Chat"
+          },
+          { id: 5,
+            icon: "fas fa-user",
+            title: "Profile"
           },
         ],
       }),
+      methods: {
+        navigateTo: function (path) {
+          this.$router.push(path);
+        },
+      },
     };
   </script>
   

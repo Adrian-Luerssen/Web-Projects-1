@@ -1519,7 +1519,7 @@
     "@vue/compiler-sfc" "2.7.10"
     "csstype" "^3.1.0"
 
-"vue@^3.2.0", "vue@^3.2.21", "vue@^3.2.25", "vue@^3.2.37", "vue@>= 3.0.0 < 4", "vue@3.2.39":
+"vue@^3.2.0", "vue@^3.2.21", "vue@^3.2.25", "vue@^3.2.39", "vue@>= 3.0.0 < 4", "vue@3.2.39":
   "integrity" "sha512-tRkguhRTw9NmIPXhzk21YFBqXHT2t+6C6wPOgQ50fcFVWnPdetmRqbmySRHznrYjX2E47u0cGlKGcxKZJ38R/g=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.39.tgz"
   "version" "3.2.39"
