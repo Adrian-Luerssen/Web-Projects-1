@@ -8,11 +8,15 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
-          <i :class="props.icon"></i>
+        <i :class="props.icon"></i>
       </template>
       <template #title="{ props }">
-        <b>{{ props.title }}</b>
+        <nav>
+        <router-link to ="{{ props.path }}"><b>{{ props.title }}</b></router-link>
+        </nav>
+        <router-view/>
       </template>
+      
   </CurvedBottomNavigation>
 
   </template>
@@ -21,6 +25,9 @@
 <script>
     import { CurvedBottomNavigation } from "bottom-navigation-vue";
     import "bottom-navigation-vue/dist/style.css"; 
+    import { createRouter, createWebHistory } from "vue-router";
+    import Home from "../Home/Home.vue";
+    import Events from "../Events/Events.vue";
 
     export default {
       components: { CurvedBottomNavigation },
@@ -36,7 +43,7 @@
           { id: 2,
             icon: "fas fa-bars",
             title: "Timeline",
-            path: './components/Events/Events.vue'
+            path: "/Events",
           },
           {
             id: 3,
@@ -53,11 +60,6 @@
           },
         ],
       }),
-      methods: {
-        navigateTo: function (path) {
-          this.$router.push(path);
-        },
-      },
     };
   </script>
   
