@@ -33,7 +33,7 @@
             id: 1,
             icon: "fas fa-home",
             title: "Home",
-            path: "/Home",
+            path: "/",
           },
           { id: 2,
             icon: "fas fa-bars",
