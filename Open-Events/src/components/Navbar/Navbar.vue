@@ -1,4 +1,6 @@
 <template>
+  <router-link to ={{props.path}}></router-link>
+  <router-view></router-view>
   <CurvedBottomNavigation :options="options" v-model="selected" foreground-color='#F23AC1'
   badge-color='#FBC02D'
   background-color='#FFFFFF'
@@ -11,12 +13,8 @@
         <i :class="props.icon"></i>
       </template>
       <template #title="{ props }">
-        <nav>
-        <router-link to ="{{ props.path }}"><b>{{ props.title }}</b></router-link>
-        </nav>
-        <router-view/>
+        <b>{{ props.title }}</b>
       </template>
-      
   </CurvedBottomNavigation>
 
   </template>
@@ -25,9 +23,6 @@
 <script>
     import { CurvedBottomNavigation } from "bottom-navigation-vue";
     import "bottom-navigation-vue/dist/style.css"; 
-    import { createRouter, createWebHistory } from "vue-router";
-    import Home from "../Home/Home.vue";
-    import Events from "../Events/Events.vue";
 
     export default {
       components: { CurvedBottomNavigation },
