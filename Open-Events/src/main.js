@@ -4,5 +4,12 @@ import bottomNavigationVue from "bottom-navigation-vue";
 import "bottom-navigation-vue/dist/style.css";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import router from "./router/index.js"
+import axios from 'axios';
 
-const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon).use(router).mount("#app");
+/* define vue */
+const app = createApp(App);
+app.use(bottomNavigationVue);
+app.use(router);
+app.component('font-awesome-icon', FontAwesomeIcon);
+app.config.globalProperties.$axios = axios;
+app.mount('#app');
