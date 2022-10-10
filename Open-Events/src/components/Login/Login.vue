@@ -1,11 +1,15 @@
 <!-- LOGIN VIEW -->
 <script>
     import style from './login.css'
-    import App from './App.vue'
-    methods: {
-      login(){
-        App.setVisibilityNavbar();
-      }
+    import Main from '../Main.vue';
+    export default {
+        name: 'Login',
+        methods: {
+        login(){
+          console.log('hoola');
+          Main.add();
+        }
+        }
     }
 </script>
 
