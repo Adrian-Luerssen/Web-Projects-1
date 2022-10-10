@@ -1,14 +1,6 @@
 
 <template>
     <Login/>
-    <div>
-      <div v-for="post in posts" v-bind:key="post.id">
-        <h2>{{ post.name }}</h2>
-        <p>{{ post.last_name }}</p>
-        <img src = {{post.image}} alt = "random image">
-        <p>{{ post.id }}</p>
-      </div>
-    </div>
 </template>
 
 
