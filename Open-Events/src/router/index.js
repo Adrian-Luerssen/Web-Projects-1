@@ -5,7 +5,7 @@ import Events from '../components/Events/Events.vue';
 /* define routes as objects*/
 const routes = [
     {
-        path: '/',
+        path: '/Home',
         name: 'Home',
         component: Home
     },
