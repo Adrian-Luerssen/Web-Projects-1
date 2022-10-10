@@ -5,10 +5,10 @@
     export default {
         name: 'Login',
         methods: {
-        login(){
-          console.log('hoola');
-          Main.add();
-        }
+          login(){
+            console.log('ha entrado en login');
+            Main.functions.loginSetVisibilityNavbar();
+          }
         }
     }
 </script>
