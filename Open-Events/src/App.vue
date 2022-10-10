@@ -1,12 +1,13 @@
 
 <template>
-    <Login/>
+  <Login />
+  <Navbar id = "navbar" visibility = "hidden"/><Navbar/>
 </template>
 
 
 <script>
 import Navbar from './components/Navbar/Navbar.vue';
-import Login from './components/Authentication/Login.vue';
+import Login from './components/Login/Login.vue';
   export default {
     data() {
         return {
@@ -34,6 +35,10 @@ import Login from './components/Authentication/Login.vue';
                 console.log("Error: ", error);
             }
         },
+        setVisibilityNavbar(){
+          //document.getElementById("navbar").style.visibility = "visible";
+          console.log("hola");
+        }
     },
     created() {
         this.getData();

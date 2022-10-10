@@ -1,6 +1,12 @@
 <!-- LOGIN VIEW -->
 <script>
     import style from './login.css'
+    import App from './App.vue'
+    methods: {
+      login(){
+        App.setVisibilityNavbar();
+      }
+    }
 </script>
 
 <template>
@@ -25,7 +31,7 @@
                 border="none"
             />
           </div>
-            <button type="submit" class="login__container__form__input__button">
+            <button type="submit" class="login__container__form__input__button" @click="login">
                 Login
             </button>
         </form>
