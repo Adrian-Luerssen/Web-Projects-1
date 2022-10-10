@@ -5,15 +5,10 @@
 
 </script>
 <template>
-  <div>
     <h1> GELLOOOOO </h1>
-    <!-- get api data -->
-    <div v-for="post in posts" :key="post.id">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.body }}</p>
-    </div>
+    <!--call getData method on page load-->
+    <button @click="getData">Get Data</button>
     
-  </div>
 </template>
 
 
