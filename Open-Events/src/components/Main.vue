@@ -5,21 +5,20 @@
         <Navbar/>
     </div>
     <div id="app" v-else>
+
         <div id = "log-sign" v-if = "login_sign">
             <div class="login__container__form">
                 <h1 class="login__container__header__title">Welcome to Open Events!</h1>
-                <p class="login__container__header__subtitle">Login</p>
+                <h3 class="login__container__header__subtitle">Login</h3>
                 <form @submit.prevent="login">
-                    <label for="email">Email</label>
                     <div class="login__container__form__input">
+                        <h4 for="email">Email</h4>
                         <input
                         type="email"
                         id="email"
                         placeholder="Enter your email"
                         />
-                    </div>
-                    <label for="password">Password</label>
-                    <div class="login__container__form__input">
+                        <h4 for="password">Password</h4>
                         <input
                         type="password"
                         id="password"
@@ -30,26 +29,25 @@
                         <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
                             Login
                         </button>
-                        <button v-on:click="login_sign = false">Sign up?</button>
+                        <button type="signUp" class= "login__container__form__change__to__signup" v-on:click="login_sign = false">Sign up?</button>
                 </form>
             </div>
 
         </div>
         <div id = "log-sign" v-else>
+
             <div class="login__container__form">
                 <h1 class="login__container__header__title">Welcome to Open Events!</h1>
-                <p class="login__container__header__subtitle">Sign Up</p>
+                <h3 class="login__container__header__subtitle">Sign Up</h3>
                 <form @submit.prevent="login">
-                    <label for="email">Email</label>
                     <div class="login__container__form__input">
+                        <h4 for="email">Email</h4>
                         <input
                         type="email"
                         id="email"
                         placeholder="Enter your email"
                         />
-                    </div>
-                    <label for="password">Password</label>
-                    <div class="login__container__form__input">
+                        <h4 for="password">Password</h4>
                         <input
                         type="password"
                         id="password"
@@ -57,10 +55,10 @@
                             border="none"
                         />
                     </div>
-                        <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
+                    <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
                             Sign Up
                         </button>
-                        <button v-on:click="login_sign = true">Login?</button>
+                    <button type="logIn" class= "signup__container__form__change__to__login" v-on:click="login_sign = true">Login?</button>
                 </form>
             </div>
         </div>

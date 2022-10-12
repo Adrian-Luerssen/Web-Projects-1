@@ -1,3 +1,4 @@
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import bottomNavigationVue from "bottom-navigation-vue";
@@ -5,6 +6,7 @@ import "bottom-navigation-vue/dist/style.css";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import router from "./router/index.js"
 import axios from 'axios';
+
 
 /* define vue */
 const app = createApp(App);
