@@ -31,15 +31,16 @@ body {
 }
 
 .login__container__header__title {
-    width: 400px;
     margin-top: 10%;
+    width: 400px;
     color: white;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .login__container__header__subtitle {
     color: #EBD68B;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
 .login__container__form__input {

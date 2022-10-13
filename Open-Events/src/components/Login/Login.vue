@@ -14,8 +14,8 @@
 </script>
 
 <template>
-      <div class="box">
-        <h1 class="title">Welcome to Open Events!</h1>
+      <div class="login__container__form">
+        <h1 class="login__container__header__title">Welcome to Open Events!</h1>
         <p class="login__container__header__subtitle">Login</p>
         <form @submit.prevent="login">
         <label for="email">Email</label>

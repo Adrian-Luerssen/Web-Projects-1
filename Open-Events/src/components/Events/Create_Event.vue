@@ -84,7 +84,6 @@ body {
 }
 
 .box{
-    font-family: Arial, Helvetica, sans-serif;
     color: white;
     display:flex;
     flex-direction: row;
