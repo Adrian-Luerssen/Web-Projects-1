@@ -49,9 +49,18 @@ body {
     gap: 10px;
     color: white;
     display: grid;
-    text-align: left; 
+    text-align: left;
 }
-
+.email_login{
+    padding: 5px 0px;
+    color: white;
+    gap: 10px;
+}
+.password_login{
+    padding: 5px 0px;
+    color: white;
+    gap: 10px;
+}
 .login__container__form__input__button {
     background: #EBD68B;
     border: 1px;
@@ -83,7 +92,33 @@ body {
     color: #3f051a;
     cursor: pointer;
 }
+.register__container__form__input {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 10px;
+    color: white;
+    display: grid;
+    text-align: left; 
+}
+.name_registration{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 
+}
+
+.email_registration{
+    color: white;
+    padding: 10px 0px;
+    gap: 10px;
+}
+.password_registration{
+    padding: 10px 0px;
+    color: white;
+    gap: 10px;
+}
 h1 {
     font-size: 3em;
     line-height: 1.5;

@@ -12,19 +12,23 @@
                 <h3 class="login__container__header__subtitle">Login</h3>
                 <form @submit.prevent="login">
                     <div class="login__container__form__input">
-                        <h4 for="email">Email</h4>
-                        <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        />
-                        <h4 for="password">Password</h4>
-                        <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                            border="none"
-                        />
+                        <div class="email_login">
+                            <h4 for="email">Email</h4>
+                            <input
+                            type="email"
+                            id="email"
+                            size="30"
+                            placeholder="Enter your email"
+                            />
+                        </div>
+                        <div class="password_login">
+                            <h4 for="password">Password</h4>
+                            <input
+                            type="password"
+                            id="password"
+                            size="30"
+                            placeholder="Enter your password"/>
+                        </div>
                     </div>
                         <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
                             Login
@@ -40,20 +44,36 @@
                 <h1 class="login__container__header__title">Welcome to Open Events!</h1>
                 <h3 class="login__container__header__subtitle">Sign Up</h3>
                 <form @submit.prevent="login">
-                    <div class="login__container__form__input">
-                        <h4 for="email">Email</h4>
-                        <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        />
-                        <h4 for="password">Password</h4>
-                        <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                            border="none"
-                        />
+                    <div class="register__container__form__input">
+                        <h4 for="name">Full Name</h4>
+                        <div class="name_registration">
+                            <input
+                            type="text"
+                            id="name"
+                            placeholder="First name"/>
+                            <input
+                            type="text"
+                            id="name"
+                            placeholder="Last name"/>
+                        </div>
+                        <div class="email_registration">
+                            <h4 for="email">Email</h4>
+                            <input
+                            type="email"
+                            id="email"
+                            size="30"
+                            placeholder="Enter your email"/>
+                        </div>
+                        <div class="password_registration">
+                            <h4 for="password">Password</h4>
+                            <input
+                            type="password"
+                            id="password"
+                            size="30"
+                            placeholder="Enter your password"/>
+                        </div>
+                        
+                        
                     </div>
                     <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
                             Sign Up
