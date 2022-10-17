@@ -9,7 +9,7 @@ let APIFunctions = {
                 password: password
             }
             let url = "http://puigmal.salle.url.edu/api/v2/login";
-            console.log(JSON.stringify(body))
+            //console.log(JSON.stringify(body))
             /* define url */
             let response = await fetch(url, {
                 method: 'POST',
@@ -23,6 +23,7 @@ let APIFunctions = {
         }
         catch (error) {
             console.log("Error: ", error);
+            return false;
         }
     }
 }

@@ -101,10 +101,13 @@ export default {
     }),
     methods: {
         /* function with 2 parameters */
-        verifyLogin: function (email, password) {
+        verifyLogin: async function (email, password) {
             console.log(email);
             console.log(password);
-            return auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
+            let res = await auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
+            console.log(res);
+            console.log(res.ok);
+            return res.ok;
 
             /* if email and password are correct */
             if (dc == "admin" &&  document.getElementById(password).value == "admin") {

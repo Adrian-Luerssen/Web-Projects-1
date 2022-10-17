@@ -4,6 +4,8 @@ let functions = {
     async verifyLogin (username, password)
     {
         let response = await apiFunc.login(username, password);
+        //console.log(response.ok);
+        return response;
         try {
             var random = response.accessToken;
             console.log(random);
