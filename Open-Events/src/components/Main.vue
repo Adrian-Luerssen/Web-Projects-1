@@ -30,7 +30,7 @@
                             placeholder="Enter your password"/>
                         </div>
                     </div>
-                        <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
+                        <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = verifyLogin('email', 'password')">
                             Login
                         </button>
                         <button type="signUp" class= "login__container__form__change__to__signup" v-on:click="login_sign = false">Sign up?</button>
@@ -75,7 +75,7 @@
                         
                         
                     </div>
-                    <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = true">
+                    <button type="loginButton" class="login__container__form__input__button" @click="verifyLogin(document.findElementById('email'), document.findElementById('password'))">
                             Sign Up
                         </button>
                     <button type="logIn" class= "signup__container__form__change__to__login" v-on:click="login_sign = true">Login?</button>
@@ -88,7 +88,7 @@
 <script>
 import Navbar from './Navbar/Navbar.vue';
 import Login from './Login/Login.vue';
-
+import auth from './Login/authentication.js';
 var loginVisibility;
 var login_sign;
 
@@ -99,12 +99,23 @@ export default {
         loginVisibility: false,
         login_sign: true
     }),
-    functions: {
-        loginSetVisibilityNavbar: function(){
-            
-            this.loginVisibility = true;
-            console.log(this.loginVisibility);
-            console.log('ha entrado en loginSetVisibilityNavbar');
+    methods: {
+        /* function with 2 parameters */
+        verifyLogin: function (email, password) {
+            console.log(email);
+            console.log(password);
+            return auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
+
+            /* if email and password are correct */
+            if (dc == "admin" &&  document.getElementById(password).value == "admin") {
+                /* set loginVisibility to true */
+                return true;
+            }
+            /* if email and password are incorrect */
+            else {
+                /* set loginVisibility to false */
+                return false;
+            }
         }
     }
 };
