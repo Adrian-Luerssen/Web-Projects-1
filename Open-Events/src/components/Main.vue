@@ -30,7 +30,7 @@
                             placeholder="Enter your password"/>
                         </div>
                     </div>
-                        <button type="loginButton" class="login__container__form__input__button" @click="loginVisibility = verifyLogin('email', 'password')">
+                        <button type="loginButton" class="login__container__form__input__button" @click="verifyLogin('email', 'password')">
                             Login
                         </button>
                         <button type="signUp" class= "login__container__form__change__to__signup" v-on:click="login_sign = false">Sign up?</button>
@@ -89,8 +89,7 @@
 import Navbar from './Navbar/Navbar.vue';
 import Login from './Login/Login.vue';
 import auth from './Login/authentication.js';
-var loginVisibility;
-var login_sign;
+
 
 export default {
     name: 'App',
@@ -101,13 +100,23 @@ export default {
     }),
     methods: {
         /* function with 2 parameters */
-        verifyLogin: async function (email, password) {
+        verifyLogin: function (email, password) {
             console.log(email);
             console.log(password);
-            let res = await auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
-            console.log(res);
-            console.log(res.ok);
-            return res.ok;
+            const self = this;
+            let res = auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
+            res.then(function (result) {
+                console.log(result);
+                if (result.ok == true) {
+                    self.loginVisibility = true;
+                    console.log("Login successful");
+                }
+                else {
+                    self.loginVisibility = false;
+                    console.log("Login failed");
+                }
+            });
+            return ;
 
             /* if email and password are correct */
             if (dc == "admin" &&  document.getElementById(password).value == "admin") {
