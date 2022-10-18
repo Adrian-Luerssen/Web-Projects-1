@@ -44,6 +44,7 @@
             id: 3,
             icon: "fas fa-plus",
             title: "Create",
+            path: "/CreateEvent",
           },
           { id: 4,
             icon: "fas fa-comment",

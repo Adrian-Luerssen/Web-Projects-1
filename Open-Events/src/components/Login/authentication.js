@@ -14,6 +14,11 @@ let functions = {
             return false;
         }
         return true;
+    },
+    async signUp(email, password, name, surname)
+    {
+        let response = await apiFunc.register(email, password, name, surname);
+        return response;
     }
 } 
 

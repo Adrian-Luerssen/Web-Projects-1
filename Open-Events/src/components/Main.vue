@@ -49,18 +49,18 @@
                         <div class="name_registration">
                             <input
                             type="text"
-                            id="name"
+                            id="signup_name"
                             placeholder="First name"/>
                             <input
                             type="text"
-                            id="name"
+                            id="signup_lastname"
                             placeholder="Last name"/>
                         </div>
                         <div class="email_registration">
                             <h4 for="email">Email</h4>
                             <input
                             type="email"
-                            id="email"
+                            id="signup_email"
                             size="30"
                             placeholder="Enter your email"/>
                         </div>
@@ -68,14 +68,14 @@
                             <h4 for="password">Password</h4>
                             <input
                             type="password"
-                            id="password"
+                            id="signup_password"
                             size="30"
                             placeholder="Enter your password"/>
                         </div>
                         
                         
                     </div>
-                    <button type="loginButton" class="login__container__form__input__button" @click="verifyLogin(document.findElementById('email'), document.findElementById('password'))">
+                    <button type="loginButton" class="login__container__form__input__button" @click="signUp('signup_email','signup_password','signup_name','signup_lastname')">
                             Sign Up
                         </button>
                     <button type="logIn" class= "signup__container__form__change__to__login" v-on:click="login_sign = true">Login?</button>
@@ -116,18 +116,25 @@ export default {
                     console.log("Login failed");
                 }
             });
-            return ;
-
-            /* if email and password are correct */
-            if (dc == "admin" &&  document.getElementById(password).value == "admin") {
-                /* set loginVisibility to true */
-                return true;
-            }
-            /* if email and password are incorrect */
-            else {
-                /* set loginVisibility to false */
-                return false;
-            }
+        },
+        signUp: function (email,password,firstname,lastname) {
+            console.log(email);
+            console.log(password);
+            console.log(firstname);
+            console.log(lastname);
+            const self = this;
+            let res = auth.signUp(document.getElementById(email).value, document.getElementById(password).value, document.getElementById(firstname).value, document.getElementById(lastname).value);
+            res.then(function (result) {
+                console.log(result);
+                if (result.ok == true) {
+                    self.login_sign = true;
+                    console.log("Sign up successful");
+                }
+                else {
+                    self.login_sign = false;
+                    console.log("Sign up failed");
+                }
+            });
         }
     }
 };
