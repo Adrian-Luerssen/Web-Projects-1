@@ -1,13 +1,12 @@
-/* body */
+/* body 
 body {
+    position: relative;
     min-height: 100vh;
-    background: linear-gradient(
+    background-color:linear-gradient(
         to right,
         #E3A2BA 0%,
         #E3A2BA 33%,
-        #BF6183 33%,
-        #BF6183 66%,
-        #E3A2BA 66%,
+        #E3A2BA 33%,
         #E3A2BA 100%
   );
   box-sizing: border-box;
@@ -132,4 +131,4 @@ h1 {
   h3{
     font-size: 2em;
     line-height: 0.8;
-  }
+  }*/

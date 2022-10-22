@@ -62,6 +62,7 @@
   </div>
 </template>
 <style >
+/*
 body {
   min-height: 100vh;
   background: linear-gradient(
@@ -171,5 +172,5 @@ hr {
     flex-direction: row;
     padding: 4px 10px;
 }
-
+*/
 </style>

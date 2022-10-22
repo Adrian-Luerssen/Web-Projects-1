@@ -2,6 +2,7 @@ body {
     margin: 0;
     display: flex;
     place-items: center;
+    background-color: brown;
   }
 
   h1 {
@@ -16,19 +17,17 @@ body {
   h3{
     font-size: 2em;
     line-height: 0.8;
-  }
+  }s
   
   h4{
     font-size: 1.5em;
     line-height: 0.5;
   }
   
-  
   #app {
     max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
   }
+  
+
   
   
