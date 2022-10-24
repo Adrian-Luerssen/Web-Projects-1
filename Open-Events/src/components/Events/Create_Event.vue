@@ -64,21 +64,6 @@
 
 
 <style >
-
-body {
-  min-height: 100vh;
-  background: linear-gradient(
-    to right,
-    #E3A2BA 0%,
-    #E3A2BA 50%,
-    #BF6183 50%,
-    #BF6183 100%
-  );
-  box-sizing: border-box;
-  font-weight: normal;
-  
-
-}
 *{
     margin: 0;
     width: auto;
@@ -87,11 +72,22 @@ body {
 }
 
 .box{
+    margin-left: 3%;
     color: white;
     display:flex;
     flex-direction: row;
-    height: 600px;
-    width: 900px;
+    height: auto;
+    width: auto;
+  background: cadetblue;
+  /*linear-gradient(
+    to right,
+    #E3A2BA 0%,
+    #E3A2BA 50%,
+    #BF6183 50%,
+    #BF6183 100%
+  );*/
+  box-sizing: border-box;
+  font-weight: normal;
 }
 button{
     white-space: nowrap;
@@ -118,7 +114,7 @@ button{
 .title{
     white-space: nowrap;
     color: white;
-    padding: 1mm;
+    padding: 10px 10px;
 }
 
 .description{

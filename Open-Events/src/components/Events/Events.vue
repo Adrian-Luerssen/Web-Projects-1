@@ -7,7 +7,7 @@
       <v-list>
       <v-list-item v-for="item in elements" :key="item.event" two-line>
         <div class="event_box">
-          <img id="img" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
+          <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
           <h3 class="title">{{item.event}}</h3>
           <p class="description">{{item.description}}</p>
         </div>
@@ -53,7 +53,7 @@
   }
   </script>
   <style>
-  body {
+  .box {
         min-height: 100vh;
         background: #E3A2BA;
         box-sizing: border-box;
@@ -91,14 +91,18 @@
         background-color: #E3A2BA;
         padding: 10px 100px;
     }
-    #img{
+    .image_events{
       grid-column: 1;
-      width: 190px;
+      width: auto;
+      height: 100%;
+      border-radius: 50%;
+
+      /*
       border-top-left-radius: 50% 50%; 
       border-top-right-radius: 50% 50%; 
       border-bottom-right-radius: 50% 50%; 
-      border-bottom-left-radius: 50% 50%;
-      margin: 7%;
+      border-bottom-left-radius: 50% 50%;*/
+      margin-top: 5%;
     }
     .title{
       grid-column: 2;
