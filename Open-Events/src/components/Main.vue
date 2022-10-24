@@ -88,13 +88,12 @@
 
 <script>
 import Navbar from './Navbar/Navbar.vue';
-import Login from './Login/Login.vue';
 import auth from './Login/authentication.js';
 
 
 export default {
     name: 'App',
-    components: { Navbar, Login },
+    components: { Navbar },
 
     data: () => ({
         loginVisibility: false,
