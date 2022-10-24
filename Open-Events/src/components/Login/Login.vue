@@ -1,6 +1,6 @@
 <!-- LOGIN VIEW -->
 <script>
-    import style from './login.css'
+    import style from './login.css';
     import Main from '../Main.vue';
     export default {
         name: 'Login',
