@@ -73,7 +73,7 @@
       font-weight: normal;
       position: relative;
   }
-  
+
   *{
       margin: 0;
       width: auto;
@@ -83,12 +83,14 @@
   
   .box{
       font-family: Arial, Helvetica, sans-serif;
+
       color: white;
       display:flex;
       flex-direction: row;
       height: 600px;
       width: 900px;
   }
+
   
   .profile{
       align-items: center;
@@ -148,4 +150,87 @@
       background-color: #EBD68B;
       border-radius: 20px;
   }
+
+  button{
+      white-space: nowrap;
+      margin-top:60%;
+      margin-left: -24%;
+      padding: 2px 18px;
+      color: black;
+      font-size: 16px;
+      background-color: #EBD68B;
+      
+  }
+  .left_information{
+      align-items: center;
+      color: white; 
+      margin-left: -10mm; 
+  }
+  
+  #img{
+      width: 350px;
+      padding: 10mm;
+  }
+  
+  
+  .title{
+      white-space: nowrap;
+      color: white;
+      padding: 1mm;
+  }
+  
+  .description{
+      flex-direction: column;
+      padding: 10px 10px;
+      gap: 5px;
+      color: white;
+      display: grid;
+      text-align: left;   
+  }
+  .right_information{
+      margin-top: 15%;
+      margin-left: 10%;
+  
+  }
+  table {  
+      border-collapse: collapse;
+      border-style: hidden;
+      border-spacing: 0 15px;
+  }
+  th, td {
+      border-bottom: 2px solid cyan;
+      height: 50px;
+      width: 150px;
+      text-align: center;
+      padding: 0px;
+  }
+  hr {
+      background-color: cyan;
+      height: 0.5mm;
+  }
+  .date{
+      white-space: nowrap;
+      display:flex;
+      flex-direction: row;
+      padding: 2px 10px;
+  }
+  .price{
+      white-space: nowrap;
+      display:flex;
+      flex-direction: row;
+      padding: 2px 10px;
+  }
+  .location{
+      white-space: nowrap;
+      display:flex;
+      flex-direction: row;
+      padding: 2px 10px;
+  }
+  .tags{
+      white-space: nowrap;
+      display:flex;
+      flex-direction: row;
+      padding: 4px 10px;
+  }
+  
   </style>
