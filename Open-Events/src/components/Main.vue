@@ -149,7 +149,7 @@ export default {
 <style>
 body {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     background: linear-gradient(
     to right,
     #E3A2BA 0%,
@@ -163,12 +163,6 @@ body {
   font-weight: normal;
   font-family: Arial, Helvetica, sans-serif;
 
-}
-*{
-    margin: 0;
-    width: auto;
-    height: auto;
-    
 }
 
 .login__container__form {
@@ -214,19 +208,17 @@ body {
     background: #EBD68B;
     border: 1px;
     border-radius: 5px;
-    margin: 10px 50px;
-    padding: 4px 10px;
+    padding: 4px 50px;
     gap: 5px;
     color: #3f051a;
-    cursor: pointer;
 }
 
 .login__container__form__change__to__signup{
     background: white;
     border: 1px;
     border-radius: 5px;
-    margin: 10px 50px;
-    padding: 4px 10px;
+    margin: 10px 10px;
+    padding: 4px 60px;
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
@@ -235,15 +227,15 @@ body {
     background: white;
     border: 1px;
     border-radius: 5px;
-    margin: 10px 50px;
-    padding: 4px 10px;
+    margin: 10px 10px;
+    padding: 4px 60px;
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
 }
 .register__container__form__input {
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 20px 5px;
     gap: 10px;
     color: white;
     display: grid;
