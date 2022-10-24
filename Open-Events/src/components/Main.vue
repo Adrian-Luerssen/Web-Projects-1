@@ -107,10 +107,15 @@ export default {
             const self = this;
             let res = auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
             res.then(function (result) {
-                console.log(result);
+                //console.log(result);
                 if (result.ok == true) {
                     self.loginVisibility = true;
-                    app.apiToken = result.token;
+                    result.json().then(function (data) {
+                        //console.log(data);
+                        localStorage.setItem('ApiToken', data.accessToken);
+                        //console.log(data.accessToken);
+                    });
+                    //console.log(result);
                     console.log("Login successful");
                 }
                 else {
@@ -123,11 +128,11 @@ export default {
             //console.log(email);
             //console.log(password);
             //console.log(firstname);
-            console.log(lastname);
+            //console.log(lastname);
             const self = this;
             let res = auth.signUp(document.getElementById(email).value, document.getElementById(password).value, document.getElementById(firstname).value, document.getElementById(lastname).value);
             res.then(function (result) {
-                console.log(result);
+                //console.log(result);
                 if (result.ok == true) {
                     self.login_sign = true;
                     console.log("Sign up successful");
@@ -137,10 +142,6 @@ export default {
                     console.log("Sign up failed");
                 }
             });
-        },
-        getAPItoken: function () {
-            console.log(this.apiToken);
-            return this.apiToken;
         }
     }
 };

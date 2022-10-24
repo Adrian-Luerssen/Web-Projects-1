@@ -6,7 +6,7 @@ import CreateEvent from '../components/Events/Create_Event.vue';
 /* define routes as objects*/
 const routes = [
     {
-        path: '/Home',
+        path: '/',
         name: 'Home',
         component: Home
     },

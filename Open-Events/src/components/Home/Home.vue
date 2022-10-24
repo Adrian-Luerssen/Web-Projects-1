@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     tmp() {
-      //document.getElementById('temp').innerHTML = app.apiToken;
+      document.getElementById('temp').innerHTML = localStorage.getItem('ApiToken');
     }
   },
 };
