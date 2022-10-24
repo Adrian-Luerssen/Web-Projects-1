@@ -50,9 +50,11 @@
                             <input
                             type="text"
                             id="signup_name"
+                            minLength= "1"
                             placeholder="First name"/>
                             <input
                             type="text"
+                            minLength= "1"
                             id="signup_lastname"
                             placeholder="Last name"/>
                         </div>
@@ -69,6 +71,7 @@
                             <input
                             type="password"
                             id="signup_password"
+                            minLength= "8"
                             size="30"
                             placeholder="Enter your password"/>
                         </div>
@@ -94,6 +97,7 @@ import auth from './Login/authentication.js';
 export default {
     name: 'App',
     components: { Navbar, Login },
+
     data: () => ({
         loginVisibility: false,
         login_sign: true
@@ -101,14 +105,15 @@ export default {
     methods: {
         /* function with 2 parameters */
         verifyLogin: function (email, password) {
-            console.log(email);
-            console.log(password);
+            //console.log(email);
+            //console.log(password);
             const self = this;
             let res = auth.verifyLogin(document.getElementById(email).value, document.getElementById(password).value);
             res.then(function (result) {
                 console.log(result);
                 if (result.ok == true) {
                     self.loginVisibility = true;
+                    app.apiToken = result.token;
                     console.log("Login successful");
                 }
                 else {
@@ -118,9 +123,9 @@ export default {
             });
         },
         signUp: function (email,password,firstname,lastname) {
-            console.log(email);
-            console.log(password);
-            console.log(firstname);
+            //console.log(email);
+            //console.log(password);
+            //console.log(firstname);
             console.log(lastname);
             const self = this;
             let res = auth.signUp(document.getElementById(email).value, document.getElementById(password).value, document.getElementById(firstname).value, document.getElementById(lastname).value);
@@ -135,6 +140,10 @@ export default {
                     console.log("Sign up failed");
                 }
             });
+        },
+        getAPItoken: function () {
+            console.log(this.apiToken);
+            return this.apiToken;
         }
     }
 };

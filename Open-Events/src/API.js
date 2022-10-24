@@ -1,3 +1,4 @@
+
 let APIFunctions = {
     // login
     async login (email, password) 
@@ -37,7 +38,7 @@ let APIFunctions = {
                 last_name: surname,
                 email: email,
                 password: password,
-                image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3D%2522default%2Bprofile%2Bpicture%2522&psig=AOvVaw269_vL0qKBhiNkjKbmOVz0&ust=1666200537139000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJCw-Oqm6voCFQAAAAAdAAAAABAE"
+                image:"default"
 
             }
             let url = "http://puigmal.salle.url.edu/api/v2/users";

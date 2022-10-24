@@ -61,6 +61,8 @@
         <button type="button">Publish Event</button>
   </div>
 </template>
+
+
 <style >
 body {
   min-height: 100vh;
