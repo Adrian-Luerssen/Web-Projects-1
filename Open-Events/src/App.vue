@@ -10,7 +10,6 @@
 import Navbar from './components/Navbar/Navbar.vue';
 import Login from './components/Login/Login.vue';
 import SignUp from './components/Login/SignUp.vue';
-localStorage.setItem('component', 'Login');
 
 export default {
     name: 'App',
@@ -19,7 +18,6 @@ export default {
     data: () => {
         return {
             component: 'Login',
-            renderComponent: true,
         };
     },
 
