@@ -8,12 +8,11 @@
 </template>
 
 <script>
-import mainFunctions from '../main.vue';
 
 export default {
   name: 'Create_Event',
   components: {
-    mainFunctions,
+    
   },
   data() {
     return {
