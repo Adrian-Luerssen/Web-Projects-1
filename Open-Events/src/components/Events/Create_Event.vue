@@ -46,22 +46,63 @@
                                 class="location">
                         </td>
                     </tr>
+
                     <tr>
                         <td><h4 id="tag" class="tags">
                                 Categories: </h4>
                         </td>
-                        <td><input type="text" name="tags"
-                                placeholder="Tags"
+                        <td><input type="text" name="type"
+                                placeholder="Type"
                                 class="tags">
                         </td>
                     </tr>
+                    
+                    
                 </form>
-            </table>               
+            </table>        
+            
+        <input type="text" name="type"
+                                placeholder="Address"
+                                class="tags" ref = "address">       
         </div>
         <button type="button">Publish Event</button>
   </div>
 </template>
 
+<script>
+import API from '../../api.js';
+export default {
+  name: 'Create_Event',
+  components: {
+    
+  },
+  data() {
+    return {
+      address: '',
+    };
+  },
+  mounted() {
+    const autocomplete = new google.maps.places.Autocomplete(this.$refs["address"]);
+  },
+  methods: {
+    createEvent: function () {
+        let longitude = this.address.longitude; //put a google map and get long and lat values from it
+        let latitude = this.address.latitude;
+        /* response = API.createEvent(document.getElementById('title').value,
+            document.getElementById('image').value,
+            document.getElementById('location').value,  
+            logitude,
+            latitude,
+            document.getElementById('description').value,
+            document.getElementById('start_date').value, 
+            document.getElementById('end_date').value, 
+            document.getElementById('num_people').value, 
+            document.getElementById('type').value);*/
+    }
+
+  },
+};
+</script>
 
 <style >
 *{
