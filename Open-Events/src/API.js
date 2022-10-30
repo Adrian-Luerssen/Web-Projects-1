@@ -58,7 +58,7 @@ let APIFunctions = {
             return false;
         }
     },
-    async createEvent(name, image, location, longitud, latitude, description, eventStart_date, eventEnd_date, n_participants, type, token)
+    async createEvent(name, image, location, longitude, latitude, description, eventStart_date, eventEnd_date, n_participators, type, token)
     {
         try {
             
@@ -66,16 +66,17 @@ let APIFunctions = {
                 name: name,
                 image: image,
                 location: location,
-                longitud: longitud,
+                longitude: longitude,
                 latitude: latitude,
                 description: description,
                 eventStart_date: eventStart_date,
-                eventEnd_date: eventEnd_date,
-                n_participants: n_participants,
+                eventEnd_date: eventEnd_date, 
+                n_participators: n_participators,
                 type: type
             }
             let url = "http://puigmal.salle.url.edu/api/v2/events";
-            console.log(JSON.stringify(body))
+            console.log(JSON.stringify(body));
+            console.log(token);
             /* define url */
             let response = await fetch(url, {
                 method: 'POST',
