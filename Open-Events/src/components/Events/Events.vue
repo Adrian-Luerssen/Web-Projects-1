@@ -1,16 +1,16 @@
 
 <template>    
     <div class="box">
-      <div class="side_panel">
+      <section class="side_panel">
         <p>This is a side panel</p>
-      </div>
+      </section>
       <v-list>
       <v-list-item v-for="item in elements" :key="item.event" two-line>
-        <div class="event_box">
+        <article class="event_box">
           <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
           <h3 class="title">{{item.event}}</h3>
           <p class="description">{{item.description}}</p>
-        </div>
+        </article>
         <div class="empty">
           <!--Ask to change this-->
         </div>
