@@ -78,14 +78,13 @@
     flex-direction: row;
     height: auto;
     width: auto;
-  background: cadetblue;
-  /*linear-gradient(
+  background: linear-gradient(
     to right,
     #E3A2BA 0%,
     #E3A2BA 50%,
     #BF6183 50%,
     #BF6183 100%
-  );*/
+  );
   box-sizing: border-box;
   font-weight: normal;
 }
