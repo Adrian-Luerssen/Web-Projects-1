@@ -1,21 +1,20 @@
 
 <template>    
     <div class="box">
-      <section class="side_panel">
+      <section class="side_bar">
         <p>This is a side panel</p>
       </section>
-      <v-list>
-      <v-list-item v-for="item in elements" :key="item.event" two-line>
-        <article class="event_box">
-          <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
-          <h3 class="title">{{item.event}}</h3>
-          <p class="description">{{item.description}}</p>
-        </article>
-        <div class="empty">
-          <!--Ask to change this-->
-        </div>
-    </v-list-item>
-    </v-list>
+      <section class="table_panel">
+        <v-list>
+        <v-list-item v-for="item in elements" :key="item.event" two-line>
+          <article class="event_box">
+            <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
+            <h3 class="title">{{item.event}}</h3>
+            <p class="description">{{item.description}}</p>
+          </article>
+        </v-list-item>
+        </v-list>
+      </section>
     </div>
     
   </template>
@@ -52,13 +51,15 @@
     document.getElementById("mySidepanel").style.width = "0";
   }
   </script>
-  <style>
+  <style scoped>
   .box {
         min-height: 100vh;
         background: #E3A2BA;
         box-sizing: border-box;
         font-weight: normal;
         position: relative;
+        display: flex;
+        flex-direction: row;
     }
     
     *{
@@ -69,10 +70,15 @@
     }
     .side_bar{
       
-      width: 200px;
+      width: 15%;
       background-color: #401826;
     }
+    .section_panel{
+      width: 85%;
+      background-color: #E3A2BA;
+    }
     .event_box{
+        margin-bottom: 40px;
         margin-left: 15%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;

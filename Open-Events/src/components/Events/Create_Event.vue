@@ -17,7 +17,7 @@
         </section>
 
         <section class="right_information">
-            <table>
+            <table id="new-event-form">
                 <form>
                     <tr>
                         <td><h4 id="date" class="date">
@@ -63,7 +63,7 @@
 </template>
 
 
-<style >
+<style scoped>
 *{
     margin: 0;
     width: auto;
@@ -72,19 +72,12 @@
 }
 
 .box{
-    margin-left: 3%;
     color: white;
     display:flex;
     flex-direction: row;
     height: auto;
     width: auto;
-  background: linear-gradient(
-    to right,
-    #E3A2BA 0%,
-    #E3A2BA 50%,
-    #BF6183 50%,
-    #BF6183 100%
-  );
+  background: #E3A2BA;
   box-sizing: border-box;
   font-weight: normal;
 }
@@ -101,7 +94,7 @@ button{
 .left_information{
     align-items: center;
     color: white; 
-    margin-left: -10mm; 
+    width: 50%;
 }
 
 #img{
@@ -125,15 +118,21 @@ button{
     text-align: left;   
 }
 .right_information{
-    margin-top: 15%;
-    margin-left: 10%;
-
+    background-color: #BF6183;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
 }
-table {  
+
+#new-event-form {
+    align-self: center;
     border-collapse: collapse;
     border-style: hidden;
-    border-spacing: 0 15px;
+    border-spacing: 0px 15px;
+    margin-left: 15%;
 }
+
+
 th, td {
     border-bottom: 2px solid cyan;
     height: 50px;
