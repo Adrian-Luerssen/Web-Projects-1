@@ -61,11 +61,13 @@
                                 Location of the event: </h4>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <input id = "address" type="address" name="type" placeholder="Address" class="address" ref="address">
+                        </td>
+                    </tr>
                 </form>
             </table>
-
-            <input id = "address" type="address" name="type" placeholder="Address" class="address" ref="address">
-
         </section>
         <button type="button" @click="createEvent()">Publish Event</button>
     </div>
@@ -267,5 +269,12 @@ export default {
       flex-direction: row;
       padding: 4px 10px;
   }
+  .address {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 4px;
+}
   
   </style>
