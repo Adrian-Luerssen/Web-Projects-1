@@ -1,20 +1,23 @@
 <template>
-    <div class="box">
-        <div class="left_information">
-            <div class="title">
+
+  <div class="box">
+        <section class="left_information">
+            <article class="title">
                 <h2>Publish event</h2>
                 <img id="img" src="https://thegoldenbutler.com/wp-content/uploads/2017/05/events-768x482.jpg">
-            </div>
-            <div class="description">
+            </article>
+            <article class="description">
                 <h4>Title of the event</h4>
                 <input type="text" id="title" name="title" placeholder="Title" minlength="4">
                 <h4>Description</h4>
-                <textarea type="text" id="description" name="description" cols="40" rows="10"
-                    placeholder="Enter a short description of the event to inform the users about the key point"></textarea>
-            </div>
-        </div>
 
-        <div class="right_information">
+                <textarea type="text" id="description" name="description" cols="40" rows="10" 
+                placeholder="Enter a short description of the event to inform teh users about the key point"
+                ></textarea>
+            </article>
+        </section>
+
+        <section class="right_information">
             <table>
                 <form>
                     <tr>
@@ -63,9 +66,10 @@
 
             <input id = "address" type="address" name="type" placeholder="Address" class="address" ref="address">
 
-        </div>
+        </section>
         <button type="button" @click="createEvent()">Publish Event</button>
     </div>
+
 </template>
 
 <script>

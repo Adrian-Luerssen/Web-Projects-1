@@ -1,44 +1,44 @@
 <template>
   <div class="box">
-        <div class="profile">
+        <article class="profile">
             <h1>Profile</h1>
             <img id="img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
             <input type="file" id="profile_photo" accept="image/png, image/jpeg" >
-        </div>
-        <div class="information">
-          <div class="div_name">
+        </article>
+        <section class="information">
+          <article class="div_name">
             <h4 id="First_name" class="text">
               First name: </h4>
             <input type="text" id= "first_name_text" name="first_name"
               placeholder="User" readonly>
             <button type="button" id="change_first_name_button" class="button_change">
               Change...</button>
-          </div>
-          <div class="div_last">
+          </article>
+          <article class="div_last">
             <h4 id="Last_name" class="text">
               Last name: </h4>
             <input type="text" id= "last_name_text" name="last_name"
               placeholder="Surname" readonly>
             <button type="button" id="change_last_name_button" class="button_change" >
               Change...</button>
-          </div>
-          <div class="div_email">
+          </article>
+          <article class="div_email">
             <h4 id="Email" class="email">
               Email: </h4>
             <input type="text" id= "email_text" name="email"
               placeholder="user@gmail.com" readonly>
             <button type="button" id="change_email_button" class="button_change" >
               Change...</button>
-          </div>
-          <div class="div_password">
+          </article>
+          <article class="div_password">
             <h4 id="Password" class="password">
               Password: </h4>
             <input type="text" id= "password_text" name="password"
               placeholder="ABCD1234" readonly>
             <button type="button" id="change_password_button" class="button_change" >
               Change...</button>
-          </div>      
-        </div>
+          </article>      
+        </section>
   </div>
 </template>
 
