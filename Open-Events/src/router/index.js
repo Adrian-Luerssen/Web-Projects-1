@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/Home/Home.vue';
 import Events from '../components/Events/Events.vue';
 import CreateEvent from '../components/Events/Create_Event.vue';
 import Profile from '../components/Profile/Profile.vue'
@@ -11,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home
+        component: Events
     },
     {
         path: '/Events',
