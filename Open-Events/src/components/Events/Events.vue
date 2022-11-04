@@ -62,11 +62,12 @@
         flex-direction: row;
     }
     .side_bar{
-      
+      height: 100%;
       width: 15%;
       background-color: #401826;
     }
-    .section_panel{
+    .table_panel{
+      overflow-y: scroll;
       width: 85%;
       background-color: #E3A2BA;
     }
