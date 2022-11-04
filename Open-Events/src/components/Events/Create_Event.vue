@@ -23,7 +23,7 @@
                 <input id = "start_date_input" type="date" name="date" placeholder="Start date" class="dd/mm/yyyy">
                 <h4 id="end_date_text" >End date of the event: </h4>
                 <input id = "end_date_input" type="date" name="date" placeholder="End date" class="dd/mm/yyyy">
-                <h4 id="attendance_text">Maximum number of attendants: </h4>
+                <h4 id="attendance_text">Max number of attendants: </h4>
                 <input id = "attendance_input" type="number" name="number" placeholder="Max attendants">
                 <h4 id="categories_text">Categories: </h4>
                 <input id = "categories_input" type="text" name="type" placeholder="Type">
@@ -179,6 +179,7 @@ export default {
       align-self: center;
       margin-left: 5%;
       display: grid;
+      column-gap: 5%;
       grid-template-columns: repeat(2,1fr);
       grid-template-rows: repeat(5,1fr);
   }
@@ -207,6 +208,7 @@ export default {
     grid-column: 2;
   }
   #attendance_text{
+    white-space: nowrap;
     margin-bottom: 5%;
     grid-row: 3;
     grid-column: 1;

@@ -9,9 +9,6 @@
               <h4 class="date">{{item.date}}</h4>
               <button class="more_info_button" v-on:click=" m">More info</button>
             </article>
-            <div class="empty">
-              <!--Ask to change this-->
-            </div>
           </v-list-item>
         </v-list>
       </section>
@@ -72,6 +69,7 @@
       background: #E3A2BA;
     }
     .panel_upcoming_events{
+      align-self: center;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
@@ -87,6 +85,7 @@
       padding: 30px 10px;
     }
     .event_box{
+        margin-bottom: 5%;
         margin-left: 15%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;
@@ -100,7 +99,7 @@
         padding: 10px 10px;
         color: #401826;
         display: grid;
-        grid-template-columns: 25vh 12vh;
+        grid-template-columns: 30vh 8vh;
         grid-template-rows: 5vh 4vh;
     }
     .title{
@@ -125,7 +124,8 @@
       padding: 2px 5px;
       border-radius: 20px;
       grid-column: 2;
-      margin-top: 1vh;
+      margin-top: 30%;
+
     }
     .more_info_button:hover {background-color: #63293d}
     .buttons{

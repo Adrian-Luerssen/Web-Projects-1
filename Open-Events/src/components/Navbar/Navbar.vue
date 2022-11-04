@@ -48,12 +48,13 @@
           },
           { id: 4,
             icon: "fas fa-comment",
-            title: "Chat"
+            title: "Friends",
+            path: "/Friends",
           },
           { id: 5,
             icon: "fas fa-user",
             title: "Profile",
-            path: "/Profile"
+            path: "/Profile",
           },
         ],
       }),

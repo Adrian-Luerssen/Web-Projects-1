@@ -55,7 +55,7 @@ function changeNameFunction() {
 </script>
 <style scoped>
 .box{
-  background: #E3A2BA;
+    background: #E3A2BA;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     display:flex;
@@ -80,12 +80,13 @@ function changeNameFunction() {
 
 .information_panel{
   display: flex;
-      flex-direction: row;
+    flex-direction: row;
     background-color: #BF6183;
     width: 50%;  
     height: 100vh;  
 }
 .information{
+  align-self: center;
   margin-left: 15%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

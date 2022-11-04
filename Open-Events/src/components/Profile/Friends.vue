@@ -1,4 +1,3 @@
-
 <template>    
     <div class="box">
       <section class="panel_friends">
