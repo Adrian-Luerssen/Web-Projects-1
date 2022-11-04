@@ -131,6 +131,7 @@
     .buttons{
       width: 70vh;
       height: 70vh;
+      margin-top: 10%;
       margin-right: 5%;
       display: flex;
       flex-direction: column;
