@@ -78,7 +78,8 @@
       background-color: #E3A2BA;
     }
     .event_box{
-        margin-bottom: 40px;
+        margin-top: 5%;
+        margin-bottom: 5%;
         margin-left: 15%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;
@@ -92,22 +93,13 @@
         grid-template-rows: 50px 100px;
         align-items: left;
         padding: 10px 10px;
-    }
-    .empty{
-        background-color: #E3A2BA;
-        padding: 10px 100px;
+        
     }
     .image_events{
       grid-column: 1;
       width: auto;
       height: 100%;
       border-radius: 50%;
-
-      /*
-      border-top-left-radius: 50% 50%; 
-      border-top-right-radius: 50% 50%; 
-      border-bottom-right-radius: 50% 50%; 
-      border-bottom-left-radius: 50% 50%;*/
       margin-top: 5%;
     }
     .title{

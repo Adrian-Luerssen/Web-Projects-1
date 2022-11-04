@@ -33,12 +33,12 @@
             id: 1,
             icon: "fas fa-home",
             title: "Home",
-            path: "/",
+            path: "/Events",
           },
           { id: 2,
             icon: "fas fa-bars",
             title: "Timeline",
-            path: "/Events",
+            path: "/UpcomingEvents",
           },
           {
             id: 3,
@@ -52,7 +52,8 @@
           },
           { id: 5,
             icon: "fas fa-user",
-            title: "Profile"
+            title: "Profile",
+            path: "/Profile"
           },
         ],
       }),

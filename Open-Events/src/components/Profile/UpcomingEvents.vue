@@ -1,21 +1,20 @@
-
 <template>    
     <div class="box">
-      <div class="panel_upcoming_events">
+      <section class="panel_upcoming_events">
         <h2 class="title_panel">Upcoming Events</h2>
         <v-list>
           <v-list-item v-for="item in userEvents" :key="item.event" two-line>
-            <div class="event_box">
-              <h2 class="title">{{item.event}}</h2>
-              <h3 class="date">{{item.date}}</h3>
+            <article class="event_box">
+              <h3 class="title">{{item.event}}</h3>
+              <h4 class="date">{{item.date}}</h4>
               <button class="more_info_button" v-on:click=" m">More info</button>
-            </div>
+            </article>
             <div class="empty">
               <!--Ask to change this-->
             </div>
           </v-list-item>
         </v-list>
-      </div>
+      </section>
       <div class="buttons"> 
         <button class="statistics_button" v-on:click="m">Statistics</button>
         <button class="manage_account_button" v-on:click="n">Manage account</button>
@@ -137,8 +136,8 @@
     .more_info_button{
       background-color: #401826;
       color: white;
-      width: 12vh;
-      height: 7vh;
+      width: 10vh;
+      height: 5vh;
       white-space: nowrap;
       padding: 2px 5px;
       border-radius: 20px;
