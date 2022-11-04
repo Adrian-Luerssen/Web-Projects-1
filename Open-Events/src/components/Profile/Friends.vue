@@ -108,20 +108,16 @@
   }
   </script>
   <style>
-  body {
-        min-height: 100vh;
-        min-width: 150vh;
-        background: #E3A2BA;
-        box-sizing: border-box;
-        font-weight: normal;
-    }
   .box{
-    width: 150vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 70vh 70vh;
     grid-template-rows: 45vh 55vh;
+    background: #E3A2BA;
   }
     .panel_friends{
+      margin-top: 5%;
+      margin-left: 5%;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
@@ -132,6 +128,8 @@
       grid-row: 1;
     }
     .panel_requests{
+      margin-top: 5%;
+      margin-left: 5%;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
@@ -142,12 +140,14 @@
       grid-row: 2;
     }
     .panel_mightKnow{
+      margin-top: 5%;
+      margin-left: 5%;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
       border-radius: 5px;
       width: 70vh;
-      height: 50vh;
+      height: 60vh;
       margin-left: 20%;
       grid-column: 2;
     }
@@ -168,7 +168,7 @@
     .small_panel_mightKnow{
       background-color: #BF6183;
       width: 68vh;
-      height: 41vh;
+      height: 51vh;
       overflow-y: scroll;
       margin-top: -4%;
     }

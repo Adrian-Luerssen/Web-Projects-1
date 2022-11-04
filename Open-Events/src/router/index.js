@@ -4,6 +4,7 @@ import Events from '../components/Events/Events.vue';
 import CreateEvent from '../components/Events/Create_Event.vue';
 import Profile from '../components/Profile/Profile.vue'
 import UpcomingEvents from '../components/Profile/UpcomingEvents.vue'
+import Friends from '../components/Profile/Friends.vue'
 
 /* define routes as objects*/
 const routes = [
@@ -31,8 +32,12 @@ const routes = [
         path: '/UpcomingEvents',
         name: 'UpcomingEvents',
         component: UpcomingEvents
+    },
+    {
+        path: '/Friends',
+        name: 'Friends',
+        component: Friends
     }
-
 ];
 
 /* create router */
