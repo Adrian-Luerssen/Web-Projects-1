@@ -61,13 +61,6 @@
         display: flex;
         flex-direction: row;
     }
-    
-    *{
-        margin: 0;
-        width: auto;
-        height: auto;
-        
-    }
     .side_bar{
       
       width: 15%;

@@ -127,14 +127,7 @@ export default {
 };
 </script>
 
-  <style scoped>
-  *{
-      margin: 0;
-      width: auto;
-      height: auto;
-      
-  }
-  
+  <style scoped>  
   .box{
       color: white;
       display:flex;
@@ -184,9 +177,6 @@ export default {
 
   .events_questionaire{
       align-self: center;
-      border-collapse: collapse;
-      border-style: hidden;
-      border-spacing: 0px 15px;
       margin-left: 5%;
       display: grid;
       grid-template-columns: repeat(2,1fr);

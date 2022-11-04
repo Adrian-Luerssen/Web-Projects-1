@@ -64,25 +64,12 @@
     document.getElementById("mySidepanel").style.width = "0";
   }
   </script>
-  <style>
-  body {
-        min-height: 100vh;
-        min-width: 150vh;
-        background: #E3A2BA;
-        box-sizing: border-box;
-        font-weight: normal;
-    }
-  .box{
-    width: 150vh;
-    display: flex;
-    flex-direction: row;
-  }
-    
-    *{
-        margin: 0;
-        width: auto;
-        height: auto;
-        
+  <style scoped>
+    .box{
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      background: #E3A2BA;
     }
     .panel_upcoming_events{
       background-color: #BF6183;
@@ -128,10 +115,6 @@
       padding: 0px 5px;
       grid-column: 1;
       grid-row: 2;
-    }
-    .empty{
-        background-color: #BF6183;
-        padding: 10px 100px;
     }
     .more_info_button{
       background-color: #401826;

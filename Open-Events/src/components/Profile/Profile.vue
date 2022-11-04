@@ -1,42 +1,36 @@
 <template>
   <div class="box">
         <article class="profile">
-            <h1>Profile</h1>
-            <img id="img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
-            <input type="file" id="profile_photo" accept="image/png, image/jpeg" >
+            <h1 id="title">Profile</h1>
+            <img class="image_panel" id="img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
+            <input class="image_panel" type="file" id="profile_photo" accept="image/png, image/jpeg" >
         </article>
-        <section class="information">
-          <article class="div_name">
+        <section class="information_panel">
+          <article class="information">
             <h4 id="First_name" class="text">
               First name: </h4>
             <input type="text" id= "first_name_text" name="first_name"
               placeholder="User" readonly>
             <button type="button" id="change_first_name_button" class="button_change">
               Change...</button>
-          </article>
-          <article class="div_last">
             <h4 id="Last_name" class="text">
               Last name: </h4>
             <input type="text" id= "last_name_text" name="last_name"
               placeholder="Surname" readonly>
             <button type="button" id="change_last_name_button" class="button_change" >
               Change...</button>
-          </article>
-          <article class="div_email">
             <h4 id="Email" class="email">
               Email: </h4>
             <input type="text" id= "email_text" name="email"
               placeholder="user@gmail.com" readonly>
             <button type="button" id="change_email_button" class="button_change" >
               Change...</button>
-          </article>
-          <article class="div_password">
-            <h4 id="Password" class="password">
+              <h4 id="Password" class="password">
               Password: </h4>
             <input type="text" id= "password_text" name="password"
               placeholder="ABCD1234" readonly>
             <button type="button" id="change_password_button" class="button_change" >
-              Change...</button>
+              Change...</button>            
           </article>      
         </section>
   </div>
@@ -59,93 +53,96 @@ function changeNameFunction() {
 } 
 */
 </script>
-<style>
-body {
-    min-height: 100vh;
-    background: linear-gradient(
-      to right,
-      #E3A2BA 0%,
-      #E3A2BA 50%,
-      #BF6183 50%,
-      #BF6183 100%
-    );
-    box-sizing: border-box;
-    font-weight: normal;
-    position: relative;
-}
-
-*{
-    margin: 0;
-    width: auto;
-    height: auto;
-    
-}
-
+<style scoped>
 .box{
+  background: #E3A2BA;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     display:flex;
     flex-direction: row;
-    height: 600px;
-    width: 900px;
+    height: 100vh;
 }
 
 .profile{
+  display: flex;
+  flex-direction: column;
     align-items: center;
     color: white; 
-    margin-left: -10mm; 
-    margin-top: 10%;
+    width: 50%;
+}
+#title{
+  margin-top: 10%;
 }
 #img{
     width: 300px;
     padding: 40px;
 }
 
+.information_panel{
+  display: flex;
+      flex-direction: row;
+    background-color: #BF6183;
+    width: 50%;  
+    height: 100vh;  
+}
 .information{
-    margin-top: 15%;
-    margin-left: 15%;
-    width: 40%;
-    height: 200px;
-    display: grid;
-    grid-row-gap: 20%;
-    grid-template-rows: repeat(4, 1fr);    
+  margin-left: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 5%;
+  row-gap: 20%;
+  width: 40%;
+  margin-bottom: 30%;
 }
-.div_name{
-    color: white;
-    white-space: nowrap;
-    display: grid;
-    grid-column-gap: 10%;
-    grid-template-columns: 70px 200px 100px;
+#First_name{
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 1;
 }
-.div_last{
-    color: white;
-    white-space: nowrap;
-    display: grid;
-    grid-column-gap: 10%;
-    grid-template-columns: 70px 200px 100px;
+#first_name_text{
+  grid-column: 2;
+  grid-row: 1;
 }
-.div_email{
-    color: white;
-    white-space: nowrap;
-    display: grid;
-    grid-column-gap: 10%;
-    grid-template-columns: 70px 200px 100px;
+#change_first_name_button{
+  grid-column: 3;
+  grid-row: 1;
 }
-
-.div_password{
-    color: white;
-    white-space: nowrap;
-    display: grid;
-    grid-column-gap: 10%;
-    grid-template-columns: 70px 200px 100px;
+#Last_name{
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 2;
 }
-
-.button_change{
-    white-space: nowrap;
-    padding: 4px 10px;
-    color: black;
-    font-size: 12px;
-    background-color: #EBD68B;
-    border-radius: 20px;
+#last_name_text{
+  grid-column: 2;
+  grid-row: 2;
+}
+#change_last_name_button{
+  grid-column: 3;
+  grid-row: 2;
+}
+#Email{
+  grid-column: 1;
+  grid-row: 3;
+}
+#email_text{
+  grid-column: 2;
+  grid-row: 3;
+}
+#change_email_button{
+  grid-column: 3;
+  grid-row: 3;
+}
+#Password{
+  grid-column: 1;
+  grid-row: 4;
+}
+#password_text{
+  grid-column: 2;
+  grid-row: 4;
+}
+#change_password_button{
+  grid-column: 3;
+  grid-row: 4;
 }
 </style>

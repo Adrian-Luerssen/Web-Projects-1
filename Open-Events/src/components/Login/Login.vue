@@ -59,31 +59,21 @@ export default {
 body {
     position: relative;
     min-height: 100vh;
-    background-color:linear-gradient(
-        to right,
-        #E3A2BA 0%,
-        #E3A2BA 33%,
-        #E3A2BA 33%,
-        #E3A2BA 100%
-  );
+    background-color:#E3A2BA;
   box-sizing: border-box;
   font-weight: normal;
   font-family: Arial, Helvetica, sans-serif;
 
 }
-*{
-    margin: 0;
-    width: auto;
-    height: auto;
-    
-}
 
 .login__container__form {
+    background-color: #BF6183;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 33%;
+    margin-left: 33%;
+    height: 100vh;
 }
 
 .login__container__header__title {

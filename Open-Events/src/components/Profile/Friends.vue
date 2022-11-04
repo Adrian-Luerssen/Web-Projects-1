@@ -122,13 +122,6 @@
     grid-template-columns: 70vh 70vh;
     grid-template-rows: 45vh 55vh;
   }
-    
-    *{
-        margin: 0;
-        width: auto;
-        height: auto;
-        
-    }
     .panel_friends{
       background-color: #BF6183;
       border: solid #BF6183;
