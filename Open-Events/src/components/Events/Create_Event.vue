@@ -18,58 +18,20 @@
         </section>
 
         <section class="right_information">
-            <table id="new-event-form">
-                <form>
-                    <tr>
-                        <td>
-                            <h4 id="start_date" class="date">
-                                Start date of the event: </h4>
-                        </td>
-                        <td><input id = "startInput" type="date" name="date" placeholder="Start date" class="dd/mm/yyyy">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <h4 id="end_date" class="date">
-                                End date of the event: </h4>
-                        </td>
-                        <td><input id = "endInput" type="date" name="date" placeholder="End date" class="dd/mm/yyyy">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <h4 id="attendants" class="attendants">
-                                Maximum number of attendants: </h4>
-                        </td>
-                        <td><input id = "numberInput" type="number" name="number" placeholder="Max attendants" class="attendants">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4 id="tag" class="tags">
-                                Categories: </h4>
-                        </td>
-                        <td><input id = "typeInput" type="text" name="type" placeholder="Type" class="tags">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <h4 id="location" class="location">
-                                Location of the event: </h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input id = "address" type="address" name="type" placeholder="Address" class="address" ref="address">
-                        </td>
-                    </tr>
-                </form>
-            </table>
+            <article class="events_questionaire">
+                <h4 id="start_date_text">Start date of the event: </h4>
+                <input id = "start_date_input" type="date" name="date" placeholder="Start date" class="dd/mm/yyyy">
+                <h4 id="end_date_text" >End date of the event: </h4>
+                <input id = "end_date_input" type="date" name="date" placeholder="End date" class="dd/mm/yyyy">
+                <h4 id="attendance_text">Maximum number of attendants: </h4>
+                <input id = "attendance_input" type="number" name="number" placeholder="Max attendants">
+                <h4 id="categories_text">Categories: </h4>
+                <input id = "categories_input" type="text" name="type" placeholder="Type">
+                <h4 id="location_text">Location of the event: </h4>
+                <input id = "location_input" type="address" name="type" placeholder="Address" class="address" ref="address">
+                <button id="publish_button" type="button" @click="createEvent()">Publish Event</button>
+            </article>
         </section>
-        <button type="button" @click="createEvent()">Publish Event</button>
     </div>
 
 </template>
@@ -183,20 +145,13 @@ export default {
     box-sizing: border-box;
     font-weight: normal;
   }
-  button{
-      white-space: nowrap;
-      margin-top:60%;
-      margin-left: -24%;
-      padding: 2px 18px;
-      color: black;
-      font-size: 16px;
-      background-color: #EBD68B;
-      
-  }
+
   .left_information{
+      margin-left: 5%;
       align-items: center;
       color: white; 
       width: 50%;
+      height: 100vh;
   }
   
   #img{
@@ -217,64 +172,90 @@ export default {
       color: white;
       display: grid;
       text-align: left;   
+      width: 70%;
   }
   .right_information{
       background-color: #BF6183;
       display: flex;
       flex-direction: row;
       width: 50%;
+      height: 100vh;
   }
-  
-  #new-event-form {
+
+  .events_questionaire{
       align-self: center;
       border-collapse: collapse;
       border-style: hidden;
       border-spacing: 0px 15px;
-      margin-left: 15%;
-  }
-  
-  
-  th, td {
-      border-bottom: 2px solid cyan;
-      height: 50px;
-      width: 150px;
-      text-align: center;
-      padding: 0px;
+      margin-left: 5%;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(5,1fr);
   }
   hr {
       background-color: cyan;
       height: 0.5mm;
   }
-  .date{
-      white-space: nowrap;
-      display:flex;
-      flex-direction: row;
-      padding: 2px 10px;
+  #start_date_text{
+    margin-bottom: 5%;
+    grid-row: 1;
+    grid-column: 1;
   }
-  .price{
-      white-space: nowrap;
-      display:flex;
-      flex-direction: row;
-      padding: 2px 10px;
+  #start_date_input{
+    margin-bottom: 5%;
+    grid-row: 1;
+    grid-column: 2;
   }
-  .location{
-      white-space: nowrap;
-      display:flex;
-      flex-direction: row;
-      padding: 2px 10px;
+  #end_date_text{
+    margin-bottom: 5%;
+    grid-row: 2;
+    grid-column: 1;
   }
-  .tags{
-      white-space: nowrap;
-      display:flex;
-      flex-direction: row;
-      padding: 4px 10px;
+  #end_date_input{
+    margin-bottom: 5%;
+    grid-row: 2;
+    grid-column: 2;
   }
-  .address {
-    white-space: nowrap;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 4px;
-}
+  #attendance_text{
+    margin-bottom: 5%;
+    grid-row: 3;
+    grid-column: 1;
+  }
+  #attendance_input{
+    margin-bottom: 5%;
+    grid-row: 3;
+    grid-column: 2;
+  }
+  #categories_text{
+    margin-bottom: 5%;
+    grid-row: 4;
+    grid-column: 1;
+  }
+  #categories_input{
+    margin-bottom: 5%;
+    grid-row: 4;
+    grid-column: 2;
+  }
+  #location_text{
+    margin-bottom: 5%;
+    grid-row: 5;
+    grid-column: 1;
+  }
+  #location_input{
+    margin-bottom: 5%;
+    grid-row: 5;
+    grid-column: 2;
+  }
+  #publish_button{
+      color: black;
+      background-color: #EBD68B; 
+      width: 14vh; 
+      height: 4vh;
+      margin-top: 10%;
+      margin-left: 50%;
+  }
+  #publish_button:hover{
+    background-color: #bca860;
+  }
   
   </style>
