@@ -90,11 +90,11 @@
         
     }
     .image_events{
+      margin-top: 10%;
       grid-column: 1;
-      width: auto;
-      height: 100%;
+      width: 25vh;
+      height: auto;
       border-radius: 50%;
-      margin-top: 5%;
     }
     .title{
       grid-column: 2;
