@@ -1,4 +1,6 @@
 <template>    
+    <component v-bind:is="component" 
+    v-on:switch-to-specificEvent="component = 'SpecificEvent'"></component>
     <div class="box">
       <section class="panel_upcoming_events">
         <h2 class="title_panel">Upcoming Events</h2>
@@ -7,9 +9,10 @@
             <article class="event_box">
               <h3 class="title">{{item.event}}</h3>
               <h4 class="date">{{item.date}}</h4>
-              <button class="more_info_button" v-on:click=" m">More info</button>
+              <button class="more_info_button" v-on:click="$emit('switch-to-specificEvent')">More info</button>
             </article>
           </v-list-item>
+          @click="$emit('switch-to-signUp')
         </v-list>
       </section>
       <div class="buttons"> 
@@ -21,7 +24,11 @@
   </template>
   
   <script>
+  import SpecificEvent from '../Events/SpecificEvent.vue';
+  
   export default {
+    name: 'UpcomingEvents',
+    components: {SpecificEvent},
     data: () => ({
       userEvents: [
         { event: "Oktoberfest", 

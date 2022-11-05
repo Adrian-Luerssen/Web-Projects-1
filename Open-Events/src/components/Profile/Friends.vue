@@ -7,7 +7,10 @@
             <v-list-item v-for="item in friends" :key="item.name" two-line>
               <article class="info">
                 <h4 class="title">{{item.name}}</h4>
-                <button class="remove_button_friends" v-on:click=" m">X</button>
+                <div class="buttons_box">
+                  <button class="remove_button_friends" v-on:click=" m">X</button>
+                  <button class="start_chat_button" v-on:click="n">{{chat}}</button>
+                </div>
               </article>
             </v-list-item>
           </v-list>
@@ -45,7 +48,9 @@
   </template>
   
   <script>
+  
   export default {
+    chat: "fas fa-comment",
     data: () => ({
       friends: [
         {name: "Joana"}, 
@@ -151,6 +156,7 @@
       margin-left: 20%;
       grid-column: 2;
     }
+    
     .small_panel_friends{
       background-color: #BF6183;
       width: 68vh;
@@ -164,6 +170,10 @@
       height: 31vh;
       overflow-y: scroll;
       margin-top: -4%;
+    }
+    .buttons_box{
+      display: flex;
+      grid-column: 2;
     }
     .small_panel_mightKnow{
       background-color: #BF6183;
@@ -203,6 +213,16 @@
       grid-column: 3;
       margin-top: 5%;
     }
+    .start_chat_button{
+      background-color: #E3A2BA;
+      color: white;
+      width: 4vh;
+      height: 4vh;
+      border-radius: 50px;
+      grid-column: 3;
+      margin-top: 5%;
+    }
+    .start_chat_button:hover {background-color: #00edf5}
     .remove_button_friends:hover {background-color: #870f0f}
     .remove_button_requests{
       background-color: #E3A2BA;
