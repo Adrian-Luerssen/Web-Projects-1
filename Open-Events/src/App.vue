@@ -59,12 +59,12 @@ h1 {
     line-height: 1;
   }
   h3{
-    font-size: 2em;
+    font-size: 1.7em;
     line-height: 0.8;
   }
   
   h4{
-    font-size: 1.5em;
+    font-size: 1em;
     line-height: 0.5;
   }
 </style>

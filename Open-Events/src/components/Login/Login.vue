@@ -6,11 +6,11 @@
             <form @submit.prevent="login">
                 <div class="login__container__form__input">
                     <div class="email_login">
-                        <h4 class="text_placement" for="email">Email</h4>
+                        <h3 class="text_placement" for="email">Email</h3>
                         <input type="email" id="email" size="30" placeholder="Enter your email" />
                     </div>
                     <div class="password_login">
-                        <h4 class="text_placement" for="password">Password</h4>
+                        <h3 class="text_placement" for="password">Password</h3>
                         <input type="password" id="password" size="30" placeholder="Enter your password" />
                     </div>
                 </div>
@@ -76,7 +76,7 @@ export default {
 }
 
 .login__container__header__title {
-    margin-top: 10%;
+    margin-top: 20%;
     width: 400px;
     color: white;
     text-align: center;
@@ -117,7 +117,9 @@ export default {
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
+    font: 1em sans-serif;
 }
+
 
 .login__container__form__change__to__signup{
     background: white;
@@ -128,5 +130,6 @@ export default {
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
+    font: 1em sans-serif;
 }
 </style>

@@ -5,17 +5,17 @@
             <h3 class="login__container__header__subtitle">Sign Up</h3>
             <form @submit.prevent="login">
                 <div class="register__container__form__input">
-                    <h4 class="text_placement" for="name">Full Name</h4>
+                    <h3 class="text_placement" for="name">Full Name</h3>
                     <div class="name_registration">
                         <input type="text" id="signup_name" minLength="1" placeholder="First name" />
                         <input type="text" minLength="1" id="signup_lastname" placeholder="Last name" />
                     </div>
                     <div class="email_registration">
-                        <h4 class="text_placement" for="email">Email</h4>
+                        <h3 class="text_placement" for="email">Email</h3>
                         <input type="email" id="signup_email" size="30" placeholder="Enter your email" />
                     </div>
                     <div class="password_registration">
-                        <h4 class="text_placement" for="password">Password</h4>
+                        <h3 class="text_placement" for="password">Password</h3>
                         <input type="password" id="signup_password" minLength="8" size="30" placeholder="Enter your password" />
                     </div>    
                 </div>
@@ -97,6 +97,7 @@ export default {
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
+    font: 1em sans-serif;
 }
 .text_placement{
     margin-bottom: 5%;
@@ -111,6 +112,7 @@ export default {
     gap: 5px;
     color: #3f051a;
     cursor: pointer;
+    font: 1em sans-serif;
 }
 .register__container__form__input {
     flex-direction: column;
