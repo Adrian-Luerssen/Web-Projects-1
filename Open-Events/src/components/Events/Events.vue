@@ -8,9 +8,12 @@
         <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
           <article class="event_box">
-            <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
-            <h3 class="title">{{item.event}}</h3>
+            <div class="image_box">
+              <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
+            </div>
+              <h3 class="title">{{item.event}}</h3>
             <p class="description">{{item.description}}</p>
+            <b class="date">{{item.date}}</b>
           </article>
         </v-list-item>
         </v-list>
@@ -25,19 +28,24 @@
       elements: [
         { event: "Oktoberfest", 
           description: "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
-          img: "https://www.thebeertimes.com/wp-content/uploads/2017/09/Oktoberfest-Munich.jpg"},
+          img: "https://www.thebeertimes.com/wp-content/uploads/2017/09/Oktoberfest-Munich.jpg",
+          date: "2021-09-18"},
         { event: "NYFW", 
           description: "Officially called Mercedes-Benz Fashion Week, annual fashion week event held in New York City considered the most important event in the fashion industry.",
-          img: "https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply" },
+          img: "https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply",
+          date: "2021-09-18"},
         { event: "Coachella", 
           description: "The Coachella Valley Music and Arts Festival is a major music festival that takes place over three days in the last week of April in Indio, California.",
-          img: "https://images.ecestaticos.com/wx-uXc24uN-tnn9ei0Bljt-3qW4=/0x118:2271x1394/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F1c7%2Fa35%2F419%2F1c7a354190cbb2c578c5c4f3e0c82a52.jpg"},
+          img: "https://images.ecestaticos.com/wx-uXc24uN-tnn9ei0Bljt-3qW4=/0x118:2271x1394/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F1c7%2Fa35%2F419%2F1c7a354190cbb2c578c5c4f3e0c82a52.jpg",
+          date: "2021-09-18"},
         { event: "Sallefest", 
           description: "The party you have been waiting all year is back. During a week full of activities, the boredom is the only one not welcome.",
-          img: "https://i.ytimg.com/vi/FGs_66qxW2U/maxresdefault.jpg"},
+          img: "https://i.ytimg.com/vi/FGs_66qxW2U/maxresdefault.jpg",
+          date: "2021-09-18"},
         { event: "Movies & Wine", 
           description: "A perfect date to spend some time with the ones you love or just to be by yourself, this is a great opportunity to relax and ejoy calm.",
-          img: "https://www.winemag.com/wp-content/uploads/2015/03/WE_Movies0336.jpg" }
+          img: "https://www.winemag.com/wp-content/uploads/2015/03/WE_Movies0336.jpg",
+          date: "2021-09-18"},
       ]
     })
   };
@@ -57,7 +65,6 @@
         background: #E3A2BA;
         box-sizing: border-box;
         font-weight: normal;
-        position: relative;
         display: flex;
         flex-direction: row;
     }
@@ -84,17 +91,23 @@
         gap: 10px;
         display: grid;
         grid-template-columns: 200px 400px;
-        grid-template-rows: 50px 100px;
+        grid-template-rows: 25px 120px;
         align-items: left;
         padding: 10px 10px;
         
     }
+    .image_box{
+        width: 20vh;
+        height: 10vh;
+        border-radius: 25px;
+        grid-column: 1;
+        grid-row: 2;
+    }
     .image_events{
-      margin-top: 10%;
-      grid-column: 1;
-      width: 25vh;
-      height: auto;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
+      align-items: center;
     }
     .title{
       grid-column: 2;
@@ -107,6 +120,14 @@
       grid-row: 2;
       color: rgb(255, 213, 242);
       
+    }
+    .date{
+      color: white;
+      font-weight: bold;
+      width: match-parent;
+      height: match-parent;
+      grid-column: 1;
+      grid-row: 1;
     }
     .side_panel{
       background-color: #401826;
