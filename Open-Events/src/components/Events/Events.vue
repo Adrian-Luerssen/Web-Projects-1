@@ -5,6 +5,7 @@
         <p>This is a side panel</p>
       </section>
       <section class="table_panel">
+        <input type="text" v-model="search" placeholder="Search for events" />
         <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
           <article class="event_box">
@@ -46,7 +47,8 @@
           description: "A perfect date to spend some time with the ones you love or just to be by yourself, this is a great opportunity to relax and ejoy calm.",
           img: "https://www.winemag.com/wp-content/uploads/2015/03/WE_Movies0336.jpg",
           date: "2021-09-18"},
-      ]
+      ],
+      search: "",
     })
   };
   
@@ -57,6 +59,10 @@
   /* Set the width of the sidebar to 0 (hide it) */
   function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
+  }
+
+  function filteredElements(){
+    return this.elements.filter(element => element.description.toLowerCase().includes(this.search.toLowerCase()))
   }
   </script>
   <style scoped>

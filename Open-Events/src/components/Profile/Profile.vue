@@ -30,8 +30,13 @@
             <input type="text" id= "password_text" name="password"
               placeholder="ABCD1234" readonly>
             <button type="button" id="change_password_button" class="button_change" >
-              Change...</button>            
-          </article>      
+              Change...</button>   
+          </article>  
+          
+          <div class = "buttons">
+            <button class = "delete_account" v-on:click="m">Delete account</button>
+            <button class = "log_out" v-on:click="n">Log out</button>
+          </div>         
         </section>
   </div>
 </template>
@@ -80,13 +85,12 @@ function changeNameFunction() {
 
 .information_panel{
   display: flex;
-    flex-direction: row;
-    background-color: #BF6183;
-    width: 50%;  
-    height: 100vh;  
+  flex-direction: column;
+  background-color: #BF6183;
+  width: 50%;  
+  height: 100vh;  
 }
 .information{
-  align-self: center;
   margin-left: 15%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -94,8 +98,45 @@ function changeNameFunction() {
   column-gap: 5%;
   row-gap: 20%;
   width: 40%;
+  margin-top: 10%;
   margin-bottom: 30%;
 }
+
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  align-self: bottom;
+}
+.log_out{
+      background-color: #401826;
+      border: solid #401826;
+      color: white;
+      width: 30vh;
+      height: 10vh;
+      white-space: nowrap;
+      padding: 2px 5px;
+      border-radius: 20px;
+      font-size: large;
+      margin-top: 3vh;
+      margin-left: 15vh;
+    }
+    .log_out:hover {background-color: #63293d}
+    
+    .delete_account{
+      background-color: #401826;
+      border: solid #401826;
+      color: white;
+      width: 30vh;
+      height: 10vh;
+      white-space: nowrap;
+      padding: 2px 5px;
+      border-radius: 20px;
+      font-size: large;
+      margin-top: 3vh;
+      margin-left: 15vh;
+    }
+    .delete_account:hover {background-color: #63293d}
 #First_name{
   white-space: nowrap;
   grid-column: 1;
@@ -146,4 +187,5 @@ function changeNameFunction() {
   grid-column: 3;
   grid-row: 4;
 }
+
 </style>
