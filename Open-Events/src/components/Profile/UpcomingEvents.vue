@@ -3,7 +3,7 @@
     v-on:switch-to-specificEvent="component = 'SpecificEvent'"></component>
     <div class="box">
       <section class="panel_upcoming_events">
-        <h2 class="title_panel">Upcoming Events</h2>
+        <h2 class="title_panel_upcoming">Upcoming Events</h2>
         <v-list>
           <v-list-item v-for="item in userEvents" :key="item.event" two-line>
             <article class="event_box">
@@ -12,13 +12,32 @@
               <button class="more_info_button" v-on:click="$emit('switch-to-specificEvent')">More info</button>
             </article>
           </v-list-item>
-          @click="$emit('switch-to-signUp')
         </v-list>
       </section>
-      <div class="buttons"> 
-        <button class="statistics_button" v-on:click="m">Statistics</button>
-        <button class="manage_account_button" v-on:click="n">Manage account</button>
-      </div>
+      <section class="panel_past_events">
+        <h2 class="title_panel_past">Past Events</h2>
+        <v-list>
+          <v-list-item v-for="item in userEvents" :key="item.event" two-line>
+            <article class="event_box">
+              <h3 class="title">{{item.event}}</h3>
+              <h4 class="date">{{item.date}}</h4>
+              <button class="more_info_button" v-on:click="$emit('switch-to-specificEvent')">More info</button>
+            </article>
+          </v-list-item>
+        </v-list>
+      </section>
+      <section class="panel_personal_events">
+        <h2 class="title_panel_personal">Your Events</h2>
+        <v-list>
+          <v-list-item v-for="item in userEvents" :key="item.event" two-line>
+            <article class="event_box">
+              <h3 class="title">{{item.event}}</h3>
+              <h4 class="date">{{item.date}}</h4>
+              <button class="edit_info_button" v-on:click="$emit('switch-to-specificEvent')">Edit info</button>
+            </article>
+          </v-list-item>
+        </v-list>
+      </section>
     </div>
     
   </template>
@@ -73,7 +92,31 @@
       height: 100vh;
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       background: #E3A2BA;
+    }
+    .panel_past_events{
+      align-self: center;
+      background-color: #BF6183;
+      border: solid #BF6183;
+      border-width: thick;
+      border-radius: 5px;
+      width: 70vh;
+      height: 70vh;
+      margin-left: 5%;
+      margin-right:5%;
+      overflow-y: scroll;
+    }
+    .panel_personal_events{
+      align-self: center;
+      background-color: #BF6183;
+      border: solid #BF6183;
+      border-width: thick;
+      border-radius: 5px;
+      width: 70vh;
+      height: 70vh;
+      margin-right: 5%;
+      overflow-y: scroll;
     }
     .panel_upcoming_events{
       align-self: center;
