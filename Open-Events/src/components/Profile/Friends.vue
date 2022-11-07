@@ -9,7 +9,7 @@
                 <h4 class="title">{{item.name}}</h4>
                 <div class="buttons_box">
                   <button class="remove_button_friends" v-on:click=" m">X</button>
-                  <button class="start_chat_button" v-on:click="n">{{chat}}</button>
+                  <input type="image" class="start_chat_button" src="https://cdn-icons-png.flaticon.com/512/589/589708.png"/>
                 </div>
               </article>
             </v-list-item>
@@ -43,6 +43,23 @@
           </v-list>
         </section>
       </section>
+      <section class="conversation_management">
+        <article class = "user_data_background">
+          <div class="image_box">
+            <img class="picture_chat" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+          </div>
+          <div class="user_data">
+            <h4 class="name">John Doe</h4>
+            <small class="user_activity">Active 1h ago</small>
+          </div>
+        </article>
+        <article class="message_box">
+        </article>
+        <article class="write_message">
+          <input type="text" class="message_input" placeholder="Write a message..."/>
+          <button class="send_button">Send</button>
+        </article>
+      </section>
     </div>
     
   </template>
@@ -50,7 +67,6 @@
   <script>
   
   export default {
-    chat: "fas fa-comment",
     data: () => ({
       friends: [
         {name: "Joana"}, 
@@ -62,7 +78,18 @@
         {name: "Manolo"}, 
         {name: "Marc"},
         {name: "Pau"}, 
-        {name: "Oscar"}
+        {name: "Oscar"},
+        {name: "Joaquin"}, 
+        {name: "Maria"},
+        {name: "Adrianau"}, 
+        {name: "Jorge"},
+        {name: "Marta"},
+        {name: "Miguel"},
+        {name: "Sara"},
+        {name: "Ricardo"},
+        {name: "Rafael"},
+        {name: "Raul"},
+        {name: "Ramon"}
       ],
       requests: [
         {name: "Alex"}, 
@@ -120,6 +147,77 @@
     grid-template-rows: 45vh 55vh;
     background: #E3A2BA;
   }
+  .conversation_management{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5%;
+    grid-column: 3; 
+    width: 70vh;
+    height: 85vh;
+    background-color: #ECF0F1;
+    border-radius: 10px;
+  }
+  .user_data_background{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color:#D7DBDD; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 70vh;
+    height: 10vh;
+  }
+  .picture_chat{
+    margin-top:5%;
+    margin-left: 20%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .user_data{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50vh;
+    height: 6vh;
+  }
+
+  .message_box{
+    width: 70vh;
+    height: 65vh;
+    background-color: #ECF0F1;
+    border-radius: 10px;
+  }
+
+  .write_message{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#D7DBDD;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 70vh;
+    height: 10vh;
+  }
+  .message_input{
+    margin-left: 5%;
+    width: 50vh;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #ECF0F1;
+  }
+  .send_button{
+    margin-right: 5%;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #ECF0F1;
+  }
+
     .panel_friends{
       margin-top: 5%;
       margin-left: 5%;
@@ -127,46 +225,43 @@
       border: solid #BF6183;
       border-width: thick;
       border-radius: 5px;
-      width: 70vh;
-      height: 42vh;
+      width: 50vh;
+      height: 85vh;
       grid-column: 1;
-      grid-row: 1;
     }
     .panel_requests{
       margin-top: 5%;
-      margin-left: 5%;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
       border-radius: 5px;
-      width: 70vh;
+      width: 50vh;
       height: 40vh;
-      grid-column: 1;
-      grid-row: 2;
+      grid-column: 2;
+      grid-row: 1;
     }
     .panel_mightKnow{
       margin-top: 5%;
-      margin-left: 5%;
       background-color: #BF6183;
       border: solid #BF6183;
       border-width: thick;
       border-radius: 5px;
-      width: 70vh;
-      height: 60vh;
-      margin-left: 20%;
+      width: 50vh;
+      height: 40vh;
       grid-column: 2;
+      grid-row: 2;
     }
     
     .small_panel_friends{
       background-color: #BF6183;
-      width: 68vh;
-      height: 33vh;
+      width: 48vh;
+      height: 70vh;
       overflow-y: scroll;
       margin-top: -4%;
     }
     .small_panel_requests{
       background-color: #BF6183;
-      width: 68vh;
+      width: 48vh;
       height: 31vh;
       overflow-y: scroll;
       margin-top: -4%;
@@ -177,8 +272,8 @@
     }
     .small_panel_mightKnow{
       background-color: #BF6183;
-      width: 68vh;
-      height: 51vh;
+      width: 48vh;
+      height: 31vh;
       overflow-y: scroll;
       margin-top: -4%;
     }
@@ -197,11 +292,11 @@
       background-color: #622f41;
       border: solid white;
       border-width: thin;
-      width: 60vh;
+      width: 43vh;
       height: 5vh;
       margin-left: 5%;
       display: grid;
-      grid-template-columns: 50vh;
+      grid-template-columns: 33vh;
       
     }
     .remove_button_friends{
@@ -218,7 +313,7 @@
       color: white;
       width: 4vh;
       height: 4vh;
-      border-radius: 50px;
+      border-radius: 2px;
       grid-column: 3;
       margin-top: 5%;
     }
