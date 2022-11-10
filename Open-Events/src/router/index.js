@@ -5,6 +5,7 @@ import Profile from '../components/Profile/Profile.vue';
 import UpcomingEvents from '../components/Profile/UpcomingEvents.vue';
 import Friends from '../components/Profile/Friends.vue';
 import SpecificEvent from '../components/Events/SpecificEvent.vue';
+import Chat from '../components/Profile/Chat.vue';
 /* define routes as objects*/
 const routes = [
     {
@@ -41,6 +42,12 @@ const routes = [
         path: '/SpecificEvent/:id',
         name: 'SpecificEvent',
         component: SpecificEvent
+    },
+    
+    {
+        path: '/Chat/:id',
+        name: 'Chat',
+        component: Chat
     }
 ];
 
