@@ -1,18 +1,19 @@
 
 <template>    
     <div class="box">
-      <section class="side_bar">
-        <p>This is a side panel</p>
-      </section>
       <section class="table_panel">
-        <input type="text" v-model="search" placeholder="Search for events" />
+        <!-- search box -->
+        <section class="search_box">
+          <input type="text" class="search_message" placeholder="Search..."/>
+          <button class="send_button">Search</button>
+        </section>
         <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
           <article class="event_box">
             <div class="image_box">
               <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
             </div>
-              <h3 class="title">{{item.event}}</h3>
+              <b class="title">{{item.event}}</b>
             <p class="description">{{item.description}}</p>
             <b class="date">{{item.date}}</b>
           </article>
@@ -74,6 +75,37 @@
         display: flex;
         flex-direction: row;
     }
+
+    .search_box {
+      width: 100%;
+      height: 15vh;
+      background-color: #BF6183;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      display: flex;
+    }
+
+    .search_message {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color:#D7DBDD;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      width: 70vh;
+      height: 5vh;
+    }
+
+    .send_button {
+      margin-right: 5%;
+      width: 10vh;
+      height: 5vh;
+      border-radius: 10px;
+      border: none;
+      background-color: #ECF0F1;
+    }
+
     .side_bar{
       height: 100%;
       width: 15%;
@@ -81,54 +113,63 @@
     }
     .table_panel{
       overflow-y: scroll;
-      width: 85%;
+      overflow-x: hidden;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background-color: #E3A2BA;
     }
     .event_box{
         margin-top: 5%;
         margin-bottom: 5%;
-        margin-left: 15%;
+        margin-left: 5%;
+        margin-right: 5%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;
-        background-color: #BF6183;
-        height: 150px;
-        width: 600px;
-        border: solid#E3A2BA;
-        gap: 10px;
-        display: grid;
-        grid-template-columns: 200px 400px;
-        grid-template-rows: 25px 120px;
-        align-items: left;
+        background-color: #6761bf;
+        height: 15vh;
         padding: 10px 10px;
-        
+        width: auto;
+        border: solid#E3A2BA;
+        gap: 0.5vh;
+        display: grid;
+        grid-template-columns: 10vh 35vh;
+        grid-template-rows: 3vh 10vh;
+        align-items: left;
+        overflow: auto;     
     }
     .image_box{
-        width: 20vh;
-        height: 10vh;
+        width: 40%;
+        height: 30%;
         border-radius: 25px;
         grid-column: 1;
         grid-row: 2;
     }
     .image_events{
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
+      width: 10vh;
+      height: 10vh;
+      border-radius: 80%;
       align-items: center;
+      justify-content: center;
+      display: flex;
     }
     .title{
       grid-column: 2;
       grid-row: 1;
       color: white;
       font-weight: bold;  
-      text-align: center; 
+      text-align: center;
+      font-size: medium;
     }
     .description{
       grid-column: 2;
       grid-row: 2;
       color: rgb(255, 213, 242);
       text-align: center;
-      margin: 5%;
-      justify-content: space-evenly;
+      font-size: small;
+      justify-content: right;
+      overflow: auto;
     }
     .date{
       color: white;
@@ -137,6 +178,7 @@
       height: match-parent;
       grid-column: 1;
       grid-row: 1;
+      font-size: small;
     }
     .side_panel{
       background-color: #401826;
