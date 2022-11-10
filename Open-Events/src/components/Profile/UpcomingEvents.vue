@@ -13,7 +13,9 @@
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="more_info_button"
-              v-on:click="$emit('switch-to-specificEvent')"
+              v-on:click="
+                $router.push({ name: 'SpecificEvent', params: { id: item.id } })
+              "
             >
               More info
             </button>
@@ -30,7 +32,9 @@
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="more_info_button"
-              v-on:click="$emit('switch-to-specificEvent')"
+              v-on:click="
+                $router.push({ name: 'SpecificEvent', params: { id: item.id } })
+              "
             >
               More info
             </button>
@@ -47,7 +51,9 @@
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="edit_info_button"
-              v-on:click="$emit('switch-to-specificEvent')"
+              v-on:click="
+                $router.push({ name: 'SpecificEvent', params: { id: item.id } })
+              "
             >
               Edit info
             </button>
@@ -67,6 +73,7 @@ export default {
   data: () => ({
     userEvents: [
       {
+        id: 1,
         event: "Oktoberfest",
         description:
           "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
@@ -74,6 +81,7 @@ export default {
         date: "10/10/2022",
       },
       {
+        id: 2,
         event: "NYFW",
         description:
           "Officially called Mercedes-Benz Fashion Week, annual fashion week event held in New York City considered the most important event in the fashion industry.",
@@ -81,6 +89,7 @@ export default {
         date: "23/01/2023",
       },
       {
+        id: 3,
         event: "Coachella",
         description:
           "The Coachella Valley Music and Arts Festival is a major music festival that takes place over three days in the last week of April in Indio, California.",
@@ -88,6 +97,7 @@ export default {
         date: "20/03/2023",
       },
       {
+        id: 4,
         event: "Sallefest",
         description:
           "The party you have been waiting all year is back. During a week full of activities, the boredom is the only one not welcome.",
@@ -95,6 +105,7 @@ export default {
         date: "25/04/2023",
       },
       {
+        id: 5,
         event: "Oktoberfest",
         description:
           "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
@@ -102,6 +113,7 @@ export default {
         date: "10/10/2022",
       },
       {
+        id: 6,
         event: "NYFW",
         description:
           "Officially called Mercedes-Benz Fashion Week, annual fashion week event held in New York City considered the most important event in the fashion industry.",

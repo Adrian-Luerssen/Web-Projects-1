@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Events from '../components/Events/Events.vue';
 import CreateEvent from '../components/Events/Create_Event.vue';
-import Profile from '../components/Profile/Profile.vue'
-import UpcomingEvents from '../components/Profile/UpcomingEvents.vue'
-import Friends from '../components/Profile/Friends.vue'
-
+import Profile from '../components/Profile/Profile.vue';
+import UpcomingEvents from '../components/Profile/UpcomingEvents.vue';
+import Friends from '../components/Profile/Friends.vue';
+import SpecificEvent from '../components/Events/SpecificEvent.vue';
 /* define routes as objects*/
 const routes = [
     {
@@ -36,6 +36,11 @@ const routes = [
         path: '/Friends',
         name: 'Friends',
         component: Friends
+    },
+    {
+        path: '/SpecificEvent/:id',
+        name: 'SpecificEvent',
+        component: SpecificEvent
     }
 ];
 
