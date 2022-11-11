@@ -181,6 +181,7 @@ export default {
 
 <style scoped>
 .box {
+  font-family: Arial, Helvetica, sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
@@ -324,6 +325,7 @@ hr {
 
 @media only screen and (min-width: 768px) {
   .box {
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
     display: flex;
     flex-direction: row;

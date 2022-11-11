@@ -135,6 +135,7 @@ function closeNav() {
 </script>
 <style scoped>
 .box {
+  font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;

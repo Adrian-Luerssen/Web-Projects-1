@@ -117,8 +117,7 @@
     .event_box{
         margin-top: 5%;
         margin-bottom: 5%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 25%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;
         background-color: #66293e;
@@ -154,16 +153,17 @@
       color: white;
       font-weight: bold;  
       text-align: center;
-      font-size: medium;
+      font-size: large;
     }
     .description{
       grid-column: 2;
       grid-row: 2;
       color: rgb(255, 213, 241);
       text-align: center;
-      font-size: small;
+      font-size: medium;
       justify-content: right;
-      overflow: auto;
+      overflow: hidden;
+
     }
     .date{
       color: white;
@@ -177,5 +177,45 @@
     .side_panel{
       background-color: #401826;
     }
+    @media only screen and (max-width: 768px) {
+      .event_box{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 25px;
+        background-color: #66293e;
+        height: 15vh;
+        padding: 10px 10px;
+        width: auto;
+        max-width: 70vh;
+        border: solid#E3A2BA;
+        gap: 2vh;
+        display: grid;
+        grid-template-columns: 15vh 45vh;
+        grid-template-rows: 3vh 10vh;
+        overflow: auto;    
+    }
+    .title{
+      grid-column: 2;
+      grid-row: 1;
+      color: white;
+      font-weight: bold;  
+      text-align: center;
+      font-size: medium;
+    }
+    .description{
+      grid-column: 2;
+      grid-row: 2;
+      color: rgb(255, 213, 241);
+      text-align: center;
+      font-size: small;
+      justify-content: right;
+      overflow: hidden;
+
+    }
+    }
+
   </style>
 
