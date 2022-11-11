@@ -66,4 +66,8 @@ h4 {
   font-size: 1em;
   line-height: 0.5;
 }
+h5 {
+  font-size: 0.7em;
+  line-height: 0.3;
+}
 </style>

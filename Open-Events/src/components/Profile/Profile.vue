@@ -123,11 +123,10 @@ function changeNameFunction() {
   width: 30vh;
   height: 10vh;
   white-space: nowrap;
-  padding: 2px 5px;
   border-radius: 20px;
   font-size: large;
   margin-top: 3vh;
-  margin-left: 15vh;
+  margin-left: 5%;
 }
 .log_out:hover {background-color: #63293d}
 
@@ -138,7 +137,6 @@ function changeNameFunction() {
   width: 30vh;
   height: 10vh;
   white-space: nowrap;
-  padding: 2px 5px;
   border-radius: 20px;
   font-size: large;
   margin-top: 3vh;
@@ -151,7 +149,6 @@ function changeNameFunction() {
   width: 30vh;
   height: 10vh;
   white-space: nowrap;
-  padding: 2px 5px;
   border-radius: 20px;
   font-size: large;
   margin-top: 3vh;
@@ -207,6 +204,93 @@ function changeNameFunction() {
 #change_password_button{
   grid-column: 3;
   grid-row: 4;
+}
+
+@media only screen and (max-width: 767px) {
+  .box{
+    background: #E3A2BA;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    display:flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white; 
+  width: 50%;
+  margin-left: 25%;
+  padding: 2vh 0vh;
+}
+#title{
+  margin-top: 10%;
+}
+#img{
+    width: 40vh;
+}
+
+.information_panel{
+  display: flex;
+  flex-direction: column;
+  background-color: #BF6183;
+  width: 100%;  
+  height: 100vh;  
+}
+.information{
+  margin-top: 15%;
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 5%;
+  row-gap: 20%;
+  width: 40%;
+  margin-bottom: 30%;
+}
+.account_buttons{
+  display: flex;
+  flex-direction: column;
+}
+.log_out{
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 25vh;
+  height: 7vh;
+  white-space: nowrap;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.log_out:hover {background-color: #63293d}
+
+.delete_account{
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 25vh;
+  height: 7vh;
+  white-space: nowrap;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.delete_account:hover {background-color: #63293d}
+.statistics_button{
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 25vh;
+  height: 7vh;
+  white-space: nowrap;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.statistics_button:hover {background-color: #63293d}
 }
 
 </style>

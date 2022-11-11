@@ -1,15 +1,15 @@
 <template>
-  <component
+  <section class="box">
+    <component
     v-bind:is="component"
     v-on:switch-to-specificEvent="component = 'SpecificEvent'"
   ></component>
-  <section class="box">
     <section class="panel_upcoming_events">
-      <h2 class="title_panel_upcoming">Upcoming Events</h2>
+      <h3 class="title_panel">Upcoming Events</h3>
       <v-list>
         <v-list-item v-for="item in userEvents" :key="item.event" two-line>
           <article class="event_box">
-            <h3 class="title">{{ item.event }}</h3>
+            <h4 class="title">{{ item.event }}</h4>
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="more_info_button"
@@ -24,11 +24,11 @@
       </v-list>
     </section>
     <section class="panel_past_events">
-      <h2 class="title_panel_past">Past Events</h2>
+      <h3 class="title_panel">Past Events</h3>
       <v-list>
         <v-list-item v-for="item in userEvents" :key="item.event" two-line>
           <article class="event_box">
-            <h3 class="title">{{ item.event }}</h3>
+            <h4 class="title">{{ item.event }}</h4>
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="more_info_button"
@@ -43,11 +43,11 @@
       </v-list>
     </section>
     <section class="panel_personal_events">
-      <h2 class="title_panel_personal">Your Events</h2>
+      <h3 class="title_panel">Your Events</h3>
       <v-list>
         <v-list-item v-for="item in userEvents" :key="item.event" two-line>
           <article class="event_box">
-            <h3 class="title">{{ item.event }}</h3>
+            <h4 class="title">{{ item.event }}</h4>
             <h4 class="date">{{ item.date }}</h4>
             <button
               class="edit_info_button"
@@ -140,14 +140,15 @@ function closeNav() {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #e3a2ba;
   overflow-x: hidden;
+  padding: 1em 1em;
 }
 .panel_past_events {
   align-self: center;
   background-color: #bf6183;
-  border: solid #bf6183;
-  border-width: thick;
+  border: solid #780831;
+  border-width: 3px;
+  font-size: medium;
   border-radius: 5px;
   width: 100%;
   height: 30vh;
@@ -160,8 +161,8 @@ function closeNav() {
 .panel_personal_events {
   align-self: center;
   background-color: #bf6183;
-  border: solid #bf6183;
-  border-width: thick;
+  border: solid #780831;
+  border-width: 3px;
   border-radius: 5px;
   width: 100%;
   height: 30vh;
@@ -174,8 +175,8 @@ function closeNav() {
 .panel_upcoming_events {
   align-self: center;
   background-color: #bf6183;
-  border: solid #bf6183;
-  border-width: thick;
+  border: solid #780831;
+  border-width: 3px;
   border-radius: 5px;
   width: 100%;
   height: 30vh;
@@ -190,17 +191,17 @@ function closeNav() {
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 25px;
   background-color: #e3a2ba;
-  height: 10vh;
-  width: 70%;
+  height: 7vh;
+  width: 65%;
   border: solid #bf6183;
   display: flex;
   flex-direction: row;
   align-items: left;
-  padding: 10px 10px;
+  padding: 10px 5px;
   color: #401826;
   display: grid;
-  grid-template-columns: 10vh 10vh 10vh 10vh;
-  grid-template-rows: 5vh 4vh;
+  grid-template-columns: 7vh 7vh 7vh 7vh;
+  grid-template-rows: 3.5vh 2.5vh;
   position: relative;
 }
 
@@ -214,7 +215,7 @@ function closeNav() {
   border-radius: 20px;
   position: absolute;
   right: 5%;
-  bottom: 5%;
+  bottom: 25%;
 }
 .more_info_button:hover {
   background-color: #63293d;
@@ -229,7 +230,7 @@ function closeNav() {
   border-radius: 20px;
   position: absolute;
   right: 5%;
-  bottom: 5%;
+  bottom: 25%;
 }
 .edit_info_button:hover {
   background-color: #646464;
@@ -247,29 +248,10 @@ function closeNav() {
   grid-column: 1 / 3;
   grid-row: 2;
 }
-.title_panel_personal {
-  color: white;
-  font-weight: bold;
-  padding: 0px 5px;
-  grid-column: 1 / 3;
-  grid-row: 1;
+.title_panel{
+  margin-top: -5%;
 }
 
-.title_panel_past {
-  color: white;
-  font-weight: bold;
-  padding: 0px 5px;
-  grid-column: 1 / 3;
-  grid-row: 1;
-}
-
-.title_panel_upcoming {
-  color: white;
-  font-weight: bold;
-  padding: 0px 5px;
-  grid-column: 1 / 3;
-  grid-row: 1;
-}
 @media only screen and (min-width: 768px) {
   .box {
     height: 100vh;
