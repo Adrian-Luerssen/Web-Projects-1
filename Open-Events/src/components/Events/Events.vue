@@ -106,18 +106,12 @@
       background-color: #ECF0F1;
     }
 
-    .side_bar{
-      height: 100%;
-      width: 15%;
-      background-color: #401826;
-    }
     .table_panel{
       overflow-y: scroll;
       overflow-x: hidden;
       width: 100%;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       background-color: #E3A2BA;
     }
     .event_box{
@@ -127,24 +121,24 @@
         margin-right: 5%;
         font-family: Arial, Helvetica, sans-serif;
         border-radius: 25px;
-        background-color: #6761bf;
+        background-color: #66293e;
         height: 15vh;
         padding: 10px 10px;
         width: auto;
+        max-width: 70vh;
         border: solid#E3A2BA;
-        gap: 0.5vh;
+        gap: 2vh;
         display: grid;
-        grid-template-columns: 10vh 35vh;
+        grid-template-columns: 15vh 45vh;
         grid-template-rows: 3vh 10vh;
-        align-items: left;
-        overflow: auto;     
+        overflow: auto;    
     }
     .image_box{
         width: 40%;
         height: 30%;
         border-radius: 25px;
         grid-column: 1;
-        grid-row: 2;
+        margin-left: 5%;
     }
     .image_events{
       width: 10vh;
@@ -165,7 +159,7 @@
     .description{
       grid-column: 2;
       grid-row: 2;
-      color: rgb(255, 213, 242);
+      color: rgb(255, 213, 241);
       text-align: center;
       font-size: small;
       justify-content: right;
