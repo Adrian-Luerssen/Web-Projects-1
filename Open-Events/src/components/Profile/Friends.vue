@@ -171,7 +171,7 @@ function closeNav() {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 12%;
+  margin-bottom: 80px;
   background-color: #bf6183;
   border: solid #bf6183;
   border-width: thick;
