@@ -4,11 +4,20 @@
       <section class="table_panel">
         <!-- search box -->
         <section class="search_box">
+          <dropdown 
+                  class="filter_search_dropdown"
+                  text="Filter by"
+                  :items="[
+                    {text: 'Name'},
+                    {text: 'Date'},
+                    {text: 'Location'}
+                  ]"
+                  :header="[ {text: 'Filter by'} ]"></dropdown>
           <input type="text" class="search_message" placeholder="Search..."/>
-          <button class="send_button">Search</button>
+          <button class="filter_events">Search</button>
         </section>
         <v-list>
-        <v-list-item v-for="item in elements" :key="item.event" two-line>
+        <v-list-item v-for="item in filteredElements" :key="item.event" two-line>
           <article class="event_box">
             <div class="image_box">
               <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
@@ -61,9 +70,16 @@
   function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
   }
+  computed: {
+    function filteredElements(){
+      return this.elements.filter(p => {
+        // return true if the product should be visible
 
-  function filteredElements(){
-    return this.elements.filter(element => element.description.toLowerCase().includes(this.search.toLowerCase()))
+        // in this example we just check if the search string
+        // is a substring of the product name (case insensitive)
+        return p.event.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+    })
+  }
   }
   </script>
   <style scoped>
@@ -84,6 +100,13 @@
       justify-content: center;
       flex-direction: row;
       display: flex;
+    }
+    
+    .filter_search_dropdown{
+      width: 10vh;
+      height: 5vh;
+      align-self: flex-start;
+      background-color:#D7DBDD;
     }
 
     .search_message {
