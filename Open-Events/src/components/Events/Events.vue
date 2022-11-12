@@ -4,20 +4,11 @@
       <section class="table_panel">
         <!-- search box -->
         <section class="search_box">
-          <dropdown 
-                  class="filter_search_dropdown"
-                  text="Filter by"
-                  :items="[
-                    {text: 'Name'},
-                    {text: 'Date'},
-                    {text: 'Location'}
-                  ]"
-                  :header="[ {text: 'Filter by'} ]"></dropdown>
           <input type="text" class="search_message" placeholder="Search..."/>
           <button class="filter_events">Search</button>
         </section>
         <v-list>
-        <v-list-item v-for="item in filteredElements" :key="item.event" two-line>
+        <v-list-item v-for="item in elements" :key="item.event" two-line>
           <article class="event_box">
             <div class="image_box">
               <img class="image_events" src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply">
