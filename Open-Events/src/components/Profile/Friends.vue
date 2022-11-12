@@ -5,7 +5,7 @@
       <section class="small_panel_friends">
         <v-list>
           <v-list-item v-for="item in friends" :key="item.name" two-line>
-            <article class="info">
+            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
               <h4 class="title">{{ item.name }}</h4>
               <div class="buttons_box">
                 <button class="remove_button_friends" v-on:click="m">X</button>
@@ -31,7 +31,7 @@
       <section class="small_panel_requests">
         <v-list>
           <v-list-item v-for="item in requests" :key="item.name" two-line>
-            <article class="info">
+            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
               <h4 class="title">{{ item.name }}</h4>
               <div class="buttons_box">
                 <button class="add_button_requests" v-on:click="m">✔</button>
@@ -47,7 +47,7 @@
       <section class="small_panel_mightKnow">
         <v-list>
           <v-list-item v-for="item in mightKnow" :key="item.name" two-line>
-            <article class="info">
+            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
               <h4 class="title">{{ item.name }}</h4>
               <button class="add_button_mightKnow" v-on:click="m">✔</button>
             </article>
@@ -85,40 +85,40 @@ export default {
       { id: 21, name: "Ramon" },
     ],
     requests: [
-      { name: "Alex" },
-      { name: "Sofia" },
-      { name: "Eva" },
-      { name: "Andrea" },
-      { name: "Juan" },
-      { name: "Javi" },
-      { name: "Bosco" },
-      { name: "Carla" },
-      { name: "Alexia" },
-      { name: "Berta" },
-      { name: "Lucas" },
-      { name: "Stephanie" },
-      { name: "Ivan" },
-      { name: "Alejandro" },
-      { name: "Adriana" },
-      { name: "Ernest" },
-      { name: "Heidy" },
-      { name: "Aurora" },
+      { id: 1, name: "Alex" },
+      { id: 2, name: "Sofia" },
+      { id: 3, name: "Eva" },
+      { id: 4, name: "Andrea" },
+      { id: 5, name: "Juan" },
+      { id: 6, name: "Javi" },
+      { id: 7, name: "Bosco" },
+      { id: 8, name: "Carla" },
+      { id: 9, name: "Alexia" },
+      { id: 10, name: "Berta" },
+      { id: 11, name: "Lucas" },
+      { id: 12, name: "Stephanie" },
+      { id: 13, name: "Ivan" },
+      { id: 14, name: "Alejandro" },
+      { id: 15, name: "Adriana" },
+      { id: 16, name: "Ernest" },
+      { id: 17, name: "Heidy" },
+      { id: 18, name: "Aurora" },
     ],
     mightKnow: [
-      { name: "Sonia" },
-      { name: "Maria" },
-      { name: "Wall-E" },
-      { name: "Jorge" },
-      { name: "Jose Maria" },
-      { name: "Julia" },
-      { name: "Jessica" },
-      { name: "Amber" },
-      { name: "David" },
-      { name: "Dustin" },
-      { name: "Mar" },
-      { name: "Alvaro" },
-      { name: "Aran" },
-      { name: "Mariona" },
+      { id: 1, name: "Sonia" },
+      { id: 2, name: "Maria" },
+      { id: 3, name: "Wall-E" },
+      { id: 4, name: "Jorge" },
+      { id: 5, name: "Jose Maria" },
+      { id: 6, name: "Julia" },
+      { id: 7, name: "Jessica" },
+      { id: 8, name: "Amber" },
+      { id: 9, name: "David" },
+      { id: 10, name: "Dustin" },
+      { id: 11, name: "Mar" },
+      { id: 12, name: "Alvaro" },
+      { id: 13, name: "Aran" },
+      { id: 14,  name: "Mariona" },
     ],
   }),
 };

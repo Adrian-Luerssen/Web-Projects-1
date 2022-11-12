@@ -4,6 +4,7 @@
     v-on:switch-to-signUp="component = 'SignUp'"
     v-on:switch-to-Login="component = 'Login'"
     v-on:switch-to-navbar="component = 'Navbar'"
+    v-on:switch-to-statistics="component = 'Statistics'"
   ></component>
 </template>
 
@@ -11,11 +12,12 @@
 import Navbar from "./components/Navbar/Navbar.vue";
 import Login from "./components/Login/Login.vue";
 import SignUp from "./components/Login/SignUp.vue";
+import Statistics from "./components/Profile/Statistics.vue";
 import router from "./router";
 router.push("/");
 export default {
   name: "App",
-  components: { Navbar, Login, SignUp },
+  components: { Navbar, Login, SignUp, Statistics},
 
   data: () => {
     return {
