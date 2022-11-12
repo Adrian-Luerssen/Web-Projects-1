@@ -57,7 +57,7 @@ const routes = [
         component: Other_Profile
     }, 
     {
-        path: '/Statistics',
+        path: '/Profile/Statistics',
         name: 'Statistics',
         component: Statistics
     }
