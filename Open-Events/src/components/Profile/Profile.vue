@@ -73,7 +73,7 @@
         <div class="account_buttons">
           <button class="delete_account" v-on:click="m">Delete account</button>
           <button class="log_out" v-on:click="n">Log out</button>
-          <button class="statistics_button" v-on:click="m">Statistics</button>
+          <button class="statistics_button" v-on:click="$router.push({ name: 'Statistics'})">Statistics</button>
         </div>
       </article>
     </section>
