@@ -17,7 +17,7 @@ import router from "./router";
 router.push("/");
 export default {
   name: "App",
-  components: { Navbar, Login, SignUp, Statistics},
+  components: { Navbar, Login, SignUp, Statistics },
 
   data: () => {
     return {

@@ -1,61 +1,56 @@
 <template>
-  <button id="back_button" @click="$router.go(-1)">Back</button>
   <div class="box">
-    <div class="image_box">
+    <button class="log_out" v-on:click="$router.go(-1)">Back</button>
+    <article class="profile">
+      <h1 id="title">{{event}}</h1>
       <img
-        class="image_events"
-        src="https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply"
+        class="image_panel"
+        id="img"
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       />
-    </div>
-    <h3 class="title">Oktoberfest</h3>
-    <p class="description">
-      The Oktoberfest is the world's largest Volksfest, featuring a beer
-      festival and a travelling funfair.
-    </p>
-    <b class="date">2021-09-18</b>
+      <section class = "description_box">
+        <h4 id="Description">{{description}}</h4>
+      </section>
+    </article>
+    <section class="information_panel">
+      <article class="information">
+        <!-- missing to add the actual value in here-->
+        <h4 id="Number_of_participants" class="text">Number of participants: 10</h4>
+        <!-- missing to add the actual value in here-->
+        <h4 id="Capacity" class="text">Capacity: 100</h4>
+        <!-- missing to add the actual value in here-->
+        <h4 id="Loaction" class="text">Location: Barcelona</h4>
+        <!-- missing to add the actual value in here-->
+        <section class="rating">
+        <h4 id="Rating">Rating: </h4>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+    </section>
+      </article>
+      <section class="buttons">
+        <button class="log_out" v-on:click="joinEvent">Join</button>
+      </section>
+      <!-- rating system -->
+      
+    </section>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    elements: [
-      {
-        event: "Oktoberfest",
-        description:
-          "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
-        img: "https://www.thebeertimes.com/wp-content/uploads/2017/09/Oktoberfest-Munich.jpg",
-        date: "2021-09-18",
-      },
-      {
-        event: "NYFW",
-        description:
-          "Officially called Mercedes-Benz Fashion Week, annual fashion week event held in New York City considered the most important event in the fashion industry.",
-        img: "https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply",
-        date: "2021-09-18",
-      },
-      {
-        event: "Coachella",
-        description:
-          "The Coachella Valley Music and Arts Festival is a major music festival that takes place over three days in the last week of April in Indio, California.",
-        img: "https://images.ecestaticos.com/wx-uXc24uN-tnn9ei0Bljt-3qW4=/0x118:2271x1394/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F1c7%2Fa35%2F419%2F1c7a354190cbb2c578c5c4f3e0c82a52.jpg",
-        date: "2021-09-18",
-      },
-      {
-        event: "Sallefest",
-        description:
-          "The party you have been waiting all year is back. During a week full of activities, the boredom is the only one not welcome.",
-        img: "https://i.ytimg.com/vi/FGs_66qxW2U/maxresdefault.jpg",
-        date: "2021-09-18",
-      },
-      {
-        event: "Movies & Wine",
-        description:
-          "A perfect date to spend some time with the ones you love or just to be by yourself, this is a great opportunity to relax and ejoy calm.",
-        img: "https://www.winemag.com/wp-content/uploads/2015/03/WE_Movies0336.jpg",
-        date: "2021-09-18",
-      },
-    ],
+      event: "Oktoberfest",
+      description:
+        "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
+      img: "https://www.thebeertimes.com/wp-content/uploads/2017/09/Oktoberfest-Munich.jpg",
+      date: "2021-09-18",
+    
+      
   }),
 };
 
@@ -70,77 +65,174 @@ function closeNav() {
 </script>
 <style scoped>
 .box {
-  min-height: 100vh;
+    background: #e3a2ba;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  #title {
+    margin-top: 10%;
+  }
+  #img {
+    width: 40vh;
+  }
+
+  .description_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-top: 10%;
+  }
+
+  .information_panel {
+    display: flex;
+    flex-direction: column;
+    background-color: #bf6183;
+    width: 100%;
+    height: 100vh;
+  }
+  .information {
+    margin-top: 15%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    column-gap: 5%;
+    row-gap: 20%;
+    width: 40%;
+    margin-bottom: 30%;
+  }
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15%;
+}
+
+.log_out {
+    background-color: #401826;
+    border: solid #401826;
+    color: white;
+    width: 15vh;
+    height: 7vh;
+    white-space: nowrap;
+    border-radius: 20px;
+    font-size: large;
+    margin-top: 3vh;
+    margin-left: 3vh;
+  }
+  .log_out:hover {
+    background-color: #63293d;
+  }
+
+#Name {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 1;
+}
+#Description {
+  margin-top: 10%;
+  line-height: 1.5;
+}
+#Number_of_participants {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 3;
+  text-overflow: ellipsis;
+}
+#Capacity {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 4;
+}
+#Loaction {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 5;
+}
+
+@media only screen and (min-width: 767px) {
+
+  .box {
   background: #e3a2ba;
-  box-sizing: border-box;
-  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
   display: flex;
   flex-direction: row;
+  height: 100vh;
 }
-.side_bar {
-  height: 100%;
-  width: 15%;
-  background-color: #401826;
-}
-.table_panel {
-  overflow-y: scroll;
-  width: 85%;
-  background-color: #e3a2ba;
-}
-.event_box {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  margin-left: 15%;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 25px;
-  background-color: #bf6183;
-  height: 150px;
-  width: 600px;
-  border: solid#E3A2BA;
-  gap: 10px;
-  display: grid;
-  grid-template-columns: 200px 400px;
-  grid-template-rows: 25px 120px;
-  align-items: left;
-  padding: 10px 10px;
-}
-.image_box {
-  width: 20vh;
-  height: 10vh;
-  border-radius: 25px;
-  grid-column: 1;
-  grid-row: 2;
-}
-.image_events {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+
+.profile {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-.title {
-  grid-column: 2;
-  grid-row: 1;
   color: white;
-  font-weight: bold;
-  text-align: center;
+  width: 50%;
 }
-.description {
-  grid-column: 2;
-  grid-row: 2;
-  color: rgb(255, 213, 242);
-  text-align: center;
-  margin: 5%;
-  justify-content: space-evenly;
+#title {
+  margin-top: 10%;
 }
-.date {
-  color: white;
-  font-weight: bold;
-  width: match-parent;
-  height: match-parent;
-  grid-column: 1;
-  grid-row: 1;
+#img {
+  width: 300px;
+  padding: 40px;
 }
-.side_panel {
+
+.information_panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #bf6183;
+  width: 50%;
+  height: 100vh;
+}
+.information {
+  margin-top: 15%;
+  margin-left: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  column-gap: 5%;
+  row-gap: 20%;
+  width: 40%;
+  margin-bottom: 30%;
+}
+.log_out {
   background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 20vh;
+  height: 7vh;
+  white-space: nowrap;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+.log_out:hover {
+  background-color: #63293d;
+}
 }
 </style>
