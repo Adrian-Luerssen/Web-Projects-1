@@ -22,18 +22,23 @@
         <h4 id="Loaction" class="text">Location: Barcelona</h4>
         <!-- missing to add the actual value in here-->
         <section class="rating">
-        <h4 id="Rating">Rating: </h4>
-        <div class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-        </div>
-    </section>
+          <h4 id="Rating">Rating: </h4>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </section>
+        <section class="user_rating">
+          <input class="rating_value" type="number" id="quantity" name="quantity" min="1" max="5">
+          <button class="submit_rating">Submit</button>
+        </section>
       </article>
       <section class="buttons">
         <button class="log_out" v-on:click="joinEvent">Join</button>
+        <button class="log_out" v-on:click="shareEvent">Share</button>
       </section>
       <!-- rating system -->
       
@@ -74,6 +79,16 @@ function closeNav() {
   }
 
   .rating {
+    grid-row: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .user_rating{
+    grid-row: 2;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -123,8 +138,8 @@ function closeNav() {
 
 .buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin-bottom: 15%;
 }
 

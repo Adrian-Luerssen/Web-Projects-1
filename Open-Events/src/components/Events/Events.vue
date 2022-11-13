@@ -17,7 +17,7 @@
       </section>
       <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
-          <article class="event_box">
+          <article class="event_box" v-on:click="$router.push({ name:'SpecificEvent', params:{id: item.event}})">
             <div class="image_box">
               <img
                 class="image_events"
@@ -27,6 +27,7 @@
             <b class="title">{{ item.event }}</b>
             <p class="description">{{ item.description }}</p>
             <b class="date">{{ item.date }}</b>
+            <b class="location">{{ item.location }}</b>
           </article>
         </v-list-item>
       </v-list>
@@ -44,6 +45,7 @@ export default {
           "The Oktoberfest is the world's largest Volksfest, featuring a beer festival and a travelling funfair.",
         img: "https://www.thebeertimes.com/wp-content/uploads/2017/09/Oktoberfest-Munich.jpg",
         date: "2021-09-18",
+        location: "Carrer Sant Joan de la Salle, 42, 08022, Barcelona",
       },
       {
         event: "NYFW",
@@ -51,6 +53,7 @@ export default {
           "Officially called Mercedes-Benz Fashion Week, annual fashion week event held in New York City considered the most important event in the fashion industry.",
         img: "https://fotografias.antena3.com/clipping/cmsimages02/2022/09/13/4E016859-5F7C-46D3-92AB-E79CA8345834/mercedes-benz-fashion-week-madrid-2022-semana-moda-madrid_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply",
         date: "2021-09-18",
+        location: "Carrer Sant Joan de la Salle, 42, 08022, Barcelona",
       },
       {
         event: "Coachella",
@@ -58,6 +61,7 @@ export default {
           "The Coachella Valley Music and Arts Festival is a major music festival that takes place over three days in the last week of April in Indio, California.",
         img: "https://images.ecestaticos.com/wx-uXc24uN-tnn9ei0Bljt-3qW4=/0x118:2271x1394/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F1c7%2Fa35%2F419%2F1c7a354190cbb2c578c5c4f3e0c82a52.jpg",
         date: "2021-09-18",
+        location: "Carrer Sant Joan de la Salle, 42, 08022, Barcelona",
       },
       {
         event: "Sallefest",
@@ -65,6 +69,7 @@ export default {
           "The party you have been waiting all year is back. During a week full of activities, the boredom is the only one not welcome.",
         img: "https://i.ytimg.com/vi/FGs_66qxW2U/maxresdefault.jpg",
         date: "2021-09-18",
+        location: "Carrer Sant Joan de la Salle, 42, 08022, Barcelona",
       },
       {
         event: "Movies & Wine",
@@ -72,6 +77,7 @@ export default {
           "A perfect date to spend some time with the ones you love or just to be by yourself, this is a great opportunity to relax and ejoy calm.",
         img: "https://www.winemag.com/wp-content/uploads/2015/03/WE_Movies0336.jpg",
         date: "2021-09-18",
+        location: "Carrer Sant Joan de la Salle, 42, 08022, Barcelona",
       },
     ],
     search: "",
@@ -86,13 +92,14 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
 }
+
 computed: {
   function filteredElements() {
     return this.elements.filter((p) => {
       // return true if the product should be visible
 
       // in this example we just check if the search string
-      // is a substring of the product name (case insensitive)
+      // is a substring of the event name (case insensitive)
       return p.event.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
     });
   }
@@ -171,8 +178,13 @@ computed: {
 }
 .image_events {
   display: none;
+  grid-column: 1;
+  grid-row: 2;
 }
 .title {
+  display: flex;
+  justify-content: flex-start;
+  grid-column: 2;
   grid-row: 1;
   color: white;
   font-weight: bold;
@@ -180,6 +192,7 @@ computed: {
   font-size: medium;
 }
 .description {
+  grid-column: 2;
   grid-row: 2;
   color: rgb(255, 213, 241);
   text-align: center;
@@ -188,7 +201,17 @@ computed: {
   overflow: hidden;
 }
 .date {
-  display: none;
+  display: flex;
+  justify-content: flex-end;
+  color: #fff;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.location{ 
+  color: #fff;
+  grid-column: 2;
+  grid-row: 3;
 }
 
 @media only screen and (min-width: 767px) {
@@ -290,6 +313,7 @@ computed: {
     height: 30%;
     border-radius: 25px;
     grid-column: 1;
+    grid-row:2;
     margin-left: 5%;
   }
   .image_events {
@@ -304,6 +328,8 @@ computed: {
     grid-column: 2;
     grid-row: 1;
     color: white;
+    display: match-parent;
+    justify-content: center;
     font-weight: bold;
     text-align: center;
     font-size: large;
@@ -322,6 +348,8 @@ computed: {
     font-weight: bold;
     width: match-parent;
     height: match-parent;
+    display: match-parent;
+    justify-content: flex-start;
     grid-column: 1;
     grid-row: 1;
     font-size: small;
