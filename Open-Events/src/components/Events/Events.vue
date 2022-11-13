@@ -5,7 +5,16 @@
         <!-- search box -->
         <section class="search_box">
           <input type="text" class="search_message" placeholder="Search..."/>
-          <button class="filter_events">Search</button>
+          <section class = "buttons_section">
+          <button class="search_button">Search</button>
+          <select class = "filters" name="filters" id="filters_id">
+            <option value="">--Select filter--</option>
+            <option value="event_creator_rating">Event creator rating</option>
+            <option value="by_name">Search by name</option>
+            <option value="by_location">Search by location</option>
+            <option value="by_date">Search by date</option>
+          </select>
+        </section>
         </section>
         <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
@@ -83,10 +92,28 @@
         flex-direction: row;
     }
 
+    .filters {
+      width: 20vh;
+      height: 4vh;
+      border-radius: 10px;
+      border: 1px solid #E3A2BA;
+      background: #E3A2BA;
+      color: white;
+      font-size: 2vh;
+      font-weight: bold;
+      margin-left: 3%;
+    }
     .search_box {
       width: 100%;
       height: 15vh;
       background-color: #BF6183;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      display: flex;
+    }
+
+    .buttons_section {
       align-items: center;
       justify-content: center;
       flex-direction: row;
@@ -107,17 +134,20 @@
       background-color:#D7DBDD;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      width: 70vh;
+      width: 50vh;
       height: 5vh;
     }
 
-    .send_button {
-      margin-right: 5%;
-      width: 10vh;
-      height: 5vh;
+    .search_button {
+      width: 20vh;
+      height: 4vh;
       border-radius: 10px;
-      border: none;
-      background-color: #ECF0F1;
+      border: 1px solid #E3A2BA;
+      background: #E3A2BA;
+      color: white;
+      font-size: 2vh;
+      font-weight: bold;
+      margin-left: 3%;
     }
 
     .table_panel{
@@ -189,6 +219,59 @@
       font-size: small;
     }
     @media only screen and (max-width: 767px) {
+
+      .search_box {
+        width: 100%;
+        height: 15vh;
+        background-color: #BF6183;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+      }
+
+      .search_message {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color:#D7DBDD;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 50vh;
+        height: 5vh;
+      }
+
+      .search_button {
+        width: 20vh;
+        height: 4vh;
+        border-radius: 10px;
+        border: 1px solid #E3A2BA;
+        background: #E3A2BA;
+        color: white;
+        font-size: 2vh;
+        font-weight: bold;
+        margin-left: 3%;
+      }
+
+      .buttons_section {
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        display: flex;
+        margin-top: 2%;
+      }
+
+      .filters {
+        width: 20vh;
+        height: 4vh;
+        border-radius: 10px;
+        border: 1px solid #E3A2BA;
+        background: #E3A2BA;
+        color: white;
+        font-size: 2vh;
+        font-weight: bold;
+        margin-left: 3%;
+      }
       .event_box{
         margin-top: 5%;
         margin-bottom: 5%;
