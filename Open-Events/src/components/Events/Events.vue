@@ -5,7 +5,7 @@
         <!-- search box -->
         <section class="search_box">
           <input type="text" class="search_message" placeholder="Search..."/>
-          <button class="send_button">Search</button>
+          <button class="filter_events">Search</button>
         </section>
         <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
@@ -61,9 +61,16 @@
   function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
   }
+  computed: {
+    function filteredElements(){
+      return this.elements.filter(p => {
+        // return true if the product should be visible
 
-  function filteredElements(){
-    return this.elements.filter(element => element.description.toLowerCase().includes(this.search.toLowerCase()))
+        // in this example we just check if the search string
+        // is a substring of the product name (case insensitive)
+        return p.event.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+    })
+  }
   }
   </script>
   <style scoped>
@@ -84,6 +91,13 @@
       justify-content: center;
       flex-direction: row;
       display: flex;
+    }
+    
+    .filter_search_dropdown{
+      width: 10vh;
+      height: 5vh;
+      align-self: flex-start;
+      background-color:#D7DBDD;
     }
 
     .search_message {

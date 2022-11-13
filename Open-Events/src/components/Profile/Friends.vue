@@ -5,8 +5,8 @@
       <section class="small_panel_friends">
         <v-list>
           <v-list-item v-for="item in friends" :key="item.name" two-line>
-            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
-              <h4 class="title">{{ item.name }}</h4>
+            <article class="info">
+              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
               <div class="buttons_box">
                 <button class="remove_button_friends" v-on:click="m">X</button>
                 <input
@@ -31,8 +31,8 @@
       <section class="small_panel_requests">
         <v-list>
           <v-list-item v-for="item in requests" :key="item.name" two-line>
-            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
-              <h4 class="title">{{ item.name }}</h4>
+            <article class="info">
+              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
               <div class="buttons_box">
                 <button class="add_button_requests" v-on:click="m">✔</button>
                 <button class="remove_button_requests" v-on:click="m">X</button>
@@ -47,8 +47,8 @@
       <section class="small_panel_mightKnow">
         <v-list>
           <v-list-item v-for="item in mightKnow" :key="item.name" two-line>
-            <article class="info" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">
-              <h4 class="title">{{ item.name }}</h4>
+            <article class="info">
+              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
               <button class="add_button_mightKnow" v-on:click="m">✔</button>
             </article>
           </v-list-item>
