@@ -314,10 +314,11 @@ hr {
   color: black;
   background-color: #ebd68b;
   width: 14vh;
-  height: 4vh;
+  height: 6vh;
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
+  margin-bottom: 25%;
 }
 #publish_button:hover {
   background-color: #bca860;

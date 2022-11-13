@@ -71,13 +71,15 @@ export default {
     color: white;
     display: flex;
     flex-direction: column;
-    width: 33%;
-    height: 100vh;
+    width: 60%;
+    height:  100vh;
 }
 
 .login__container__header__title {
-    margin-top: 10%;
-    width: 400px;
+    margin-top: 20%;
+    margin-left: 5%;
+    width: 200px;
+    font-size: 200%;
     color: white;
     text-align: center;
     padding-bottom: 10px;
@@ -87,6 +89,35 @@ export default {
     color: #EBD68B;
     padding: 30px 0;
     text-align: center;
+}
+
+.register__container__form__input {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 10px;
+    color: white;
+    display: grid;
+    text-align: left; 
+}
+.text_placement{
+    font-size: large;
+}
+.name_registration{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.email_registration{
+    color: white;
+    padding: 10px 0px;
+    gap: 10px;
+}
+.password_registration{
+    padding: 10px 0px;
+    color: white;
+    gap: 10px;
 }
 .login__container__form__input__button {
     background: #EBD68B;
@@ -99,10 +130,6 @@ export default {
     cursor: pointer;
     font: 1em sans-serif;
 }
-.text_placement{
-    margin-bottom: 5%;
-}
-
 .signup__container__form__change__to__login{
     background: white;
     border: 1px;
@@ -114,13 +141,26 @@ export default {
     cursor: pointer;
     font: 1em sans-serif;
 }
-.register__container__form__input {
-    flex-direction: column;
-    padding: 20px 10px;
-    gap: 10px;
+#signup_email{
+    width: 28vh;
+}
+#signup_password{
+    width: 28vh;
+}
+
+@media only screen and (min-width: 768px) {
+.login__container__form {
+    align-self: center;
+    background-color: #BF6183;
     color: white;
-    display: grid;
-    text-align: left; 
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height:  100vh;
+}
+.text_placement{
+    font-size: 150%;
+    gap: 5%;
 }
 .name_registration{
     color: white;
@@ -128,17 +168,20 @@ export default {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-
 }
-
-.email_registration{
+.login__container__header__title {
+    margin-top: 20%;
+    width: 400px;
+    font-size: 300%;
     color: white;
-    padding: 10px 0px;
-    gap: 10px;
+    text-align: center;
+    padding-bottom: 10px;
 }
-.password_registration{
-    padding: 10px 0px;
-    color: white;
-    gap: 10px;
+#signup_email{
+    width: 40vh;
+}
+#signup_password{
+    width: 40vh;
+}
 }
 </style>

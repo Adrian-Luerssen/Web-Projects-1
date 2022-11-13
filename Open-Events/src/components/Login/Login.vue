@@ -6,11 +6,11 @@
             <form @submit.prevent="login">
                 <div class="login__container__form__input">
                     <div class="email_login">
-                        <h3 class="text_placement" for="email">Email</h3>
+                        <h3 class="text_placement">Email</h3>
                         <input type="email" id="email" size="30" placeholder="Enter your email" />
                     </div>
                     <div class="password_login">
-                        <h3 class="text_placement" for="password">Password</h3>
+                        <h3 class="text_placement">Password</h3>
                         <input type="password" id="password" size="30" placeholder="Enter your password" />
                     </div>
                 </div>
@@ -71,13 +71,15 @@ export default {
     color: white;
     display: flex;
     flex-direction: column;
-    width: 33%;
-    height: 100vh;
+    width: 60%;
+    height:  100vh;
 }
 
 .login__container__header__title {
     margin-top: 20%;
-    width: 400px;
+    margin-left: 5%;
+    width: 200px;
+    font-size: 200%;
     color: white;
     text-align: center;
     padding-bottom: 10px;
@@ -90,12 +92,10 @@ export default {
 }
 
 .login__container__form__input {
-    flex-direction: column;
     padding: 20px 10px;
     gap: 10px;
     color: white;
     display: grid;
-    text-align: left;
 }
 .email_login{
     padding: 5px 0px;
@@ -104,9 +104,15 @@ export default {
 .text_placement{
     margin-bottom: 5%;
 }
+#email{
+    width: 28vh;
+}
 .password_login{
     padding: 5px 0px;
     color: white;
+}
+#password{
+    width: 28vh;
 }
 .login__container__form__input__button {
     background: #EBD68B;
@@ -131,5 +137,36 @@ export default {
     color: #3f051a;
     cursor: pointer;
     font: 1em sans-serif;
+}
+@media only screen and (min-width: 768px) {
+.login__container__form {
+    align-self: center;
+    background-color: #BF6183;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    height:  100vh;
+}
+
+.login__container__header__title {
+    margin-top: 20%;
+    width: 400px;
+    font-size: 300%;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.password_login{
+    padding: 5px 0px;
+    color: white;
+}
+#email{
+    width: 40vh;
+}
+#password{
+    width: 40vh;
+}
 }
 </style>
