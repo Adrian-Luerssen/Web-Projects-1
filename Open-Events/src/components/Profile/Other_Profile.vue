@@ -28,106 +28,8 @@
 
 <script></script>
 <style scoped>
+
 .box {
-  background: #e3a2ba;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-}
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  width: 50%;
-}
-#title {
-  margin-top: 10%;
-}
-#img {
-  width: 300px;
-  padding: 40px;
-}
-
-.information_panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #bf6183;
-  width: 50%;
-  height: 100vh;
-}
-.information {
-  margin-top: 15%;
-  margin-left: 15%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  column-gap: 5%;
-  row-gap: 20%;
-  width: 40%;
-  margin-bottom: 30%;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 15%;
-}
-.log_out {
-  background-color: #401826;
-  border: solid #401826;
-  color: white;
-  width: 20vh;
-  height: 7vh;
-  white-space: nowrap;
-  border-radius: 20px;
-  font-size: large;
-  margin-top: 2%;
-  margin-left: 2%;
-}
-.log_out:hover {
-  background-color: #63293d;
-}
-
-#Name {
-  margin-top: 10%;
-  white-space: nowrap;
-  grid-column: 1;
-  grid-row: 1;
-}
-#Last_name {
-  margin-top: 10%;
-  white-space: nowrap;
-  grid-column: 1;
-  grid-row: 2;
-}
-#Number_of_friends {
-  margin-top: 10%;
-  white-space: nowrap;
-  grid-column: 1;
-  grid-row: 3;
-  text-overflow: ellipsis;
-}
-#Events_joined {
-  margin-top: 10%;
-  white-space: nowrap;
-  grid-column: 1;
-  grid-row: 4;
-}
-#Loaction {
-  margin-top: 10%;
-  white-space: nowrap;
-  grid-column: 1;
-  grid-row: 5;
-}
-
-@media only screen and (max-width: 767px) {
-  .box {
     background: #e3a2ba;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -170,7 +72,15 @@
     width: 40%;
     margin-bottom: 30%;
   }
-  .log_out {
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15%;
+}
+
+.log_out {
     background-color: #401826;
     border: solid #401826;
     color: white;
@@ -184,5 +94,98 @@
   .log_out:hover {
     background-color: #63293d;
   }
+
+#Name {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 1;
+}
+#Last_name {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 2;
+}
+#Number_of_friends {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 3;
+  text-overflow: ellipsis;
+}
+#Events_joined {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 4;
+}
+#Loaction {
+  margin-top: 10%;
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 5;
+}
+
+@media only screen and (min-width: 767px) {
+
+  .box {
+  background: #e3a2ba;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 50%;
+}
+#title {
+  margin-top: 10%;
+}
+#img {
+  width: 300px;
+  padding: 40px;
+}
+
+.information_panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #bf6183;
+  width: 50%;
+  height: 100vh;
+}
+.information {
+  margin-top: 15%;
+  margin-left: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  column-gap: 5%;
+  row-gap: 20%;
+  width: 40%;
+  margin-bottom: 30%;
+}
+.log_out {
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 20vh;
+  height: 7vh;
+  white-space: nowrap;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+.log_out:hover {
+  background-color: #63293d;
+}
 }
 </style>
