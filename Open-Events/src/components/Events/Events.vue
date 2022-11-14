@@ -166,7 +166,7 @@ computed: {
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 25px;
   background-color: #66293e;
-  height: 10%;
+  height: 15%;
   padding: 10px 10px;
   width: 85%;
   border: solid#E3A2BA;
@@ -297,7 +297,7 @@ computed: {
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 25px;
     background-color: #66293e;
-    height: 15vh;
+    height: 23vh;
     padding: 10px 10px;
     width: auto;
     max-width: 70vh;
