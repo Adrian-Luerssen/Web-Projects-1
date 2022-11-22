@@ -3,7 +3,7 @@
     <component
     v-bind:is="component"
     v-on:switch-to-specificEvent="component = 'SpecificEvent'"
-  ></component>
+    ></component>
     <section class="panel_upcoming_events">
       <h3 class="title_panel">Upcoming Events</h3>
       <v-list>
