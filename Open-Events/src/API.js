@@ -1,5 +1,6 @@
 
 let APIFunctions = {
+    /***********************************************************    USERS     *******************************************************/
     // login
     async login (email, password) 
     {
@@ -10,7 +11,7 @@ let APIFunctions = {
                 password: password
             }
             let url = "http://puigmal.salle.url.edu/api/v2/login";
-            //console.log(JSON.stringify(body))
+            ////console.log(JSON.stringify(body))
             /* define url */
             let response = await fetch(url, {
                 method: 'POST',
@@ -42,7 +43,6 @@ let APIFunctions = {
 
             }
             let url = "http://puigmal.salle.url.edu/api/v2/users";
-            console.log(JSON.stringify(body))
             /* define url */
             let response = await fetch(url, {
                 method: 'POST',
@@ -58,6 +58,70 @@ let APIFunctions = {
             return false;
         }
     },
+
+    //get profile
+    async getProfile(userid, token) {
+        try {
+            
+            let url = "http://puigmal.salle.url.edu/api/v2/users/"+userid;
+            //console.log(token);
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            //console.log(response);
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+    // get profile friends
+    async getProfileFriends(userid, token) {
+        try {
+            
+            let url = "http://puigmal.salle.url.edu/api/v2/users/"+userid+"/friends";
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+
+    async getProfileEvents(userid, token) {
+        try {
+            
+            let url = "http://puigmal.salle.url.edu/api/v2/users/"+userid+"/assistances";
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+
+
+
+    /***********************************************************    EVENTS     *******************************************************/
+    // create event
     async createEvent(name, image, location, longitude, latitude, description, eventStart_date, eventEnd_date, n_participators, type, token)
     {
         try {
@@ -75,8 +139,8 @@ let APIFunctions = {
                 type: type
             }
             let url = "http://puigmal.salle.url.edu/api/v2/events";
-            console.log(JSON.stringify(body));
-            console.log(token);
+            //console.log(JSON.stringify(body));
+            //console.log(token);
             /* define url */
             let response = await fetch(url, {
                 method: 'POST',
@@ -88,11 +152,60 @@ let APIFunctions = {
             });
             
             return response;
-        } catch {
+        } catch (error) {
             console.log("Error: ", error);
             return false;
         }
-    }
+    },
+
+    // get events
+    async getEvents(token){
+
+    },
+
+    /***********************************************************    FRIENDS     *******************************************************/
+    // get friend requests
+    async getFriendRequests(token){
+        try {
+            
+            let url = "http://puigmal.salle.url.edu/api/v2/friends/requests";
+            //console.log(token);
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+
+    async getFriends(token) { 
+        try {
+            let url = "http://puigmal.salle.url.edu/api/v2/friends";
+            //console.log(token);
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+    // accept friend
+    async acceptFriend(username,token){
+
+    },
 }
 
 export default APIFunctions;

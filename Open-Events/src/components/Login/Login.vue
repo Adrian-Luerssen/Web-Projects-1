@@ -41,8 +41,8 @@ export default {
                     
                     result.json().then(function (data) {
                         //console.log(data);
-                        localStorage.setItem('ApiToken', data.accessToken);
-                        //console.log(data.accessToken);
+                        localStorage.setItem('API_TOKEN', data.accessToken);
+                        console.log(data.accessToken);
                     });
                     //console.log(result);
                     console.log("Login successful");

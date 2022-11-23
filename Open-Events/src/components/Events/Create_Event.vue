@@ -118,7 +118,7 @@ export default {
           document.getElementById("endInput").value,
           document.getElementById("numberInput").value,
           document.getElementById("typeInput").value,
-          localStorage.getItem("ApiToken")
+          localStorage.getItem("API_TOKEN")
         );
       }
     },

@@ -3,10 +3,20 @@
     <section class="panel_friends">
       <h3 class="title_panel">Friends</h3>
       <section class="small_panel_friends">
-        <v-list>
+        <v-list v-if="friends.length > 0">
           <v-list-item v-for="item in friends" :key="item.name" two-line>
             <article class="info">
-              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
+              <h4
+                class="title"
+                v-on:click="
+                  $router.push({
+                    name: 'Other_Profile',
+                    params: { id: item.id },
+                  })
+                "
+              >
+                {{ item.name }}
+              </h4>
               <div class="buttons_box">
                 <button class="remove_button_friends" v-on:click="m">X</button>
                 <input
@@ -24,15 +34,26 @@
             </article>
           </v-list-item>
         </v-list>
+        <article class="emptyList" v-else>No friends</article>
       </section>
     </section>
     <section class="panel_requests">
       <h3 class="title_panel">Requests</h3>
       <section class="small_panel_requests">
-        <v-list>
+        <v-list v-if="requests.length > 0">
           <v-list-item v-for="item in requests" :key="item.name" two-line>
             <article class="info">
-              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
+              <h4
+                class="title"
+                v-on:click="
+                  $router.push({
+                    name: 'Other_Profile',
+                    params: { id: item.id },
+                  })
+                "
+              >
+                {{ item.name }}
+              </h4>
               <div class="buttons_box">
                 <button class="add_button_requests" v-on:click="m">✔</button>
                 <button class="remove_button_requests" v-on:click="m">X</button>
@@ -40,97 +61,91 @@
             </article>
           </v-list-item>
         </v-list>
+        <article class="emptyList" v-else>No requests</article>
       </section>
     </section>
     <section class="panel_mightKnow">
       <h3 class="title_panel">You might know</h3>
       <section class="small_panel_mightKnow">
-        <v-list>
+        <v-list v-if="mightKnow.length > 0">
           <v-list-item v-for="item in mightKnow" :key="item.name" two-line>
             <article class="info">
-              <h4 class="title" v-on:click = "$router.push({ name: 'Other_Profile', params: { id: item.id }})">{{ item.name }}</h4>
+              <h4
+                class="title"
+                v-on:click="
+                  $router.push({
+                    name: 'Other_Profile',
+                    params: { id: item.id },
+                  })
+                "
+              >
+                {{ item.name }}
+              </h4>
               <button class="add_button_mightKnow" v-on:click="m">✔</button>
             </article>
           </v-list-item>
         </v-list>
+        <article class="emptyList" v-else>Nothing to show</article>
       </section>
     </section>
   </div>
 </template>
 
 <script>
+import API from "../../API.js";
 export default {
   data: () => ({
-    friends: [
-      { id: 1, name: "Joana" },
-      { id: 2, name: "Helena" },
-      { id: 3, name: "Chris" },
-      { id: 4, name: "Dani" },
-      { id: 5, name: "Sarah" },
-      { id: 6, name: "Victor" },
-      { id: 7, name: "Manolo" },
-      { id: 8, name: "Marc" },
-      { id: 9, name: "Pau" },
-      { id: 10, name: "Oscar" },
-      { id: 11, name: "Joaquin" },
-      { id: 12, name: "Maria" },
-      { id: 13, name: "Adrianau" },
-      { id: 14, name: "Jorge" },
-      { id: 15, name: "Marta" },
-      { id: 16, name: "Miguel" },
-      { id: 17, name: "Sara" },
-      { id: 18, name: "Ricardo" },
-      { id: 19, name: "Rafael" },
-      { id: 20, name: "Raul" },
-      { id: 21, name: "Ramon" },
-    ],
-    requests: [
-      { id: 1, name: "Alex" },
-      { id: 2, name: "Sofia" },
-      { id: 3, name: "Eva" },
-      { id: 4, name: "Andrea" },
-      { id: 5, name: "Juan" },
-      { id: 6, name: "Javi" },
-      { id: 7, name: "Bosco" },
-      { id: 8, name: "Carla" },
-      { id: 9, name: "Alexia" },
-      { id: 10, name: "Berta" },
-      { id: 11, name: "Lucas" },
-      { id: 12, name: "Stephanie" },
-      { id: 13, name: "Ivan" },
-      { id: 14, name: "Alejandro" },
-      { id: 15, name: "Adriana" },
-      { id: 16, name: "Ernest" },
-      { id: 17, name: "Heidy" },
-      { id: 18, name: "Aurora" },
-    ],
-    mightKnow: [
-      { id: 1, name: "Sonia" },
-      { id: 2, name: "Maria" },
-      { id: 3, name: "Wall-E" },
-      { id: 4, name: "Jorge" },
-      { id: 5, name: "Jose Maria" },
-      { id: 6, name: "Julia" },
-      { id: 7, name: "Jessica" },
-      { id: 8, name: "Amber" },
-      { id: 9, name: "David" },
-      { id: 10, name: "Dustin" },
-      { id: 11, name: "Mar" },
-      { id: 12, name: "Alvaro" },
-      { id: 13, name: "Aran" },
-      { id: 14,  name: "Mariona" },
-    ],
+    friends: [],
+    requests: [],
+    mightKnow: [],
   }),
+  methods: {
+    openNav: function () {
+      document.getElementById("mySidepanel").style.width = "250px";
+    },
+
+    /* Set the width of the sidebar to 0 (hide it) */
+    closeNav: function () {
+      document.getElementById("mySidepanel").style.width = "0";
+    },
+
+    loadFriendRequests: async function () {
+      let self = this;
+      console.log("loadFriendRequests");
+      let res = API.getFriendRequests(localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.requests = data;
+          console.log(self.requests);
+          self.requests = self.requests.filter(function (el) {
+            return el.id != null;
+          });
+        });
+      });
+    },
+
+    loadFriends: async function () {
+      let self = this;
+      console.log("loadFriends");
+      let res = API.getFriends(localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.friends = data;
+          console.log(self.friends);
+          //remove any null fields
+          self.friends = self.friends.filter(function (el) {
+            return el.id != null;
+          });
+        });
+      });
+    },
+  },
+
+  beforeMount() {
+    this.loadFriendRequests();
+    this.loadFriends();
+  },
 };
-
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-}
-
-/* Set the width of the sidebar to 0 (hide it) */
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
 </script>
 <style>
 .box {
@@ -290,6 +305,15 @@ function closeNav() {
 }
 .add_button_mightKnow:hover {
   background-color: #356329;
+}
+.emptyList {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {
