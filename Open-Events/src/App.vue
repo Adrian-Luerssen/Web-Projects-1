@@ -1,11 +1,7 @@
 <template>
-  <component
-    v-bind:is="component"
-    v-on:switch-to-signUp="component = 'SignUp'"
-    v-on:switch-to-Login="component = 'Login'"
-    v-on:switch-to-navbar="component = 'Navbar'"
-    v-on:switch-to-statistics="component = 'Statistics'"
-  ></component>
+    <header>
+      <Navbar2 />
+    </header>
 </template>
 
 <script>
@@ -13,42 +9,38 @@ import Navbar from "./components/Navbar/Navbar.vue";
 import Login from "./components/Login/Login.vue";
 import SignUp from "./components/Login/SignUp.vue";
 import Statistics from "./components/Profile/Statistics.vue";
+import Navbar2 from "./components/Navbar/Navbar2.vue";
 import router from "./router";
 router.push("/");
 export default {
-  name: "App",
-  components: { Navbar, Login, SignUp, Statistics },
+  name: "app",
+  components: { Navbar2, Login, SignUp, Statistics },
 
   data: () => {
     return {
-      component: "Login",
+      component: "Navbar2",
     };
   },
 };
 </script>
 
 <style>
-body {
-  position: relative;
-  min-height: 100vh;
-  background: linear-gradient(
-    to right,
-    #e3a2ba 0%,
-    #e3a2ba 33%,
-    #bf6183 33%,
-    #bf6183 66%,
-    #e3a2ba 66%,
-    #e3a2ba 100%
-  );
-  box-sizing: border-box;
-  font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  font-family: 'montserrat', sans-serif;
+}
+header {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  background-color: #224C84;
 }
 
 * {
   margin: 0;
-  width: auto;
-  height: auto;
+  padding: 0;
+  box-sizing: border-box;
 }
 h1 {
   font-size: 3em;
