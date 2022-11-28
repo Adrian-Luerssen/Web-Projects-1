@@ -7,12 +7,13 @@
       <article class="user_data_background">
         <div class="image_box">
           <img
+            id="img"
             class="picture_chat"
             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
           />
         </div>
         <div class="user_data">
-          <h4 class="name">John Doe</h4>
+          <h4 class="name" id="Name">John Doe</h4>
           <small class="user_activity">Active 1h ago</small>
         </div>
       </article>
@@ -29,7 +30,31 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import API from "../../API.js";
+export default {
+  methods: {
+    async getProfile() {
+      let self = this;
+      console.log();
+      API.getProfile(
+        window.location.href.split("/").pop(),
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          console.log(data);
+          document.getElementById("Name").textContent =
+            data[0].name + " " + data[0].last_name;
+          document.getElementById("img").src = data[0].image;
+        });
+      });
+    },
+  },
+  beforeMount() {
+    this.getProfile();
+  },
+};
+</script>
 
 <style>
 .box {
