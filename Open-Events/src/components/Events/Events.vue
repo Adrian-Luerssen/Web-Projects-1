@@ -1,9 +1,5 @@
 <template>
-  <header class="header_events">
-    <h2 class="app_title">Open Events</h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/4406/4406119.png" 
-    class="chat_btn" v-on:click="$router.push({ name: 'ChatList'})"/>
-  </header> 
+  <div class="box">
     <section class="table_panel">
       <!-- search box -->
       <section class="search_box">
@@ -36,6 +32,7 @@
         </v-list-item>
       </v-list>
     </section>
+  </div>
 </template>
 
 <script>
@@ -235,28 +232,13 @@ computed: {
 }
 
 @media only screen and (min-width: 767px) {
-  .header_events {
+  .box {
+    min-height: 100vh;
+    background: #e3a2ba;
+    box-sizing: border-box;
+    font-weight: normal;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #bf6183;
-    width: 100%;
-    height: 10vh;
-  }
-
-  .chat_btn {
-    width: 7vh;
-    height: 7vh;
-    white-space: nowrap;
-    font-size: large;
-    margin-right: 2%;
-  }
-
-  .app_title{
-    font-size: 4vh;
-    font-weight: bold;
-    margin-left: 2%;
   }
 
   .filters {
@@ -318,8 +300,9 @@ computed: {
   }
 
   .table_panel {
-    height:100%;
-    width:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     background-color: #e3a2ba;

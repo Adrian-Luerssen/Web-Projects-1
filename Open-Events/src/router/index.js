@@ -8,7 +8,6 @@ import SpecificEvent from '../components/Events/SpecificEvent.vue';
 import Chat from '../components/Profile/Chat.vue';
 import Statistics from '../components/Profile/Statistics.vue';
 import Other_Profile from '../components/Profile/Other_Profile.vue';
-import ChatList from '../components/Profile/ChatList.vue';
 /* define routes as objects*/
 const routes = [
     {
@@ -61,11 +60,6 @@ const routes = [
         path: '/Profile/Statistics',
         name: 'Statistics',
         component: Statistics
-    },
-    {
-        path: '/ChatList',
-        name: 'ChatList',
-        component: ChatList
     }
 ];
 
