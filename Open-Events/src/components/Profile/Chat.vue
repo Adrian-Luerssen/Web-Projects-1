@@ -17,23 +17,77 @@
           <small class="user_activity">Active 1h ago</small>
         </div>
       </article>
-      <article class="message_box"></article>
+      <article class="message_box" id="message_box">
+        <v-list>
+          <v-list-item-group>
+            <v-list-item v-for="message in messages" :key="message.id">
+              <v-list-item-content>
+                <article
+                  :class="{
+                    leftMessage: message.user_id_send == userid,
+                    rightMessage: message.user_id_send != userid,
+                  }"
+                >
+                  <h4
+                    :class="{
+                      leftMessageText: message.user_id_send == userid,
+                      rightMessageText: message.user_id_send != userid,
+                    }"
+                  >
+                    {{ message.content }}
+                  </h4>
+                </article>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </article>
       <article class="write_message">
         <input
+          id="message_input"
           type="text"
           class="message_input"
           placeholder="Write a message..."
+          maxlength="44"
         />
-        <button class="send_button">Send</button>
+        <button class="send_button" @click="sendMessage()">Send</button>
       </article>
     </section>
   </div>
 </template>
 
 <script>
+import { createSimpleExpression } from "@vue/compiler-core";
 import API from "../../API.js";
 export default {
+  data: () => {
+    return {
+      intervalId: null,
+      userid: window.location.href.split("/").pop(),
+      ourid: localStorage.getItem("USER_ID"),
+      messages: [],
+    };
+  },
   methods: {
+    async sendMessage() {
+      let self = this;
+      console.log(document.getElementById("message_input").value);
+      API.sendMessage(
+        this.userid,
+        document.getElementById("message_input").value,
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          if (data.error == null) {
+            console.log(data);
+            self.messages.push(data);
+            document.getElementById("message_input").value = "";
+            var element = document.getElementById("message_box");
+            element.scrollTop = element.scrollHeight;
+          }
+        });
+      });
+    },
     async getProfile() {
       let self = this;
       console.log();
@@ -49,9 +103,34 @@ export default {
         });
       });
     },
+    async getChat() {
+      let self = this;
+      console.log();
+      API.getChat(
+        window.location.href.split("/").pop(),
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          if (self.messages.length < data.length) {
+            self.messages = data;
+            var element = document.getElementById("message_box");
+            element.scrollTop = element.scrollHeight;
+          }
+        });
+      });
+    },
   },
   beforeMount() {
     this.getProfile();
+    this.getChat();
+    let self = this;
+    this.intervalId = window.setInterval(function () {
+      // update chat
+      self.getChat();
+    }, 1000);
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalId);
   },
 };
 </script>
@@ -111,6 +190,10 @@ export default {
   height: 65vh;
   background-color: #ecf0f1;
   border-radius: 10px;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .write_message {
@@ -138,5 +221,45 @@ export default {
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
+}
+.leftMessage {
+  background-color: #9b9b9b;
+  border-radius: 10px;
+  width: 50vh;
+  height: 5vh;
+  margin-left: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: left;
+  text-align: start;
+  position: relative;
+}
+.leftMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 5%;
+}
+.rightMessage {
+  background-color: #f76ceb;
+  border-radius: 10px;
+  align-content: flex-end;
+  width: 50vh;
+  height: 5vh;
+  margin-right: 5%;
+  text-align: end;
+  line-height: normal;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: right;
+  position: relative;
+}
+.rightMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 5%;
 }
 </style>
