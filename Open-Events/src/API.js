@@ -206,6 +206,77 @@ let APIFunctions = {
     async acceptFriend(username,token){
 
     },
+    async getAllEvents(token) { 
+        try {
+            let url = "http://puigmal.salle.url.edu/api/v2/events";
+            //console.log(token);
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            return response;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+    async getEventRating(eventid, token) {
+        console.log("heeey");
+        try {
+            let url = "http://puigmal.salle.url.edu/api/v2/events/" + eventid + "/assistances";
+            //console.log(token);
+            /* define url */
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            let rating = 0;
+            for (let i = 0; i < response.length; i++) {
+                if (response[i].rating != null) {
+                    rating += response[i].rating;
+                }
+            }
+            console.log(rating);
+            return rating / response.length;
+        } catch (error){
+            console.log("Error: ", error);
+            return false;
+        }
+    },
+    async getEventsByRating(token) {
+        let self = this;
+        console.log("getEventsByRating");
+        try {
+            console.log("getevents: ", error);
+            let response;
+            try {
+                response = self.getAllEvents(token);
+            } catch (error) {
+                console.log("Error2: ", error);
+                return false;
+            }
+            for (let i = 0; i < response.length; i++) {
+                //add rating field to each event
+                try {
+                    response[i].rating = self.getEventRating(response[i].id, token);
+                } catch (error) {
+                    console.log("Error3: ", error);
+                    return false;
+                }
+            }
+            //sort events by rating
+            return response;
+        } catch (error){
+            console.log("Error4: ", error);
+            return false;
+        }
+
+    }
 }
 
 export default APIFunctions;
