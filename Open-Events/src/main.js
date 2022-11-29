@@ -8,6 +8,8 @@ import axios from 'axios';
 
 
 
+
+
 /* define vue */
 const app = createApp(App);
 app.use(bottomNavigationVue);

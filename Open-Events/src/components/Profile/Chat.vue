@@ -58,24 +58,24 @@ export default {
 
 <style>
 .box {
-  height: 100vh;
+  height: auto;
   background: #e3a2ba;
 }
 .back_button {
   width: 10vh;
   height: 5vh;
 
-  left: 5%;
-  top: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
 }
 .conversation_management {
   display: flex;
 
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 5%;
-  width: 70vh;
-  height: 85vh;
+  margin-top: 7%;
+  width: 20vh;
+  height: 80vh;
   background-color: #ecf0f1;
   border-radius: 10px;
 }
@@ -87,7 +87,7 @@ export default {
   background-color: #d7dbdd;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  width: 70vh;
+  width: 56.5vh;
   height: 10vh;
 }
 .picture_chat {
@@ -123,20 +123,112 @@ export default {
   width: 70vh;
   height: 10vh;
 }
+
 .message_input {
   margin-left: 5%;
-  width: 50vh;
+  width: 40vh;
   height: 5vh;
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
 }
 .send_button {
-  margin-right: 5%;
-  width: 10vh;
+  margin-right: 22%;
+  width: 8vh;
   height: 5vh;
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
+}
+
+@media only screen and (min-width: 767px) {
+  .box {
+    height: 100vh;
+    background: #e3a2ba;
+  }
+  .back_button {
+    width: 10vh;
+    height: 5vh;
+
+    left: 5%;
+    top: 5%;
+  }
+
+  .conversation_management {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5%;
+    width: 70vh;
+    height: 85vh;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+  }
+
+  .user_data_background {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #d7dbdd;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 70vh;
+    height: 10vh;
+  }
+
+  .picture_chat {
+    margin-top: 5%;
+    margin-left: 20%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .user_data {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50vh;
+    height: 6vh;
+  }
+
+  .message_box {
+    width: 70vh;
+    height: 65vh;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+  }
+
+  .write_message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d7dbdd;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 70vh;
+    height: 10vh;
+  }
+
+  .message_input {
+    margin-left: 5%;
+    width: 50vh;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #ecf0f1;
+  }
+
+  .send_button {
+    margin-right: 5%;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #ecf0f1;
+  }
+
 }
 </style>

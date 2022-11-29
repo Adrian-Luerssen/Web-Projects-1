@@ -160,7 +160,6 @@ export default {
 }
 .text_placement{
     font-size: 150%;
-    gap: 5%;
 }
 .name_registration{
     color: white;

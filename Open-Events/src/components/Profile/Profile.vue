@@ -69,16 +69,38 @@
           Change...
         </button>
       </article>
+      
       <article class="buttons">
         <button class="statistics_button" v-on:click="$router.push({ name: 'Statistics'})">Statistics</button>
-        <button class="delete_account" v-on:click="m">Delete account</button>
-        <button class="log_out" v-on:click="n">Log out</button>
+        <button class="delete_account" v-on:click="dialog = true">Delete account</button>
+        <button class="log_out" v-on:click="$router.push({ name: 'Login'})">Log out</button>
       </article>
+      
+      <v-dialog v-model="dialog" width="500">
+        <v-card>
+          <v-card-title>Delete account</v-card-title>
+          <v-card-text>Are you sure you want to delete the account? When an account gets deleted
+            all the data is lost.
+          </v-card-text>
+          <v-card-divider></v-card-divider>
+          <v-card-actions>
+            <button>Delete account</button>
+            <v-btn>Go back</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </section>
   </div>
 </template>
 
 <script>
+export default {
+  data() {
+    return{
+      dialog: true
+    }
+  }
+}
 /*
 var change_name = true; 
 const button_name = document.getElementById("change_first_name_button");
