@@ -129,6 +129,30 @@ let APIFunctions = {
     }
   },
 
+  // update user's name
+  async updateName(name, token) {
+    try {
+      /* CREATE JSON OBJECT FOR BODY WITH USERNAME AND PASSWORD */
+      let body = {
+        name: name,
+      };
+      let url = "http://puigmal.salle.url.edu/api/v2/users";
+      /* define url */
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      return response;
+    } catch {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
   /***********************************************************    EVENTS     *******************************************************/
   // create event
   async createEvent(

@@ -21,7 +21,6 @@
           type="text"
           id="first_name_text"
           name="first_name"
-          placeholder="User"
           readonly
         />
         <button
@@ -94,13 +93,46 @@
 </template>
 
 <script>
+import API from "../../API.js";
 export default {
-  data() {
-    return{
-      dialog: true
-    }
-  }
-}
+  data: () => {
+    return {
+      image: "",
+    };
+  },
+  methods: {
+    async getProfile() {
+      let self = this;
+      console.log();
+      API.getProfile(
+        localStorage.getItem("USER_ID"),
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          console.log(data);
+          document.getElementById("first_name_text").value = data[0].name;
+          document.getElementById("last_name_text").value = data[0].last_name;
+          document.getElementById("email_text").value = data[0].email;
+          document.getElementById("password_text").value = data[0].password;
+          document.getElementById("img").src = data[0].image;
+        });
+      });
+
+      API.updateName(
+        document.getElementById("first_name_text").innerHTML,
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          console.log(data);
+          data[0].name = document.getElementById("first_name_text").innerHTML
+        });
+      });
+    },
+  },
+  beforeMount() {
+    this.getProfile();
+  },
+};
 /*
 var change_name = true; 
 const button_name = document.getElementById("change_first_name_button");
