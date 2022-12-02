@@ -132,7 +132,6 @@ let APIFunctions = {
   // update user's name
   async updateName(name, token) {
     try {
-      /* CREATE JSON OBJECT FOR BODY WITH USERNAME AND PASSWORD */
       let body = {
         name: name,
       };

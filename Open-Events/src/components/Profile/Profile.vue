@@ -26,7 +26,7 @@
           type="button"
           id="change_first_name_button"
           class="button_change"
-          @click="storeData('email_text', 'password_text', 'first_name_text', 'last_name_text')"
+          @click="storeData('first_name_text')"
         >
           Change...
         </button>
@@ -104,13 +104,13 @@ export default {
       });      
     },
 
-    storeData: async function (email, password, firstname, lastname) {
+    storeData: async function (firstname) {
           //console.log(email);
           //console.log(password);
           //console.log(firstname);
           //console.log(lastname);
           const self = this;
-          let res = API.getFriends(document.getElementById(email).value, document.getElementById(password).value, document.getElementById(firstname).value, document.getElementById(lastname).value, localStorage.getItem("API_TOKEN"));
+          let res = API.updateName(document.getElementById(firstname).value, localStorage.getItem("API_TOKEN"));
           res.then(function (result) {
               if (result.ok == true) {
                 console.log("Data updated successfully");
