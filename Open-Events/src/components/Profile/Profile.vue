@@ -26,7 +26,7 @@
           type="button"
           id="change_first_name_button"
           class="button_change"
-          @click="storeData('first_name_text')"
+          @click="storeName('first_name_text')"
         >
           Change...
         </button>
@@ -41,6 +41,7 @@
           type="button"
           id="change_last_name_button"
           class="button_change"
+          @click="storeSurname('last_name_text')"
         >
           Change...
         </button>
@@ -50,19 +51,20 @@
           id="email_text"
           name="email"
           placeholder="user@gmail.com"
-          password
+          
         />
-        <button type="button" id="change_email_button" class="button_change">
+        <button type="button" id="change_email_button" class="button_change" @click="storeEmail('email')">
           Change...
         </button>
+
         <h4 id="Password" class="password">Password:</h4>
         <input
-          type="text"
+          type="password"
           id="password_text"
           name="password"
           placeholder="ABCD1234"
         />
-        <button type="button" id="change_password_button" class="button_change">
+        <button type="button" id="change_password_button" class="button_change" @click="storePassword('password_text')">
           Change...
         </button>
         <input type="checkbox" id="password_check" onclick="listen(this)">Show Password
@@ -87,8 +89,6 @@ export default {
   },
   methods: {
     async getProfile() {
-      let self = this;
-      console.log();
       API.getProfile(
         localStorage.getItem("USER_ID"),
         localStorage.getItem("API_TOKEN")
@@ -104,22 +104,65 @@ export default {
       });      
     },
 
-    storeData: async function (firstname) {
-          //console.log(email);
-          //console.log(password);
-          //console.log(firstname);
-          //console.log(lastname);
-          const self = this;
-          let res = API.updateName(document.getElementById(firstname).value, localStorage.getItem("API_TOKEN"));
-          res.then(function (result) {
-              if (result.ok == true) {
-                console.log("Data updated successfully");
-              }
-              else {
-                  console.log("There has been an error, the data could not be updated");
-              }
+    storeName: async function (firstname) {
+      let res = API.updateName(
+        document.getElementById(firstname).value,
+        localStorage.getItem("API_TOKEN"));
+        res.then(function (result) {
+          result.json().then(function (data) {
+            if(data.ok="false"){
+              console.log("ERROR. Data could not be changed");
+            }else{
+              console.log("First name changed successfully");
+            }
           });
-      }
+      });
+    },
+
+    storeSurname: async function (lastname) {
+      let res = API.updateSurname(
+        document.getElementById(lastname).value,
+        localStorage.getItem("API_TOKEN"));
+        res.then(function (result) {
+          result.json().then(function (data) {
+            if(data.ok="false"){
+              console.log("ERROR. Data could not be changed");
+            }else{
+              console.log("Last name changed successfully");
+            }
+          });
+      });
+    },
+
+    storeEmail: async function (email) {
+      let res = API.updateEmail(
+        document.getElementById(email).value,
+        localStorage.getItem("API_TOKEN"));
+        res.then(function (result) {
+          result.json().then(function (data) {
+            if(data.ok="false"){
+              console.log("ERROR. Data could not be changed");
+            }else{
+              console.log("Email changed successfully");
+            }
+          });
+      });
+    },
+
+    storePassword: async function (password) {
+      let res = API.updatePassword(
+        document.getElementById(password).value,
+        localStorage.getItem("API_TOKEN"));
+        res.then(function (result) {
+          result.json().then(function (data) {
+            if(data.ok="false"){
+              console.log("ERROR. Data could not be changed");
+            }else{
+              console.log("Password changed successfully");
+            }
+          });
+      });
+    },
 
   },
   beforeMount() {

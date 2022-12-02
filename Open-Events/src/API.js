@@ -152,6 +152,74 @@ let APIFunctions = {
     }
   },
 
+  // update user's surname
+  async updateSurname(surname, token) {
+    try {
+      let body = {
+        last_name: surname,
+      };
+      let url = "http://puigmal.salle.url.edu/api/v2/users";
+      /* define url */
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      return response;
+    } catch {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  // update user's email
+  async updateEmail(email, token) {
+    try {
+      let body = {
+        email: email,
+      };
+      let url = "http://puigmal.salle.url.edu/api/v2/users";
+      /* define url */
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      return response;
+    } catch {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  // update user's password
+  async updatePassword(password, token) {
+    try {
+      let body = {
+        password: password,
+      };
+      let url = "http://puigmal.salle.url.edu/api/v2/users";
+      /* define url */
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      return response;
+    } catch {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
   /***********************************************************    EVENTS     *******************************************************/
   // create event
   async createEvent(
