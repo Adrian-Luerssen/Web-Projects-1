@@ -21,12 +21,12 @@
           type="text"
           id="first_name_text"
           name="first_name"
-          readonly
         />
         <button
           type="button"
           id="change_first_name_button"
           class="button_change"
+          @click="storeData('email_text', 'password_text', 'first_name_text', 'last_name_text')"
         >
           Change...
         </button>
@@ -36,7 +36,6 @@
           id="last_name_text"
           name="last_name"
           placeholder="Surname"
-          readonly
         />
         <button
           type="button"
@@ -51,7 +50,7 @@
           id="email_text"
           name="email"
           placeholder="user@gmail.com"
-          readonly
+          password
         />
         <button type="button" id="change_email_button" class="button_change">
           Change...
@@ -62,11 +61,11 @@
           id="password_text"
           name="password"
           placeholder="ABCD1234"
-          readonly
         />
         <button type="button" id="change_password_button" class="button_change">
           Change...
         </button>
+        <input type="checkbox" id="password_check" onclick="listen(this)">Show Password
       </article>
       
       <article class="buttons">
@@ -75,23 +74,9 @@
         <button class="log_out" v-on:click="$router.push({ name: 'Login'})">Log out</button>
       </article>
       
-      <v-dialog v-model="dialog" width="500">
-        <v-card>
-          <v-card-title>Delete account</v-card-title>
-          <v-card-text>Are you sure you want to delete the account? When an account gets deleted
-            all the data is lost.
-          </v-card-text>
-          <v-card-divider></v-card-divider>
-          <v-card-actions>
-            <button>Delete account</button>
-            <v-btn>Go back</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
     </section>
   </div>
 </template>
-
 <script>
 import API from "../../API.js";
 export default {
@@ -116,38 +101,31 @@ export default {
           document.getElementById("password_text").value = data[0].password;
           document.getElementById("img").src = data[0].image;
         });
-      });
-
-      API.updateName(
-        document.getElementById("first_name_text").innerHTML,
-        localStorage.getItem("API_TOKEN")
-      ).then(function (result) {
-        result.json().then(function (data) {
-          console.log(data);
-          data[0].name = document.getElementById("first_name_text").innerHTML
-        });
-      });
+      });      
     },
+
+    storeData: async function (email, password, firstname, lastname) {
+          //console.log(email);
+          //console.log(password);
+          //console.log(firstname);
+          //console.log(lastname);
+          const self = this;
+          let res = API.getFriends(document.getElementById(email).value, document.getElementById(password).value, document.getElementById(firstname).value, document.getElementById(lastname).value, localStorage.getItem("API_TOKEN"));
+          res.then(function (result) {
+              if (result.ok == true) {
+                console.log("Data updated successfully");
+              }
+              else {
+                  console.log("There has been an error, the data could not be updated");
+              }
+          });
+      }
+
   },
   beforeMount() {
     this.getProfile();
   },
 };
-/*
-var change_name = true; 
-const button_name = document.getElementById("change_first_name_button");
-button_name.addEventListener("click", changeNameFunction);
-
-function changeNameFunction() {
-    if(change_name == true){
-        document.getElementById("first_name_text").readOnly = false;
-        change_name=false;
-    }else{
-        document.getElementById("first_name_text").readOnly = true;
-        change_name=true;
-    }
-} 
-*/
 </script>
 <style scoped>
 .box {
