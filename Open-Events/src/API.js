@@ -220,6 +220,27 @@ let APIFunctions = {
       return false;
     }
   },
+
+  /***********************************************************    STATS     *******************************************************/
+  //get statistics
+  async getStatistics(userid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/statistics";
+      /* define url */
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
   /***********************************************************    EVENTS     *******************************************************/
   // create event
   async createEvent(
@@ -338,6 +359,22 @@ async getEventRating(eventid, token) {
                 return false;
         }
     },
+    async getPastEvents(userid, token) { 
+      try {
+          let url = "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/assistances";
+          let response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Authorization': 'Bearer ' + token
+              }
+          });
+          return response;
+      } catch (error){
+          console.log("Error: ", error);
+          return false;
+      }
+  },
+
   /***********************************************************    CHAT     *******************************************************/
   // get chat
   async getChat(id, token) {

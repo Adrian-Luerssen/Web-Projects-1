@@ -7,24 +7,11 @@
         </article>
         <section class="information_panel">
           <article class="information">
-            <h4 id="average_score_for_event" class="text">
-              Average score given in events: 23455</h4>
-              <!-- missing to add the actual value in here-->
-            <h4 id="number_of_comments" class="text">
-                Number of comments: 21342</h4>
-                <!-- missing to add the actual value in here-->
-            <h4 id="more_users_done_more_comments" class="text">
-                Users with more comments: 8933</h4>
-                <!-- missing to add the actual value in here-->
-            <h4 id = "num_events_created" class="text">
-                Number of events created: 1234</h4>
-                <!-- missing to add the actual value in here-->
-            <h4 id = "num_events_joined" class="text">
-                Number of events joined: 1234</h4>
-                <!-- missing to add the actual value in here-->
-            <h4 id = "num_friends" class="text">
-                Number of friends: 1234</h4>
-                <!-- missing to add the actual value in here-->
+            <h4 id="average_score_for_event" class="text">Average score given in events: </h4>
+            <h4 id="number_of_comments" class="text">Number of comments: </h4>
+            <h4 id="users_done_less_comments" class="text">Users with less comments: </h4>
+            <h4 id = "num_events_joined" class="text">Number of events joined: </h4>
+            <h4 id = "num_friends" class="text">Number of friends: </h4>
           </article>    
             <article class = "buttons">
                 <button class = "log_out" v-on:click="$router.push({ name: 'Profile'})">Back to Profile</button>
@@ -34,6 +21,49 @@
 </template>
 
 <script>
+import API from "../../API.js";
+export default {
+  data: () => {
+    return {
+      image: "",
+    };
+  },
+  methods: {
+    async getStats() {
+      API.getStatistics(
+        localStorage.getItem("USER_ID"),
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          //console.log(data);
+          document.getElementById("average_score_for_event").innerHTML = "Average score given in events: " + data[0].avg_score;
+          document.getElementById("number_of_comments").innerHTML = "Number of comments: " + data[0].num_comments;
+          document.getElementById("users_done_less_comments").innerHTML = "Users with less comments: " + data[0].percentage_commenters_below + "%";
+        });
+      });
+      API.getFriends(
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          document.getElementById("num_friends").innerHTML = "Number of friends" + data.length;
+        });
+      });
+      API.getPastEvents(
+        localStorage.getItem("USER_ID"),
+        localStorage.getItem("API_TOKEN")
+      ).then(function (result) {
+        result.json().then(function (data) {
+          console.log(data.length);
+          document.getElementById("num_events_joined").innerHTML = "Number of events joined: " + data.length;
+        });
+      });
+    },
+  },
+  beforeMount() {
+    this.getStats();
+  },
+};
+
 
 
 </script>
@@ -117,7 +147,7 @@
     grid-column: 1;
     grid-row: 2;
 }
-#more_users_done_more_comments{
+#users_done_less_comments{
     margin-top: 10%;
     white-space: nowrap;
     grid-column: 1;
