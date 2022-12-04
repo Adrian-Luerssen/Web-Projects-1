@@ -220,10 +220,11 @@ let APIFunctions = {
       return false;
     }
   },
-
+  
   // delete user
   async deleteUser(token) {
     try {
+      let url = "http://puigmal.salle.url.edu/api/v2/users";
       let response = await fetch(url, {
         method: "DELETE",
         headers: {

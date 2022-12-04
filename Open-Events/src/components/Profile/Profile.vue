@@ -172,16 +172,12 @@ export default {
     },
     openDialog: function getConfirmation() {
       var iframe = document.createElement("IFRAME");
-      iframe.setAttribute("src", 'data:text/plain,');
       document.documentElement.appendChild(iframe);
-      if(window.frames[0].window.confirm("Are you sure?")){
+      if(window.frames[0].window.confirm("Are you sure you want to deleteyour account?")){
         let res = API.deleteUser(
         localStorage.getItem("API_TOKEN"));
         res.then(
           window.location.reload());
-      }
-      else{
-          
       }
     },
     reload: function reloadPage(){
