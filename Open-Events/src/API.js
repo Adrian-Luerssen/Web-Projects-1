@@ -221,6 +221,24 @@ let APIFunctions = {
     }
   },
 
+  // delete user
+  async deleteUser(token) {
+    try {
+      let response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        }
+      });
+      return response;
+    } catch {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+
+
   /***********************************************************    STATS     *******************************************************/
   //get statistics
   async getStatistics(userid, token) {

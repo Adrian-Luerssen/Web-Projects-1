@@ -69,14 +69,13 @@
         </button>
         <input type="checkbox" id="password_check" @click=togglePassword()>Show Password
       </article>
-      
+
       <article class="buttons">
         <button class="statistics_button" v-on:click="$router.push({ name: 'Statistics'})">Statistics</button>
-        <button class="delete_account" v-on:click="dialog = true">Delete account</button>
-        <button class="log_out" v-on:click="$router.push({ name: 'Login'})">Log out</button>
+        <button class="delete_account" @click=openDialog()>Delete account</button>
+        <button class="log_out" @click=reload()>Log out</button>
       </article>
-      
-    </section>
+  </section>
   </div>
 </template>
 <script>
@@ -170,14 +169,31 @@ export default {
       } else {
         x.type = "password";
       }
+    },
+    openDialog: function getConfirmation() {
+      var iframe = document.createElement("IFRAME");
+      iframe.setAttribute("src", 'data:text/plain,');
+      document.documentElement.appendChild(iframe);
+      if(window.frames[0].window.confirm("Are you sure?")){
+        let res = API.deleteUser(
+        localStorage.getItem("API_TOKEN"));
+        res.then(
+          window.location.reload());
+      }
+      else{
+          
+      }
+    },
+    reload: function reloadPage(){
+      window.location.reload();
     }
-
   },
   beforeMount() {
     this.getProfile();
   },
 };
 </script>
+
 <style scoped>
 .box {
     background: #e3a2ba;
@@ -323,6 +339,15 @@ export default {
     grid-column: 3;
     grid-row: 4;
   }
+.modal-dialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: var(--white);
+  overflow: auto;
+  cursor: default;
+}
 @media only screen and (min-width: 758px) {
   .box {
     background: #e3a2ba;
