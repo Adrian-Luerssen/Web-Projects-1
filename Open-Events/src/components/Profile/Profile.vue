@@ -67,7 +67,7 @@
         <button type="button" id="change_password_button" class="button_change" @click="storePassword('password_text')">
           Change...
         </button>
-        <input type="checkbox" id="password_check" onclick="listen(this)">Show Password
+        <input type="checkbox" id="password_check" @click=togglePassword()>Show Password
       </article>
       
       <article class="buttons">
@@ -163,6 +163,14 @@ export default {
           });
       });
     },
+    togglePassword: function myToggle() {
+      var x = document.getElementById("password_text");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
 
   },
   beforeMount() {
