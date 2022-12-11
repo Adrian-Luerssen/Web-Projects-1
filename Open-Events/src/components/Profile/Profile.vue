@@ -17,11 +17,7 @@
     <section class="information_panel">
       <article class="information">
         <h4 id="First_name" class="text">First name:</h4>
-        <input
-          type="text"
-          id="first_name_text"
-          name="first_name"
-        />
+        <input type="text" id="first_name_text" name="first_name" />
         <button
           type="button"
           id="change_first_name_button"
@@ -51,9 +47,13 @@
           id="email_text"
           name="email"
           placeholder="user@gmail.com"
-          
         />
-        <button type="button" id="change_email_button" class="button_change" @click="storeEmail('email')">
+        <button
+          type="button"
+          id="change_email_button"
+          class="button_change"
+          @click="storeEmail('email')"
+        >
           Change...
         </button>
 
@@ -64,18 +64,34 @@
           name="password"
           placeholder="ABCD1234"
         />
-        <button type="button" id="change_password_button" class="button_change" @click="storePassword('password_text')">
+        <button
+          type="button"
+          id="change_password_button"
+          class="button_change"
+          @click="storePassword('password_text')"
+        >
           Change...
         </button>
-        <input type="checkbox" id="password_check" @click=togglePassword()>Show Password
+        <input
+          type="checkbox"
+          id="password_check"
+          @click="togglePassword()"
+        />Show Password
       </article>
 
       <article class="buttons">
-        <button class="statistics_button" v-on:click="$router.push({ name: 'Statistics'})">Statistics</button>
-        <button class="delete_account" @click=openDialog()>Delete account</button>
-        <button class="log_out" @click=reload()>Log out</button>
+        <button
+          class="statistics_button"
+          v-on:click="$router.push({ name: 'Statistics' })"
+        >
+          Statistics
+        </button>
+        <button class="delete_account" @click="openDialog()">
+          Delete account
+        </button>
+        <button class="log_out" @click="reload()">Log out</button>
       </article>
-  </section>
+    </section>
   </div>
 </template>
 <script>
@@ -97,69 +113,73 @@ export default {
           document.getElementById("first_name_text").value = data[0].name;
           document.getElementById("last_name_text").value = data[0].last_name;
           document.getElementById("email_text").value = data[0].email;
-          document.getElementById("password_text").value = data[0].password;
+          //document.getElementById("password_text").value = data[0].password;
           document.getElementById("img").src = data[0].image;
         });
-      });      
+      });
     },
 
     storeName: async function (firstname) {
       let res = API.updateName(
         document.getElementById(firstname).value,
-        localStorage.getItem("API_TOKEN"));
-        res.then(function (result) {
-          result.json().then(function (data) {
-            if(data.ok="false"){
-              console.log("ERROR. Data could not be changed");
-            }else{
-              console.log("First name changed successfully");
-            }
-          });
+        localStorage.getItem("API_TOKEN")
+      );
+      res.then(function (result) {
+        result.json().then(function (data) {
+          if ((data.ok = "false")) {
+            console.log("ERROR. Data could not be changed");
+          } else {
+            console.log("First name changed successfully");
+          }
+        });
       });
     },
 
     storeSurname: async function (lastname) {
       let res = API.updateSurname(
         document.getElementById(lastname).value,
-        localStorage.getItem("API_TOKEN"));
-        res.then(function (result) {
-          result.json().then(function (data) {
-            if(data.ok="false"){
-              console.log("ERROR. Data could not be changed");
-            }else{
-              console.log("Last name changed successfully");
-            }
-          });
+        localStorage.getItem("API_TOKEN")
+      );
+      res.then(function (result) {
+        result.json().then(function (data) {
+          if ((data.ok = "false")) {
+            console.log("ERROR. Data could not be changed");
+          } else {
+            console.log("Last name changed successfully");
+          }
+        });
       });
     },
 
     storeEmail: async function (email) {
       let res = API.updateEmail(
         document.getElementById(email).value,
-        localStorage.getItem("API_TOKEN"));
-        res.then(function (result) {
-          result.json().then(function (data) {
-            if(data.ok="false"){
-              console.log("ERROR. Data could not be changed");
-            }else{
-              console.log("Email changed successfully");
-            }
-          });
+        localStorage.getItem("API_TOKEN")
+      );
+      res.then(function (result) {
+        result.json().then(function (data) {
+          if ((data.ok = "false")) {
+            console.log("ERROR. Data could not be changed");
+          } else {
+            console.log("Email changed successfully");
+          }
+        });
       });
     },
 
     storePassword: async function (password) {
       let res = API.updatePassword(
         document.getElementById(password).value,
-        localStorage.getItem("API_TOKEN"));
-        res.then(function (result) {
-          result.json().then(function (data) {
-            if(data.ok="false"){
-              console.log("ERROR. Data could not be changed");
-            }else{
-              console.log("Password changed successfully");
-            }
-          });
+        localStorage.getItem("API_TOKEN")
+      );
+      res.then(function (result) {
+        result.json().then(function (data) {
+          if ((data.ok = "false")) {
+            console.log("ERROR. Data could not be changed");
+          } else {
+            console.log("Password changed successfully");
+          }
+        });
       });
     },
     togglePassword: function myToggle() {
@@ -173,16 +193,18 @@ export default {
     openDialog: function getConfirmation() {
       var iframe = document.createElement("IFRAME");
       document.documentElement.appendChild(iframe);
-      if(window.frames[0].window.confirm("Are you sure you want to deleteyour account?")){
-        let res = API.deleteUser(
-        localStorage.getItem("API_TOKEN"));
-        res.then(
-          window.location.reload());
+      if (
+        window.frames[0].window.confirm(
+          "Are you sure you want to deleteyour account?"
+        )
+      ) {
+        let res = API.deleteUser(localStorage.getItem("API_TOKEN"));
+        res.then(window.location.reload());
       }
     },
-    reload: function reloadPage(){
+    reload: function reloadPage() {
       window.location.reload();
-    }
+    },
   },
   beforeMount() {
     this.getProfile();
@@ -192,149 +214,148 @@ export default {
 
 <style scoped>
 .box {
-    background: #e3a2ba;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-  }
-  .profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    margin-bottom: 10%;
-  }
-  #title {
-    margin-top: 10%;
-  }
-  #img {
-    width: 200px;
-    padding: 40px;
-  }
-  .information_panel {
-    display: flex;
-    flex-direction: column;
-    background-color: #bf6183;
-  }
-  .information {
-    margin-top: 15%;
-    margin-left: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 50%;
-    row-gap: 10%;
-    column-gap: 5%;
-    margin-bottom: 30%;
-  }
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20%;
-    margin-top: -5%;
-  }
-  .log_out {
-    background-color: #401826;
-    border: solid #401826;
-    color: white;
-    width: 20vh;
-    height: 7vh;
-    white-space: nowrap;
-    padding: 2px 5px;
-    border-radius: 20px;
-    font-size: large;
-    margin-top: 3vh;
-  }
-  .log_out:hover {
-    background-color: #63293d;
-  }
-  .delete_account {
-    background-color: #401826;
-    border: solid #401826;
-    color: white;
-    width: 20vh;
-    height: 7vh;
-    white-space: nowrap;
-    padding: 2px 5px;
-    border-radius: 20px;
-    font-size: large;
-    margin-top: 3vh;
-  }
-  .delete_account:hover {
-    background-color: #63293d;
-  }
-  .statistics_button {
-    background-color: #401826;
-    border: solid #401826;
-    color: white;
-    width: 20vh;
-    height: 7vh;
-    white-space: nowrap;
-    padding: 2px 5px;
-    border-radius: 20px;
-    font-size: large;
-    margin-top: 3vh;
-
-  }
-  .statistics_button:hover {
-    background-color: #63293d;
-  }
-  #First_name {
-    white-space: nowrap;
-    grid-column: 1;
-    grid-row: 1;
-  }
-  #first_name_text {
-    width: 18vh;
-    grid-column: 2;
-    grid-row: 1;
-  }
-  #change_first_name_button {
-    grid-column: 3;
-    grid-row: 1;
-  }
-  #Last_name {
-    white-space: nowrap;
-    grid-column: 1;
-    grid-row: 2;
-  }
-  #last_name_text {
-    width: 18vh;
-    grid-column: 2;
-    grid-row: 2;
-  }
-  #change_last_name_button {
-    grid-column: 3;
-    grid-row: 2;
-  }
-  #Email {
-    grid-column: 1;
-    grid-row: 3;
-  }
-  #email_text {
-    width: 18vh;
-    grid-column: 2;
-    grid-row: 3;
-  }
-  #change_email_button {
-    grid-column: 3;
-    grid-row: 3;
-  }
-  #Password {
-    grid-column: 1;
-    grid-row: 4;
-  }
-  #password_text {
-    width: 18vh;
-    grid-column: 2;
-    grid-row: 4;
-  }
-  #change_password_button {
-    grid-column: 3;
-    grid-row: 4;
-  }
+  background: #e3a2ba;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 10%;
+}
+#title {
+  margin-top: 10%;
+}
+#img {
+  width: 200px;
+  padding: 40px;
+}
+.information_panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #bf6183;
+}
+.information {
+  margin-top: 15%;
+  margin-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 50%;
+  row-gap: 10%;
+  column-gap: 5%;
+  margin-bottom: 30%;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20%;
+  margin-top: -5%;
+}
+.log_out {
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 20vh;
+  height: 7vh;
+  white-space: nowrap;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.log_out:hover {
+  background-color: #63293d;
+}
+.delete_account {
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 20vh;
+  height: 7vh;
+  white-space: nowrap;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.delete_account:hover {
+  background-color: #63293d;
+}
+.statistics_button {
+  background-color: #401826;
+  border: solid #401826;
+  color: white;
+  width: 20vh;
+  height: 7vh;
+  white-space: nowrap;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 3vh;
+}
+.statistics_button:hover {
+  background-color: #63293d;
+}
+#First_name {
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 1;
+}
+#first_name_text {
+  width: 18vh;
+  grid-column: 2;
+  grid-row: 1;
+}
+#change_first_name_button {
+  grid-column: 3;
+  grid-row: 1;
+}
+#Last_name {
+  white-space: nowrap;
+  grid-column: 1;
+  grid-row: 2;
+}
+#last_name_text {
+  width: 18vh;
+  grid-column: 2;
+  grid-row: 2;
+}
+#change_last_name_button {
+  grid-column: 3;
+  grid-row: 2;
+}
+#Email {
+  grid-column: 1;
+  grid-row: 3;
+}
+#email_text {
+  width: 18vh;
+  grid-column: 2;
+  grid-row: 3;
+}
+#change_email_button {
+  grid-column: 3;
+  grid-row: 3;
+}
+#Password {
+  grid-column: 1;
+  grid-row: 4;
+}
+#password_text {
+  width: 18vh;
+  grid-column: 2;
+  grid-row: 4;
+}
+#change_password_button {
+  grid-column: 3;
+  grid-row: 4;
+}
 .modal-dialog {
   position: relative;
   max-width: 800px;
@@ -481,6 +502,5 @@ export default {
     grid-column: 3;
     grid-row: 4;
   }
-  
 }
 </style>
