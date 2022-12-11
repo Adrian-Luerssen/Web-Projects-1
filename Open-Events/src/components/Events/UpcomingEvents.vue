@@ -1,16 +1,16 @@
 <template>
   <section class="box">
     <component
-    v-bind:is="component"
-    v-on:switch-to-specificEvent="component = 'SpecificEvent'"
-  ></component>
+      v-bind:is="component"
+      v-on:switch-to-specificEvent="component = 'SpecificEvent'"
+    ></component>
     <section class="panel_upcoming_events">
       <h3 class="title_panel">Upcoming Events</h3>
       <v-list>
         <v-list-item v-for="item in upcomingEvents" :key="item.event" two-line>
           <article class="event_box">
             <h4 class="title">{{ item.name }}</h4>
-            <h4 class="date">{{ displayDate(item.date) }}</h4>
+            <h4 class="date">{{ displayDate(item.eventStart_date) }}</h4>
             <button
               class="more_info_button"
               v-on:click="
@@ -26,10 +26,10 @@
     <section class="panel_past_events">
       <h3 class="title_panel">Past Events</h3>
       <v-list>
-        <v-list-item v-for="item in upcomingEvents" :key="item.event" two-line>
+        <v-list-item v-for="item in pastEvents" :key="item.event" two-line>
           <article class="event_box">
             <h4 class="title">{{ item.name }}</h4>
-            <h4 class="date">{{ item.date }}</h4>
+            <h4 class="date">{{ displayDate(item.eventStart_date) }}</h4>
             <button
               class="more_info_button"
               v-on:click="
@@ -45,14 +45,14 @@
     <section class="panel_personal_events">
       <h3 class="title_panel">Your Events</h3>
       <v-list>
-        <v-list-item v-for="item in upcomingEvents" :key="item.event" two-line>
+        <v-list-item v-for="item in myEvents" :key="item.event" two-line>
           <article class="event_box">
             <h4 class="title">{{ item.name }}</h4>
-            <h4 class="date">{{ item.date }}</h4>
+            <h4 class="date">{{ displayDate(item.eventStart_date) }}</h4>
             <button
               class="edit_info_button"
               v-on:click="
-                $router.push({ name: 'SpecificEvent', params: { id: item.id } })
+                $router.push({ name: 'EditEvent', params: { id: item.id } })
               "
             >
               Edit info
@@ -72,16 +72,27 @@ export default {
   name: "UpcomingEvents",
   components: { SpecificEvent },
   data: () => ({
-    upcomingEvents : [],
+    upcomingEvents: [],
+    pastEvents: [],
+    myEvents: [],
   }),
   methods: {
     async loadUpcomingEvents() {
       let self = this;
       console.log("loadUpcomingEvents");
-      let res = API.getUpcomingEvents(localStorage.getItem("API_TOKEN"));
+      let res = API.getAttendedEvents(
+        localStorage.getItem("USER_ID"),
+        localStorage.getItem("API_TOKEN")
+      );
       res.then(function (response) {
         response.json().then(function (data) {
-          self.upcomingEvents = data;
+          for (let i = 0; i < data.length; i++) {
+            if (new Date(data[i].eventStart_date) < new Date()) {
+              self.pastEvents.push(data[i]);
+            } else {
+              self.upcomingEvents.push(data[i]);
+            }
+          }
           console.log(self.upcomingEvents);
         });
       });
@@ -93,10 +104,22 @@ export default {
       let year = dateObj.getUTCFullYear();
       return day + "/" + month + "/" + year;
     },
+    async loadmyEvents() {
+      let self = this;
+      let res = API.getProfileEvents(
+        localStorage.getItem("USER_ID"),
+        localStorage.getItem("API_TOKEN")
+      );
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.myEvents = data;
+        });
+      });
+    },
   },
   beforeMount() {
-      //this.loadUpcomingEvents();
-      //this.loadYourEvents();
+    this.loadUpcomingEvents();
+    this.loadmyEvents();
   },
 };
 
@@ -224,7 +247,7 @@ function closeNav() {
   grid-column: 1 / 3;
   grid-row: 2;
 }
-.title_panel{
+.title_panel {
   margin-top: -5%;
 }
 

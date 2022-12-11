@@ -96,7 +96,7 @@ let APIFunctions = {
   async getProfileEvents(userid, token) {
     try {
       let url =
-        "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/assistances";
+        "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/events";
       /* define url */
       let response = await fetch(url, {
         method: "GET",
@@ -111,6 +111,24 @@ let APIFunctions = {
       return false;
     }
   },
+
+  async getAttendedEvents(userid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/assistances";
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
   async searchUsers(search, token) {
     try {
       let url = "http://puigmal.salle.url.edu/api/v2/users/search?s=" + search;
@@ -296,6 +314,53 @@ let APIFunctions = {
       /* define url */
       let response = await fetch(url, {
         method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  async updateEvent(
+    name,
+    image,
+    location,
+    longitude,
+    latitude,
+    description,
+    eventStart_date,
+    eventEnd_date,
+    n_participators,
+    type,
+    event_id,
+    token
+  ) {
+    try {
+      let body = {
+        name: name,
+        image: image,
+        location: location,
+        longitude: longitude,
+        latitude: latitude,
+        description: description,
+        eventStart_date: eventStart_date,
+        eventEnd_date: eventEnd_date,
+        n_participators: n_participators,
+        type: type,
+      };
+      let url = "http://puigmal.salle.url.edu/api/v2/events/" + event_id;
+      console.log(JSON.stringify(body));
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "PUT",
         headers: {
           "Content-type": "application/json",
           Authorization: "Bearer " + token,
