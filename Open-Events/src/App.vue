@@ -14,7 +14,6 @@ import Login from "./components/Login/Login.vue";
 import SignUp from "./components/Login/SignUp.vue";
 import Statistics from "./components/Profile/Statistics.vue";
 import router from "./router";
-router.push("/");
 export default {
   name: "App",
   components: { Navbar, Login, SignUp, Statistics },
@@ -23,6 +22,9 @@ export default {
     return {
       component: "Login",
     };
+  },
+  beforeMount() {
+    this.$router.push("/");
   },
 };
 </script>
