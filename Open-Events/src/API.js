@@ -140,6 +140,7 @@ let APIFunctions = {
       let response = await fetch(url, {
         method: "PUT",
         headers: {
+          "Content-type": "application/json",
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify(body),
@@ -163,6 +164,7 @@ let APIFunctions = {
       let response = await fetch(url, {
         method: "PUT",
         headers: {
+          "Content-type": "application/json",
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify(body),
@@ -186,6 +188,7 @@ let APIFunctions = {
       let response = await fetch(url, {
         method: "PUT",
         headers: {
+          "Content-type": "application/json",
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify(body),
@@ -209,6 +212,7 @@ let APIFunctions = {
       let response = await fetch(url, {
         method: "PUT",
         headers: {
+          "Content-type": "application/json",
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify(body),
@@ -220,7 +224,7 @@ let APIFunctions = {
       return false;
     }
   },
-  
+
   // delete user
   async deleteUser(token) {
     try {
@@ -229,7 +233,7 @@ let APIFunctions = {
         method: "DELETE",
         headers: {
           Authorization: "Bearer " + token,
-        }
+        },
       });
       return response;
     } catch {
@@ -237,8 +241,6 @@ let APIFunctions = {
       return false;
     }
   },
-
-
 
   /***********************************************************    STATS     *******************************************************/
   //get statistics
@@ -308,90 +310,164 @@ let APIFunctions = {
     }
   },
 
-  async getAllEvents(token) { 
+  async getAllEvents(token) {
     try {
-        let url = "http://puigmal.salle.url.edu/api/v2/events";
-        //console.log(token);
-        /* define url */
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        });
-        return response;
-    } catch (error){
-        console.log("Error: ", error);
-        return false;
+      let url = "http://puigmal.salle.url.edu/api/v2/events";
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
     }
-},
-async getEventRating(eventid, token) {
+  },
+  async getEventRating(eventid, token) {
     console.log("heeey");
     try {
-        let url = "http://puigmal.salle.url.edu/api/v2/events/" + eventid + "/assistances";
-        //console.log(token);
-        /* define url */
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + token
-            }
-        });
-        let rating = 0;
-        for (let i = 0; i < response.length; i++) {
-            if (response[i].rating != null) {
-                rating += response[i].rating;
-            }
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        eventid +
+        "/assistances";
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      let rating = 0;
+      for (let i = 0; i < response.length; i++) {
+        if (response[i].rating != null) {
+          rating += response[i].rating;
         }
-        console.log(rating);
-        return rating / response.length;
-    } catch (error){
-        console.log("Error: ", error);
-        return false;
-    }
-},
-    async getEventsByRating(token) {
-        let self = this;
-        console.log("getEventsByRating");
-        try {
-            console.log("getevents: ", error);
-            let response;
-            try {
-                response = self.getAllEvents(token);
-            } catch (error) {
-                console.log("Error2: ", error);
-                return false;
-            }
-            for (let i = 0; i < response.length; i++) {
-                //add rating field to each event
-                try {
-                    response[i].rating = self.getEventRating(response[i].id, token);
-                } catch (error) {
-                    console.log("Error3: ", error);
-                    return false;
-                }
-            }
-            //sort events by rating
-            return response;
-        } catch (error){
-                console.log("Error4: ", error);
-                return false;
-        }
-    },
-    async getPastEvents(userid, token) { 
-      try {
-          let url = "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/assistances";
-          let response = await fetch(url, {
-              method: 'GET',
-              headers: {
-                  'Authorization': 'Bearer ' + token
-              }
-          });
-          return response;
-      } catch (error){
-          console.log("Error: ", error);
-          return false;
       }
+      console.log(rating);
+      return rating / response.length;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async getEventsByRating(token) {
+    let self = this;
+    console.log("getEventsByRating");
+    try {
+      console.log("getevents: ", error);
+      let response;
+      try {
+        response = self.getAllEvents(token);
+      } catch (error) {
+        console.log("Error2: ", error);
+        return false;
+      }
+      for (let i = 0; i < response.length; i++) {
+        //add rating field to each event
+        try {
+          response[i].rating = self.getEventRating(response[i].id, token);
+        } catch (error) {
+          console.log("Error3: ", error);
+          return false;
+        }
+      }
+      //sort events by rating
+      return response;
+    } catch (error) {
+      console.log("Error4: ", error);
+      return false;
+    }
+  },
+  async getPastEvents(userid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/users/" + userid + "/assistances";
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async getEvent(eventid, token) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/events/" + eventid;
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async getEventAssistances(eventid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        eventid +
+        "/assistances";
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  async joinEvent(eventid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        eventid +
+        "/assistances";
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async leaveEvent(eventid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        eventid +
+        "/assistances";
+      let response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
   },
 
   /***********************************************************    CHAT     *******************************************************/
@@ -452,10 +528,10 @@ async getEventRating(eventid, token) {
         },
       });
     } catch (error) {
-        console.log("Error: ", error);
-        return false;
-        }
-    },
+      console.log("Error: ", error);
+      return false;
+    }
+  },
 
   async getFriends(token) {
     try {
