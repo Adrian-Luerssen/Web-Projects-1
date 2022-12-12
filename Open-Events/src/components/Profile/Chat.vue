@@ -137,28 +137,25 @@ export default {
 
 <style>
 .box {
-  height: auto;
+  height: 100vh;
   background: #e3a2ba;
 }
 .back_button {
   width: 10vh;
   height: 5vh;
-
-  margin-left: 5%;
-  margin-top: 5%;
+  left: 5%;
+  top: 5%;
 }
 .conversation_management {
   display: flex;
-
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 7%;
-  width: 20vh;
-  height: 80vh;
+  margin-top: 5%;
+  width: 70vh;
+  height: 85vh;
   background-color: #ecf0f1;
   border-radius: 10px;
 }
-
 .user_data_background {
   display: flex;
   align-items: center;
@@ -166,7 +163,7 @@ export default {
   background-color: #d7dbdd;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  width: 56.5vh;
+  width: 70vh;
   height: 10vh;
 }
 .picture_chat {
@@ -184,7 +181,6 @@ export default {
   width: 50vh;
   height: 6vh;
 }
-
 .message_box {
   width: 70vh;
   height: 65vh;
@@ -195,7 +191,6 @@ export default {
   display: flex;
   flex-direction: column-reverse;
 }
-
 .write_message {
   display: flex;
   align-items: center;
@@ -206,21 +201,60 @@ export default {
   width: 70vh;
   height: 10vh;
 }
-
 .message_input {
   margin-left: 5%;
-  width: 40vh;
+  width: 50vh;
   height: 5vh;
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
 }
 .send_button {
-  margin-right: 22%;
-  width: 8vh;
+  margin-right: 5%;
+  width: 10vh;
   height: 5vh;
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
+}
+.leftMessage {
+  background-color: #9b9b9b;
+  border-radius: 10px;
+  width: 50vh;
+  height: 5vh;
+  margin-left: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: left;
+  text-align: start;
+  position: relative;
+}
+.leftMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 5%;
+}
+.rightMessage {
+  background-color: #f76ceb;
+  border-radius: 10px;
+  align-content: flex-end;
+  width: 50vh;
+  height: 5vh;
+  margin-right: 5%;
+  text-align: end;
+  line-height: normal;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: right;
+  position: relative;
+}
+.rightMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 5%;
 }
 </style>
