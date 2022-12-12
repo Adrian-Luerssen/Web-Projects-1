@@ -1,35 +1,52 @@
 <template>
   <div class="box">
     <section class="panel_friends">
-      <h3 class="title_panel">Friends</h3>
+      <h3 class="title_panel">Search users:</h3>
+      <input id="SearchUser" class="searchBar" type="text" v-on:input="this.searchUsers();" />
       <section class="small_panel_friends">
-        <v-list v-if="friends.length > 0">
-          <v-list-item v-for="item in friends" :key="item.name" two-line>
+        <v-list v-if="recommended.length > 0">
+          <v-list-item v-for="item in recommended" :key="item.id" two-line>
             <article class="info">
-              <h4
-                class="title"
-                v-on:click="
-                  $router.push({
-                    name: 'Other_Profile',
-                    params: { id: item.id },
-                  })
-                "
-              >
+              <h4 class="title" v-on:click="
+                $router.push({
+                  name: 'Other_Profile',
+                  params: { id: item.id },
+                })
+              ">
+                {{ item.name }}
+              </h4>
+              <div class="buttons_box">
+                <button class="add_button_requests" v-on:click="this.requestUser(item.id);">✔</button>
+              </div>
+            </article>
+          </v-list-item>
+        </v-list>
+        <article class="emptyList" v-else>No results</article>
+      </section>
+    </section>
+    <section class="panel_requests">
+      <h3 class="title_panel">Friends</h3>
+      <section class="small_panel_requests">
+        <v-list v-if="friends.length > 0">
+          <v-list-item v-for="item in friends" :key="item.id" two-line>
+            <article class="info">
+              <h4 class="title" v-on:click="
+                $router.push({
+                  name: 'Other_Profile',
+                  params: { id: item.id },
+                })
+              ">
                 {{ item.name }}
               </h4>
               <div class="buttons_box">
                 <button class="remove_button_friends" v-on:click="m">X</button>
-                <input
-                  type="image"
-                  class="start_chat_button"
-                  src="https://cdn-icons-png.flaticon.com/512/589/589708.png"
-                  v-on:click="
+                <input type="image" class="start_chat_button"
+                  src="https://cdn-icons-png.flaticon.com/512/589/589708.png" v-on:click="
                     $router.push({
                       name: 'Chat',
                       params: { id: item.id },
                     })
-                  "
-                />
+                  " />
               </div>
             </article>
           </v-list-item>
@@ -37,21 +54,19 @@
         <article class="emptyList" v-else>No friends</article>
       </section>
     </section>
-    <section class="panel_requests">
+    <section class="panel_mightKnow">
       <h3 class="title_panel">Requests</h3>
-      <section class="small_panel_requests">
+      <section class="small_panel_mightKnow">
+
         <v-list v-if="requests.length > 0">
-          <v-list-item v-for="item in requests" :key="item.name" two-line>
+          <v-list-item v-for="item in requests" :key="item.id" two-line>
             <article class="info">
-              <h4
-                class="title"
-                v-on:click="
-                  $router.push({
-                    name: 'Other_Profile',
-                    params: { id: item.id },
-                  })
-                "
-              >
+              <h4 class="title" v-on:click="
+                $router.push({
+                  name: 'Other_Profile',
+                  params: { id: item.id },
+                })
+              ">
                 {{ item.name }}
               </h4>
               <div class="buttons_box">
@@ -64,40 +79,18 @@
         <article class="emptyList" v-else>No requests</article>
       </section>
     </section>
-    <section class="panel_mightKnow">
-      <h3 class="title_panel">You might know</h3>
-      <section class="small_panel_mightKnow">
-        <v-list v-if="mightKnow.length > 0">
-          <v-list-item v-for="item in mightKnow" :key="item.name" two-line>
-            <article class="info">
-              <h4
-                class="title"
-                v-on:click="
-                  $router.push({
-                    name: 'Other_Profile',
-                    params: { id: item.id },
-                  })
-                "
-              >
-                {{ item.name }}
-              </h4>
-              <button class="add_button_mightKnow" v-on:click="m">✔</button>
-            </article>
-          </v-list-item>
-        </v-list>
-        <article class="emptyList" v-else>Nothing to show</article>
-      </section>
-    </section>
   </div>
 </template>
 
 <script>
 import API from "../../API.js";
+
 export default {
   data: () => ({
     friends: [],
     requests: [],
-    mightKnow: [],
+    recommended: [],
+    intervalId: null,
   }),
   methods: {
     openNav: function () {
@@ -111,12 +104,13 @@ export default {
 
     loadFriendRequests: async function () {
       let self = this;
-      console.log("loadFriendRequests");
       let res = API.getFriendRequests(localStorage.getItem("API_TOKEN"));
       res.then(function (response) {
+
+        console.log("loadFriendRequests",response);
         response.json().then(function (data) {
           self.requests = data;
-          console.log(self.requests);
+          console.log("requests: ", self.requests);
           self.requests = self.requests.filter(function (el) {
             return el.id != null;
           });
@@ -139,11 +133,48 @@ export default {
         });
       });
     },
+    searchUsers: async function () {
+      let self = this;
+      console.log("searchUsers");
+      let res = API.searchUsers(document.getElementById("SearchUser").value, localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+          self.recommended = null;
+        response.json().then(function (data) {
+          self.recommended = data;
+          //remove any null fields
+          self.recommended = self.recommended.filter(function (el) {
+            return el.id != null;
+          });
+          console.log(self.recommended);
+        });
+      });
+    },
+    requestUser: async function (id) {
+      let self = this;
+      console.log("requestUser");
+      let res = API.sendRequest(id, localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        response.json().then(function (data) {
+          console.log(data);
+        });
+      });
+    }
   },
 
   beforeMount() {
     this.loadFriendRequests();
     this.loadFriends();
+    this.searchUsers();
+    //let self = this;
+    //this.intervalId = window.setInterval(function () {
+    // update chat
+    //  self.loadFriendRequests();
+    //  self.loadFriends();
+    //  self.searchUsers();
+    //}, 5000);
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalId);
   },
 };
 </script>
@@ -169,6 +200,7 @@ export default {
   right: 5%;
   grid-column: 1;
 }
+
 .panel_requests {
   margin-top: 5%;
   margin-left: 5%;
@@ -182,6 +214,7 @@ export default {
   right: 5%;
   grid-column: 1;
 }
+
 .panel_mightKnow {
   margin-top: 5%;
   margin-left: 5%;
@@ -204,6 +237,7 @@ export default {
   overflow-y: scroll;
   margin-top: -4%;
 }
+
 .small_panel_requests {
   background-color: #bf6183;
   width: 100%;
@@ -211,11 +245,13 @@ export default {
   overflow-y: scroll;
   margin-top: -4%;
 }
+
 .buttons_box {
   display: flex;
   right: 2%;
   position: absolute;
 }
+
 .small_panel_mightKnow {
   background-color: #bf6183;
   height: 31vh;
@@ -223,17 +259,20 @@ export default {
   overflow-y: scroll;
   margin-top: -4%;
 }
+
 .title_panel {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   padding: 30px 10px;
 }
+
 .title {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px 10px;
   left: 5%;
 }
+
 .info {
   background-color: #622f41;
   border: solid white;
@@ -244,6 +283,7 @@ export default {
   display: grid;
   position: relative;
 }
+
 .remove_button_friends {
   background-color: #e3a2ba;
   color: white;
@@ -253,6 +293,7 @@ export default {
   grid-column: 3;
   margin-top: 5%;
 }
+
 .start_chat_button {
   background-color: #e3a2ba;
   color: white;
@@ -262,12 +303,15 @@ export default {
   grid-column: 3;
   margin-top: 5%;
 }
+
 .start_chat_button:hover {
   background-color: #00edf5;
 }
+
 .remove_button_friends:hover {
   background-color: #870f0f;
 }
+
 .remove_button_requests {
   background-color: #e3a2ba;
   color: white;
@@ -277,6 +321,7 @@ export default {
   grid-column: 3;
   margin-top: 5%;
 }
+
 .remove_button_requests:hover {
   background-color: #870f0f;
 }
@@ -290,6 +335,7 @@ export default {
   grid-column: 2;
   margin-top: 5%;
 }
+
 .add_button_requests:hover {
   background-color: #356329;
 }
@@ -303,9 +349,11 @@ export default {
   position: absolute;
   right: 2%;
 }
+
 .add_button_mightKnow:hover {
   background-color: #356329;
 }
+
 .emptyList {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -314,6 +362,18 @@ export default {
   height: 100%;
   line-height: 100%;
   text-align: center;
+}
+
+.searchBar {
+  border: solid #bf6183;
+  border-width: thick;
+  border-radius: 5px;
+  width: 90%;
+  height: 5vh;
+  margin-left: 5%;
+  margin-bottom: 6%;
+  display: grid;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {
@@ -336,6 +396,7 @@ export default {
     height: 85vh;
     grid-column: 1;
   }
+
   .panel_requests {
     margin-top: 5%;
     background-color: #bf6183;
@@ -347,6 +408,7 @@ export default {
     grid-column: 2;
     grid-row: 1;
   }
+
   .panel_mightKnow {
     margin-top: 5%;
     background-color: #bf6183;
@@ -366,6 +428,7 @@ export default {
     overflow-y: scroll;
     margin-top: -4%;
   }
+
   .small_panel_requests {
     background-color: #bf6183;
     width: 48vh;
@@ -373,10 +436,12 @@ export default {
     overflow-y: scroll;
     margin-top: -4%;
   }
+
   .buttons_box {
     display: flex;
     grid-column: 2;
   }
+
   .small_panel_mightKnow {
     background-color: #bf6183;
     width: 48vh;
@@ -384,17 +449,20 @@ export default {
     overflow-y: scroll;
     margin-top: -4%;
   }
+
   .title_panel {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     padding: 30px 10px;
   }
+
   .title {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px 10px;
     grid-column: 1;
   }
+
   .info {
     background-color: #622f41;
     border: solid white;
@@ -405,6 +473,7 @@ export default {
     display: grid;
     grid-template-columns: 33vh;
   }
+
   .remove_button_friends {
     background-color: #e3a2ba;
     color: white;
@@ -414,6 +483,7 @@ export default {
     grid-column: 3;
     margin-top: 5%;
   }
+
   .start_chat_button {
     background-color: #e3a2ba;
     color: white;
@@ -423,12 +493,15 @@ export default {
     grid-column: 3;
     margin-top: 5%;
   }
+
   .start_chat_button:hover {
     background-color: #00edf5;
   }
+
   .remove_button_friends:hover {
     background-color: #870f0f;
   }
+
   .remove_button_requests {
     background-color: #e3a2ba;
     color: white;
@@ -438,6 +511,7 @@ export default {
     grid-column: 3;
     margin-top: 5%;
   }
+
   .remove_button_requests:hover {
     background-color: #870f0f;
   }
@@ -451,6 +525,7 @@ export default {
     grid-column: 2;
     margin-top: 5%;
   }
+
   .add_button_requests:hover {
     background-color: #356329;
   }
@@ -463,6 +538,7 @@ export default {
     border-radius: 50px;
     grid-column: 3;
   }
+
   .add_button_mightKnow:hover {
     background-color: #356329;
   }

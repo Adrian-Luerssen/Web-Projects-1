@@ -132,6 +132,7 @@ let APIFunctions = {
   async searchUsers(search, token) {
     try {
       let url = "http://puigmal.salle.url.edu/api/v2/users/search?s=" + search;
+      console.log(url);
       /* define url */
       let response = await fetch(url, {
         method: "GET",
@@ -592,6 +593,7 @@ let APIFunctions = {
           Authorization: "Bearer " + token,
         },
       });
+      return response;
     } catch (error) {
       console.log("Error: ", error);
       return false;
@@ -616,7 +618,41 @@ let APIFunctions = {
     }
   },
   // accept friend
-  async acceptFriend(username, token) {},
+  async acceptFriend(username, token) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/friends";
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  // send request
+  async sendRequest(id, token) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
 };
 
 export default APIFunctions;
