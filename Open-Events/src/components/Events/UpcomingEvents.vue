@@ -346,6 +346,7 @@ function closeNav() {
     background-color: #646464;
   }
   .title {
+    white-space: nowrap;
     color: white;
     font-weight: bold;
     padding: 0px 5px;
@@ -354,7 +355,7 @@ function closeNav() {
   }
   .date {
     color: white;
-    padding: 0px 5px;
+    padding: 12px 5px;
     grid-column: 1;
     grid-row: 2;
   }

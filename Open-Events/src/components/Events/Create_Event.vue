@@ -251,9 +251,7 @@ export default {
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  column-gap: 5%;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  row-gap: 3%;
 }
 hr {
   background-color: cyan;
@@ -261,54 +259,34 @@ hr {
 }
 #start_date_text {
   margin-bottom: 5%;
-  grid-row: 1;
-  grid-column: 1;
 }
 #start_date_input {
   margin-bottom: 5%;
-  grid-row: 1;
-  grid-column: 2;
 }
 #end_date_text {
   margin-bottom: 5%;
-  grid-row: 2;
-  grid-column: 1;
 }
 #end_date_input {
   margin-bottom: 5%;
-  grid-row: 2;
-  grid-column: 2;
 }
 #attendance_text {
   white-space: nowrap;
   margin-bottom: 5%;
-  grid-row: 3;
-  grid-column: 1;
 }
 #attendance_input {
   margin-bottom: 5%;
-  grid-row: 3;
-  grid-column: 2;
 }
 #categories_text {
   margin-bottom: 5%;
-  grid-row: 4;
-  grid-column: 1;
 }
 #categories_input {
   margin-bottom: 5%;
-  grid-row: 4;
-  grid-column: 2;
 }
 #location_text {
   margin-bottom: 5%;
-  grid-row: 5;
-  grid-column: 1;
 }
 #location_input {
   margin-bottom: 5%;
-  grid-row: 5;
-  grid-column: 2;
 }
 #publish_button {
   color: black;
@@ -386,8 +364,9 @@ hr {
     margin-left: 5%;
     display: grid;
     column-gap: 5%;
+    row-gap: 5%;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 5vh);
   }
   hr {
     background-color: cyan;

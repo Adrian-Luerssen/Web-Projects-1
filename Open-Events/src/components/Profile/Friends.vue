@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <section class="panel_friends">
+    <section class="panel_search">
       <h3 class="title_panel">Search users:</h3>
       <input id="SearchUser" class="searchBar" type="text" v-on:input="this.searchUsers();" />
       <section class="small_panel_friends">
@@ -187,7 +187,7 @@ export default {
   overflow-x: hidden;
 }
 
-.panel_friends {
+.panel_search {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
@@ -233,7 +233,7 @@ export default {
 .small_panel_friends {
   background-color: #bf6183;
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   overflow-y: scroll;
   margin-top: -4%;
 }
@@ -359,7 +359,7 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
   font-size: xx-large;
   width: 100%;
-  height: 100%;
+  height: 90%;
   line-height: 100%;
   text-align: center;
 }
@@ -385,7 +385,7 @@ export default {
     background: #e3a2ba;
   }
 
-  .panel_friends {
+  .panel_search {
     margin-top: 5%;
     margin-left: 5%;
     background-color: #bf6183;
@@ -396,6 +396,7 @@ export default {
     height: 85vh;
     grid-column: 1;
   }
+
 
   .panel_requests {
     margin-top: 5%;
@@ -424,7 +425,7 @@ export default {
   .small_panel_friends {
     background-color: #bf6183;
     width: 48vh;
-    height: 70vh;
+    height: 65vh;
     overflow-y: scroll;
     margin-top: -4%;
   }
