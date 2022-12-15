@@ -84,6 +84,7 @@ export default {
             document.getElementById("message_input").value = "";
             var element = document.getElementById("message_box");
             element.scrollTop = element.scrollHeight;
+            document.getElementsByClassName("right_message").style.width = data.length;
           }
         });
       });
@@ -136,6 +137,130 @@ export default {
 </script>
 
 <style>
+.box {
+  height: auto;
+  background: #e3a2ba;
+}
+.back_button {
+  width: 10vh;
+  height: 5vh;
+  left: 5%;
+  top: 5%;
+}
+.conversation_management {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5%;
+  width: 56vh;
+  height: 83vh;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+}
+.user_data_background {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #d7dbdd;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 57vh;
+  height: 10vh;
+}
+.picture_chat {
+  margin-top: 5%;
+  margin-left: 20%;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.user_data {
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50vh;
+  height: 6vh;
+}
+.message_box {
+  width: 58vh;
+  height: 65vh;
+  background-color: #ecf0f1;
+  border-radius: 10px;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.write_message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d7dbdd;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 58vh;
+  height: 10vh;
+}
+.message_input {
+  margin-left: 5%;
+  width: 50vh;
+  height: 5vh;
+  border-radius: 10px;
+  border: none;
+  background-color: #ecf0f1;
+}
+.send_button {
+  margin-right: 5%;
+  width: 10vh;
+  height: 5vh;
+  border-radius: 10px;
+  border: none;
+  background-color: #ecf0f1;
+}
+.leftMessage {
+  background-color: #9b9b9b;
+  border-radius: 10px;
+  width: 45vh;
+  height: 5vh;
+  margin-left: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: left;
+  text-align: start;
+  position: relative;
+}
+.leftMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 5%;
+}
+.rightMessage {
+  background-color: #f76cb8;
+  border-radius: 10px;
+  align-content: flex-end;
+  width: 45vh;
+  box-sizing: border-box;
+  height: 5vh;
+  margin-right: 5%;
+  text-align: end;
+  line-height: normal;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  float: right;
+  position: relative;
+}
+.rightMessageText {
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 5%;
+}
+
+@media only screen and (min-width: 768px) {
 .box {
   height: 100vh;
   background: #e3a2ba;
@@ -237,10 +362,11 @@ export default {
   left: 5%;
 }
 .rightMessage {
-  background-color: #f76ceb;
+  background-color: #f76cb8;
   border-radius: 10px;
   align-content: flex-end;
   width: 50vh;
+  box-sizing: border-box;
   height: 5vh;
   margin-right: 5%;
   text-align: end;
@@ -256,5 +382,7 @@ export default {
   top: 50%;
   transform: translate(0, -50%);
   right: 5%;
+}
+
 }
 </style>
