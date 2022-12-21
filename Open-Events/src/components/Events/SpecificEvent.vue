@@ -25,12 +25,8 @@
         <!-- missing to add the actual value in here-->
         <section class="rating">
           <h4 id="Rating">Rating:</h4>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+          <div id= "stars" class="stars">
+            
           </div>
         </section>
         <section class="user_rating">
@@ -134,13 +130,47 @@ export default {
               self.joinText = "Leave";
               //console.log("is attending");
             }
-            if (data[i].punctuation != null) {
-              self.rating += data[i].punctuation;
+            if (data[i].puntuation != null) {
+              self.rating += data[i].puntuation;
               numPunctuation++;
             }
           }
           if (numPunctuation != 0) {
             self.rating = self.rating / numPunctuation;
+            self.rating = self.rating/2;
+          }
+          console.log("rating: ",self.rating);
+          //based on rating change class of stars to match
+          var ratingElement = document.getElementById("stars");
+
+          // Calculate the number of full stars
+          var fullStars = Math.floor(self.rating);
+          // clear stars
+          ratingElement.innerHTML = "";
+          // Create the full stars
+          for (var i = 0; i < fullStars; i++) {
+            var starElement = document.createElement("i");
+            starElement.className = "fa fa-star";
+            starElement.classList.add("checked");
+            starElement.style.color = "orange";
+            ratingElement.appendChild(starElement);
+          }
+
+          // Calculate if there should be a half star
+          if (self.rating - fullStars >= 0.5) {
+            var halfStarElement = document.createElement("i");
+            halfStarElement.className = "fa fa-star-half-alt";
+            halfStarElement.style.color = "orange";
+            ratingElement.appendChild(halfStarElement);
+            fullStars++;
+          }
+          //add empty stars for the rest
+          for (var i = 0; i < 5 - fullStars; i++) {
+            var starElement = document.createElement("i");
+            starElement.className = "far fa-star";
+            starElement.style.color = "orange";
+
+            ratingElement.appendChild(starElement);
           }
         });
       });
@@ -169,7 +199,9 @@ function closeNav() {
   flex-direction: column;
   height: auto;
 }
-
+.checked {
+  color: orange;
+}
 .rating {
   grid-row: 1;
   display: flex;
