@@ -11,6 +11,35 @@
       <section class="description_box">
         <h4 id="Description">{{ description }}</h4>
       </section>
+      <section class = "comments_panel">
+        <section class="comment_box">
+          <h4 id="Comment" class="text">Comment:</h4>
+          <input
+            class="comment_input"
+            type="text"
+            id="comment"
+            name="comment"
+            placeholder="Write your comment here"
+          />
+          <button class="submit_comment">Submit</button>
+        </section>
+
+        <section class="comments">  
+            <h4 id="Comments" class="text">Comments:</h4>
+            <v-list>
+          <v-list-item-group>
+            <v-list-item v-for="comment in comments" :key="comment.id">
+              <v-list-item-content>
+                <article>
+                
+                  <h4 class ="comment">{{ comment.comentary }} : {{ comment.puntuation }}/10</h4>
+                </article>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+         </section> 
+      </section>
     </article>
     <section class="information_panel">
       <article class="information">
@@ -65,6 +94,7 @@ export default {
     attendants: 0,
     is_attending: false,
     joinText: "Join",
+    comments: [],
   }),
   methods: {
     joinEvent() {
@@ -134,6 +164,9 @@ export default {
               self.rating += data[i].puntuation;
               numPunctuation++;
             }
+            if (data[i].comentary != null) {
+              self.comments.push(data[i]);
+            }
           }
           if (numPunctuation != 0) {
             self.rating = self.rating / numPunctuation;
@@ -201,6 +234,15 @@ function closeNav() {
 }
 .checked {
   color: orange;
+}
+.comment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .rating {
   grid-row: 1;
