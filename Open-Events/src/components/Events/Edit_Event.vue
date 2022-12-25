@@ -76,6 +76,9 @@
         <button id="publish_button" type="button" @click="updateEvent()">
           Update Event
         </button>
+        <button id="publish_button" type="button" @click="deleteEvent()">
+          Delete Event
+        </button>
       </article>
     </section>
   </div>
@@ -181,6 +184,22 @@ export default {
       }
 
       return true;
+    },
+    deleteEvent() {
+      let self = this;
+      console.log(window.location.href.split("/").pop());
+        let response = API.deleteEvent(
+          window.location.href.split("/").pop(),
+          localStorage.getItem("API_TOKEN")
+        ).then((response) => {
+          console.log(response);
+          if (response.status == 200) {
+            alert("Event deleted");
+            self.$router.push("/UpcomingEvents");
+          } else {
+            alert("Error deleting event");
+          }
+        })
     },
   },
   beforeMount() {

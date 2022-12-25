@@ -17,6 +17,13 @@
               </h4>
               <div class="buttons_box">
                 <button class="add_button_requests" v-on:click="this.requestUser(item.id);">✔</button>
+                <input type="image" class="start_chat_button"
+                  src="https://cdn-icons-png.flaticon.com/512/589/589708.png" v-on:click="
+                    $router.push({
+                      name: 'Chat',
+                      params: { id: item.id },
+                    })
+                  " />
               </div>
             </article>
           </v-list-item>
@@ -39,7 +46,7 @@
                 {{ item.name }}
               </h4>
               <div class="buttons_box">
-                <button class="remove_button_friends" v-on:click="m">X</button>
+                <button class="remove_button_friends" v-on:click="removeFriend(item.id)">X</button>
                 <input type="image" class="start_chat_button"
                   src="https://cdn-icons-png.flaticon.com/512/589/589708.png" v-on:click="
                     $router.push({
@@ -70,8 +77,8 @@
                 {{ item.name }}
               </h4>
               <div class="buttons_box">
-                <button class="add_button_requests" v-on:click="m">✔</button>
-                <button class="remove_button_requests" v-on:click="m">X</button>
+                <button class="add_button_requests" v-on:click="acceptRequest(item.id)">✔</button>
+                <button class="remove_button_requests" v-on:click="rejectRequest(item.id)">X</button>
               </div>
             </article>
           </v-list-item>
@@ -158,7 +165,38 @@ export default {
           console.log(data);
         });
       });
-    }
+    },
+    acceptRequest: async function (id) {
+      let self = this;
+      console.log("acceptRequest");
+      let res = API.acceptRequest(id, localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        if (response.status == 200) {
+          self.loadFriendRequests();
+          self.loadFriends();
+        }
+      });
+    },
+    rejectRequest: async function (id) {
+      let self = this;
+      console.log("rejectRequest");
+      let res = API.rejectRequest(id, localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        if (response.status == 200) {
+          self.loadFriendRequests();
+        }
+      });
+    },
+    removeFriend: async function (id) {
+      let self = this;
+      console.log("removeFriend");
+      let res = API.removeFriend(id, localStorage.getItem("API_TOKEN"));
+      res.then(function (response) {
+        if (response.status == 200) {
+          self.loadFriends();
+        }
+      });
+    },
   },
 
   beforeMount() {

@@ -535,6 +535,65 @@ let APIFunctions = {
       return false;
     }
   },
+  async deleteEvent(eventid, token) {
+    try {
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/"+eventid;
+      let response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async rateEvent(eventid, rating, token) {
+    try {
+      let body = {
+        puntuation: rating,
+      }
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/"+eventid+"/assistances";
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  async commentEvent(eventid, comment, token) {
+    try {
+      let body = {
+        comentary: comment,
+      }
+      let url =
+        "http://puigmal.salle.url.edu/api/v2/events/"+eventid+"/assistances"
+        ;
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
 
   /***********************************************************    CHAT     *******************************************************/
   // get chat
@@ -618,13 +677,31 @@ let APIFunctions = {
     }
   },
   // accept friend
-  async acceptFriend(username, token) {
+  async acceptRequest(id, token) {
     try {
-      let url = "http://puigmal.salle.url.edu/api/v2/friends";
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;
       //console.log(token);
       /* define url */
       let response = await fetch(url, {
-        method: "GET",
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  // reject friend
+  async rejectRequest(id, token) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;;
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "DELETE",
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -643,6 +720,24 @@ let APIFunctions = {
       /* define url */
       let response = await fetch(url, {
         method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+  // delete friend
+  async removeFriend(id, token) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;;
+      //console.log(token);
+      /* define url */
+      let response = await fetch(url, {
+        method: "DELETE",
         headers: {
           Authorization: "Bearer " + token,
         },

@@ -21,7 +21,7 @@
             name="comment"
             placeholder="Write your comment here"
           />
-          <button class="submit_comment">Submit</button>
+          <button class="submit_comment" v-on:click="commentEvent()">Submit</button>
         </section>
 
         <section class="comments">  
@@ -30,7 +30,7 @@
           <v-list-item-group>
             <v-list-item v-for="comment in comments" :key="comment.id">
               <v-list-item-content>
-                <article>
+                <article> 
                 
                   <h4 class ="comment">{{ comment.comentary }} : {{ comment.puntuation }}/10</h4>
                 </article>
@@ -67,7 +67,7 @@
             min="1"
             max="5"
           />
-          <button class="submit_rating">Submit</button>
+          <button class="submit_rating" v-on:click="rateEvent()">Submit</button>
         </section>
       </article>
       <section class="buttons">
@@ -125,6 +125,30 @@ export default {
     },
     shareEvent() {
       alert("You have shared the event!");
+    },
+    rateEvent() {
+      let self = this;
+      let puntuation = document.getElementById("quantity").value;
+      API.rateEvent(
+        window.location.href.split("/").pop(),
+        localStorage.getItem("API_TOKEN"),
+        puntuation
+      ).then((response) => {
+        console.log(response);
+        self.updateEvent();
+      });
+    },
+    commentEvent(){
+      let self = this;
+      let comment = document.getElementById("comment").value;
+      API.commentEvent(
+        window.location.href.split("/").pop(),
+        localStorage.getItem("API_TOKEN"),
+        comment
+      ).then((response) => {
+        console.log(response);
+        self.updateEvent();
+      });
     },
     updateEvent() {
       let self = this;
