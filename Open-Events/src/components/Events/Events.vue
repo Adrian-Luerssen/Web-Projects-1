@@ -1,24 +1,7 @@
 <template>
-  <header class="header_events">
-    <h2 class="app_title">Open Events</h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/4406/4406119.png" 
-    class="chat_btn" v-on:click="$router.push({ name: 'ChatList'})"/>
-  </header> 
     <section class="table_panel">
       <!-- search box -->
-      <section class="search_box">
-        <input type="text" class="search_message" placeholder="Search..." />
-        <section class="buttons_section">
-          <button class="search_button">Search</button>
-          <select class="filters" name="filters" id="filters_id">
-            <option value="">--Select filter--</option>
-            <option value="event_creator_rating">Event creator rating</option>
-            <option value="by_name">Search by name</option>
-            <option value="by_location">Search by location</option>
-            <option value="by_date">Search by date</option>
-          </select>
-        </section>
-      </section>
+      
       <v-list>
         <v-list-item v-for="item in elements" :key="item.event" two-line>
           <article class="event_box" v-on:click="$router.push({ name:'SpecificEvent', params:{id: item.event}})">
@@ -117,6 +100,7 @@ computed: {
   justify-content: center;
   flex-direction: column;
   display: flex;
+  position: relative
 }
 
 .search_message {
@@ -305,7 +289,7 @@ computed: {
     width:100%;
     flex-direction: column;
     align-items: center;
-    background-color: #e3a2ba;
+    background-color: #4C566A;
   }
   .event_box {
     margin-top: 5%;

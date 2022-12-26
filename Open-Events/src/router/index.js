@@ -9,6 +9,7 @@ import Chat from '../components/Profile/Chat.vue';
 import Statistics from '../components/Profile/Statistics.vue';
 import Other_Profile from '../components/Profile/Other_Profile.vue';
 import ChatList from '../components/Profile/ChatList.vue';
+import Test from '../components/Events/Test.vue';
 /* define routes as objects*/
 const routes = [
     {
@@ -66,6 +67,11 @@ const routes = [
         path: '/ChatList',
         name: 'ChatList',
         component: ChatList
+    },
+    {
+        path: '/Test',
+        name: 'Test',
+        component: Test
     }
 ];
 

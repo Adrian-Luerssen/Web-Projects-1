@@ -153,6 +153,7 @@ function closeNav() {
   height: 85vh;
   right: 5%;
   grid-column: 1;
+  position: relative;
 }
 .panel_requests {
   margin-top: 5%;

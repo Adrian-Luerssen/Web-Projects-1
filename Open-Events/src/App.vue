@@ -2,6 +2,12 @@
     <header>
       <Navbar2 />
     </header>
+    <div>
+    <router-view></router-view>
+    </div>
+    <footer>
+      <Navbar />
+    </footer>
 </template>
 
 <script>
@@ -10,17 +16,19 @@ import Login from "./components/Login/Login.vue";
 import SignUp from "./components/Login/SignUp.vue";
 import Statistics from "./components/Profile/Statistics.vue";
 import Navbar2 from "./components/Navbar/Navbar2.vue";
+import Test from "./components/Events/Test.vue";
 import router from "./router";
 router.push("/");
 export default {
   name: "app",
-  components: { Navbar2, Login, SignUp, Statistics },
+  components: { Navbar2, Navbar, Login, SignUp, Statistics, Test },
 
   data: () => {
     return {
-      component: "Navbar2",
+      component: "Test",
     };
   },
+
 };
 </script>
 
@@ -28,13 +36,9 @@ export default {
 body{
   font-family: 'montserrat', sans-serif;
 }
-header {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  width: 100%;
-  height: 100px;
-  position: fixed;
-  background-color: #224C84;
+
+header{
+  display: none;
 }
 
 * {
@@ -63,5 +67,24 @@ h4 {
 h5 {
   font-size: 0.7em;
   line-height: 0.3;
+}
+
+
+@media only screen and (min-width: 768px) {
+  footer{
+    display: none;
+  }
+  div{
+    background-color: black;
+  }
+  header {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    background-color: #2E3440;
+    z-index: 1;
+}
 }
 </style>

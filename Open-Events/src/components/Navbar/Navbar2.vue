@@ -4,29 +4,32 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Line-style-icons-magnifying-glass.svg/1200px-Line-style-icons-magnifying-glass.svg.png" class="search_icon" />
     </div>
     <div class="event_box">
-        <div class="event" v-if="hide" v-for="event in filteredElements" >
-            <img class="event_img" :src="event.img"/>
-            <h3 class="event_name">{{event.name}}</h3>
-            <h4 class="event_date">{{event.date}}</h4>
-            <h4 class="event_location">{{event.location}}</h4>
+        <div v-if="hide" v-for="event in filteredElements" >
+            <div class="event">
+                <img class="event_img" :src="event.img"/>
+                <h3 class="event_name">{{event.name}}</h3>
+                <h4 class="event_date">{{event.date}}</h4>
+                <h4 class="event_location">{{event.location}}</h4>
+            </div>
         </div>
     </div>
-    
-    <nav>
         <ul class="nav_items">
-            <li class="menu-item"><a href="#">Home</a></li>
-            <li class="menu-item"><a href="#">My Events</a></li>
-            <li class="menu-item"><a href="#">Friends</a></li>
-            <li class="menu-item"><a href="#">Account ▼</a>
+            <v-list>
+            <v-list-item v-for="window in options" :key="window.id" two-line>
+                <RouterLink :to=window.path  class="menu-item">{{window.title}}</RouterLink>
+            </v-list-item>
+        </v-list> 
+            <li class="menu-item">Account ▼
                 <ul class="dropdown">
-                    <li class="menu-item"><a href="#">My Profile</a></li>
-                    <li class="menu-item"><a href="#">Statistics</a></li>
-                    <li class="menu-item"><a href="#">Log Out</a></li>
+                    <RouterLink v-for="window in account" :to=window.path class="dropdown-item" >{{window.title}}</RouterLink>
                 </ul>
             </li>
+            <RouterLink to="/ChatList">
+                <img src="https://cdn-icons-png.flaticon.com/512/4406/4406119.png" 
+                class="chat_btn" onclick="$router.push({ name: 'ChatList'})"/>
+            </RouterLink>
         </ul>
-    </nav>
-    
+        
 </template>
 
 <script>
@@ -38,6 +41,14 @@
             this.img = img;
             this.date = date;
             this.location = location;
+        }
+    }
+    
+    class Window{
+        constructor(id, title, path){
+            this.id = id;
+            this.title = title;
+            this.path = path;
         }
     }
     export default {
@@ -82,16 +93,28 @@
                     ),
                 ],
                 search: "",
-                information: [
-                    {title: 'My profile', link: '#'},
-                    {title: 'My statistics', link: '#'},
-                    {title: 'Delete account', link: '#'},
-                    {title: 'Log out', link: '#'},
-                ],
                 hide: false,
+                selected: 1,
+                options: [
+                    new Window(1, 'Home', '/Events'),
+                    new Window(2, 'Timeline', '/UpcomingEvents'),
+                    new Window(3, 'Friends', '/Friends'),
+                ],
+                account: [
+                    new Window(4, 'My profile', '/Profile'),
+                    new Window(5, 'Create Event', '/CreateEvent'),
+                    new Window(6, 'My statistics', '/Profile/Statistics'),
+                    new Window(7, 'Delete account', '#'),
+                    new Window(8, 'Log out', '/Login'),
+
+                ]
             }
         },
-
+        methods: {
+            path(window){
+                return window.path;
+            }
+        },
         computed: {
             filteredElements() {
                 return this.elements.filter(element => {
@@ -104,37 +127,30 @@
 </script>
 
 <style>
-nav{
-    grid-row: 1;
-    grid-column: 2;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between; 
-    align-items: center;
-}
+
 
 .nav_items{
-    grid-column: 2;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
+    justify-content: space-between;
     align-items: center;
     position:relative;
-
 }
 .menu-item{
     list-style: none;
-    align-items: center;
-}
-.menu-item a{
-    width: auto;
+    width: 22%;
+    height: 80%;
     display: inline-block;
     flex-wrap: nowrap;
+    color: #5E81AC;;
     position: relative;
-    font-size: 24px;
+    text-align:center;
     align-self: center;
+    line-height: 80px;
+    font-size: 24px;
+    text-decoration: none;
 }
 
 .event_img{
@@ -183,6 +199,10 @@ nav{
     position: relative;
 }
 
+.event:hover{
+    background: #bdc3c7;
+}
+
 .search_msg {
     width: 90%;
     height: 100%;
@@ -229,17 +249,6 @@ nav{
     font-size: 26px;
 }
 
-.dropdown li a {
-    display: block;
-    padding: 20px 25px;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    font-size: 26px;
-}
-.dropdown li{
-    display: block;
-}
 
 .dropdown {
     width: 100%;
@@ -259,6 +268,28 @@ nav{
     animation: fadeIn 0.4s;
 }
 
+.dropdown-item{
+    display: block;
+    color: #5E81AC;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    height: 10vh;
+
+}
+
+.dropdown-item:hover{
+    background: #224C66;
+    border-radius: 10%;
+}
+.chat_btn {
+    width: 7vh;
+    height: 7vh;
+    white-space: nowrap;
+    font-size: large;
+    margin-right: 2%;
+    color: white;
+  }
 
 
 
