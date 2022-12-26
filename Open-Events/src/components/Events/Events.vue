@@ -99,6 +99,30 @@ export default {
         });
       });
     },
+    async getEventsByLocation() {
+      let self = this;
+      let filter = document.getElementById("search_message").value;
+      
+      let res = API.getEventsByLocation(localStorage.getItem("API_TOKEN"), filter);
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.events = data;
+        });
+      });
+    },
+
+    async getEventsByDate() {
+      let self = this;
+      let filter = document.getElementById("search_message").value;
+      
+      let res = API.getEventsByDate(localStorage.getItem("API_TOKEN"), filter);
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.events = data;
+        });
+      });
+    },
+
 
     searchEvents() {
       let self = this;
