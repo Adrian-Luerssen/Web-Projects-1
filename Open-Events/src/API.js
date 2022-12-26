@@ -387,6 +387,7 @@ let APIFunctions = {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(response);
       return response;
     } catch (error) {
       console.log("Error: ", error);
@@ -449,6 +450,56 @@ let APIFunctions = {
       return false;
     }
   },
+
+  async getEventsByName(token, name) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/events/search?keyword=" + name;
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  async getEventsByLocation(token, location) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/events/search?location="+location;
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
+  async getEventsByDate(token, date) {
+    try {
+      let url = "http://puigmal.salle.url.edu/api/v2/events/search?date="+date;
+      let response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log("Error: ", error);
+      return false;
+    }
+  },
+
   async getPastEvents(userid, token) {
     try {
       let url =

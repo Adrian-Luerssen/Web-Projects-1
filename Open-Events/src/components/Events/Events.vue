@@ -3,9 +3,9 @@
     <section class="table_panel">
       <!-- search box -->
       <section class="search_box">
-        <input type="text" class="search_message" placeholder="Search..." />
+        <input type="text" class="search_message" id="search_message" placeholder="Search..." />
         <section class="buttons_section">
-          <button class="search_button" v-on:click="searchEvents()">Search</button>
+          <button class="search_button" v-on:click="changeData()">Search</button>
           <select class="filters" name="filters" id="filters_id">
             <option value="">--Select filter--</option>
             <option value="event_creator_rating">Event creator rating</option>
@@ -51,7 +51,6 @@ export default {
       res.then(function (response) {
         response.json().then(function (data) {
           self.events = data;
-          console.log(self.events);
         });
       });
     },
@@ -62,9 +61,10 @@ export default {
       let year = dateObj.getUTCFullYear();
       return day + "/" + month + "/" + year;
     },
-    changeData(filter) {
+    changeData() {
       let self = this;
-      self.filter = filter;
+      let filter = document.getElementById("filters_id").value;
+      console.log(filter);
       if (filter == "event_creator_rating") {
         self.getEventsByRating();
       } else if (filter == "by_name") {
@@ -74,7 +74,7 @@ export default {
       } else if (filter == "by_date") {
         self.getEventsByDate();
       } else {
-        console.log("Error");
+        this.loadAllEvents();
       }
     },
     async getEventsByRating() {
@@ -88,12 +88,25 @@ export default {
         });
       });
     },
+    async getEventsByName() {
+      let self = this;
+      let filter = document.getElementById("search_message").value;
+      
+      let res = API.getEventsByName(localStorage.getItem("API_TOKEN"), filter);
+      res.then(function (response) {
+        response.json().then(function (data) {
+          self.events = data;
+        });
+      });
+    },
+
     searchEvents() {
       let self = this;
       console.log("search");
       let filter = document.getElementById("filters_id").value;
       this.changeData(filter);
     },
+
   },
   beforeMount() {
       this.loadAllEvents();
