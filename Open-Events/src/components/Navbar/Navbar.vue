@@ -1,6 +1,5 @@
 <template>
   <router-link to ={{props.path}}></router-link>
-  <router-view></router-view>
   <CurvedBottomNavigation :options="options" v-model="selected" foreground-color='#F23AC1'
   badge-color='#FBC02D'
   background-color='#FFFFFF'

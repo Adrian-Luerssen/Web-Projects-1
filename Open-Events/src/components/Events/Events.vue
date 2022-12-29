@@ -1,12 +1,11 @@
 <template>
-  <div class="box">
     <section class="table_panel">
       <!-- search box -->
       <section class="search_box">
-        <input type="text" class="search_message" placeholder="Search..." />
+        <input type="text" v-model="search" class="search_message" placeholder="Search..." />
         <section class="buttons_section">
-          <button class="search_button" v-on:click="searchEvents()">Search</button>
-          <select class="filters" name="filters" id="filters_id">
+          <button class="search_button"  v-on:click="searchEvents()">Search</button>
+          <select class="filters" v-model="filter" id="filters_id">
             <option value="">--Select filter--</option>
             <option value="event_creator_rating">Event creator rating</option>
             <option value="by_name">Search by name</option>
@@ -15,8 +14,9 @@
           </select>
         </section>
       </section>
-      <v-list>
-        <v-list-item v-for="item in events" :key="item.id" two-line>
+      <!-- events -->
+      <section class="events_section">
+        <div v-for="item in filteredElements" :key="item.id" two-line>
           <article class="event_box" v-on:click="$router.push({ name:'SpecificEvent', params:{id: item.id}})">
             <div class="image_box">
               <img
@@ -29,10 +29,9 @@
             <b class="date">{{ displayDate(item.date)}}</b>
             <b class="location">{{ item.location }}</b>
           </article>
-        </v-list-item>
-      </v-list>
+        </div>
     </section>
-  </div>
+    </section>
 </template>
 
 <script>
@@ -43,6 +42,14 @@ export default {
     search: "",
     filter: "",
   }),
+  computed: {
+    filteredElements() {
+      console.log(this.filter)
+      return this.events.filter(element => {
+          return element.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    }
+  },
   methods: {
     async loadAllEvents() {
       let self = this;
@@ -50,11 +57,12 @@ export default {
       let res = API.getAllEvents(localStorage.getItem("API_TOKEN"));
       res.then(function (response) {
         response.json().then(function (data) {
+          console.log(data);
           self.events = data;
-          console.log(self.events);
         });
       });
     },
+    
     displayDate(date) {
       let dateObj = new Date(date);
       let month = dateObj.getUTCMonth() + 1;
@@ -110,22 +118,11 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
 }
 
-computed: {
-  function filteredElements() {
-    return this.elements.filter((p) => {
-      // return true if the product should be visible
-
-      // in this example we just check if the search string
-      // is a substring of the event name (case insensitive)
-      return p.event.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
-    });
-  }
-}
 </script>
 <style scoped>
 .search_box {
   width: 100%;
-  height: 15vh;
+  height: 100%;
   background-color: #bf6183;
   align-items: center;
   justify-content: center;
@@ -140,15 +137,13 @@ computed: {
   background-color: #d7dbdd;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  width: 90%;
-  height: 5vh;
+  width: 100%;
 }
 
 .search_button {
   width: 20vh;
   height: 4vh;
   border-radius: 10px;
-  border: 1px solid #e3a2ba;
   background: #e3a2ba;
   color: white;
   font-size: 2vh;
@@ -182,12 +177,11 @@ computed: {
   margin-right: 5%;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 25px;
-  background-color: #66293e;
+  background-color: #3B4252;
   height: 15%;
   padding: 10px 10px;
   width: 85%;
-  border: solid#E3A2BA;
-  gap: 2vh;
+  border: solid#005B88;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 3vh 10vh;
@@ -232,98 +226,80 @@ computed: {
 }
 
 @media only screen and (min-width: 767px) {
-  .box {
+  .table_panel {
     min-height: 100vh;
-    background: #e3a2ba;
-    box-sizing: border-box;
-    font-weight: normal;
-    display: flex;
-    flex-direction: row;
+    overflow: hidden; 
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    background-color: #4C566A;
   }
 
+  .events_section {
+    grid-column: 2;
+    background-color: #4C566A;
+    height: 100vh;
+    overflow-y: scroll;
+  }
   .filters {
-    width: 20vh;
-    height: 4vh;
+    width: 100%;
+    height: 5vh;
     border-radius: 10px;
-    border: 1px solid #e3a2ba;
-    background: #e3a2ba;
+    border: 2px solid black;
+    background: #434C5E;
     color: white;
     font-size: 2vh;
     font-weight: bold;
     margin-left: 3%;
   }
   .search_box {
-    width: 100%;
-    height: 15vh;
-    background-color: #bf6183;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+    grid-column: 1;
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #434C5E;
+    padding-top: 10%;
   }
 
   .buttons_section {
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
+    width: 30%;
+    height: 12vh;
+    justify-content: space-between;
+    margin-top: 0;
   }
 
-  .filter_search_dropdown {
-    width: 10vh;
-    height: 5vh;
-    align-self: flex-start;
-    background-color: #d7dbdd;
-  }
 
   .search_message {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #d7dbdd;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    width: 30%;
+    border-radius: 10px;
+    width: 60%;
     height: 5vh;
   }
 
   .search_button {
-    width: 20vh;
-    height: 4vh;
+    width: 100%;
+    height: 5vh;
     border-radius: 10px;
-    border: 1px solid #e3a2ba;
-    background: #e3a2ba;
-    color: white;
-    font-size: 2vh;
-    font-weight: bold;
-    margin-left: 3%;
+    background: #434C5E;
   }
 
-  .table_panel {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    background-color: #e3a2ba;
-  }
+
+
   .event_box {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: 25%;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 25px;
-    background-color: #66293e;
-    height: 23vh;
-    padding: 10px 10px;
-    width: auto;
-    max-width: 70vh;
-    border: solid#E3A2BA;
-    gap: 2vh;
+    background-color: #3B4252;
+    height: auto;
+    width: 80%;
+    border: solid#005B88;
     display: grid;
-    grid-template-columns: 15vh 45vh;
-    grid-template-rows: 3vh 10vh;
-    overflow: auto;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 20% 60% 20%;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
   }
   .image_box {
     width: 40%;
@@ -354,10 +330,8 @@ computed: {
   .description {
     grid-column: 2;
     grid-row: 2;
-    color: rgb(255, 213, 241);
-    text-align: center;
+    color: #005B88;
     font-size: medium;
-    justify-content: right;
     overflow: hidden;
   }
   .date {
