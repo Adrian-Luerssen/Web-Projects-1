@@ -2,7 +2,7 @@
     <section class="table_panel">
       <!-- search box -->
       <section class="search_box">
-        <input type="text" class="search_message" id="search_message" placeholder="Search..." />
+        <input type="text" v-model="search" class="search_message" id="search_message" placeholder="Search..." />
         <section class="buttons_section">
           <button class="search_button" v-on:click="changeData()">Search</button>
           <select class="filters" name="filters" id="filters_id">
@@ -43,8 +43,7 @@ export default {
     filter: "",
   }),
   computed: {
-    filteredElements() {
-      console.log(this.filter)
+    filteredElements: function () {
       return this.events.filter(element => {
           return element.name.toLowerCase().includes(this.search.toLowerCase());
       });
