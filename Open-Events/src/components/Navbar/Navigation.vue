@@ -11,7 +11,7 @@
                     <RouterLink v-bind:class="{ active: isActive === window.id }" @click="setActive(window.id)" v-for="window in account" :to=window.path class="dropdown-item" >{{window.title}}</RouterLink>
                 </ul>
             </li>
-            <RouterLink class="div_icon" to="/Profile/Dialog">
+            <RouterLink class="div_icon" to="/Profile/ChatList">
                 <img class="chat_icon" src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360"/>
             </RouterLink>
         </ul>

@@ -319,7 +319,7 @@ hr {
 
   .left_information {
     margin-left: 0%;
-    margin-top: 5%;
+    margin-top: 0%;
     align-items: center;
     color: white;
     width: 50%;
@@ -340,8 +340,6 @@ hr {
 
   .description {
     flex-direction: column;
-    padding: 10px 10px;
-    gap: 5px;
     color: white;
     display: grid;
     text-align: left;

@@ -20,7 +20,7 @@ export default {
 
   data: () => {
     return {
-      component: "Navigation",
+      component: "Login",
     };
   },
   beforeMount() {
@@ -31,6 +31,7 @@ export default {
 
 <style>
 body {
+  background-color: #4C566A;
   position: relative;
   min-height: 100vh;
   box-sizing: border-box;
