@@ -186,9 +186,14 @@ export default {
     let self = this;
     this.intervalId = window.setInterval(function () {
       // update chat
-      self.getChat();
+      if (self.userid != -1) {
+        self.getChat();
+      }
     }, 1000);
     this.loadFriends();
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalId);
   },
 };
 </script>
