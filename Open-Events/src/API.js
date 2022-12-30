@@ -537,8 +537,7 @@ let APIFunctions = {
   },
   async deleteEvent(eventid, token) {
     try {
-      let url =
-        "http://puigmal.salle.url.edu/api/v2/events/"+eventid;
+      let url = "http://puigmal.salle.url.edu/api/v2/events/" + eventid;
       let response = await fetch(url, {
         method: "DELETE",
         headers: {
@@ -551,35 +550,18 @@ let APIFunctions = {
       return false;
     }
   },
-  async rateEvent(eventid, rating, token) {
+
+  async rateEvent(eventid, rating, comment, token) {
     try {
       let body = {
         puntuation: rating,
-      }
-      let url =
-        "http://puigmal.salle.url.edu/api/v2/events/"+eventid+"/assistances";
-      let response = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      return response;
-    } catch (error) {
-      console.log("Error: ", error);
-      return false;
-    }
-  },
-  async commentEvent(eventid, comment, token) {
-    try {
-      let body = {
         comentary: comment,
-      }
+      };
+      console.log(JSON.stringify(body));
       let url =
-        "http://puigmal.salle.url.edu/api/v2/events/"+eventid+"/assistances"
-        ;
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        eventid +
+        "/assistances";
       let response = await fetch(url, {
         method: "PUT",
         headers: {
@@ -679,7 +661,7 @@ let APIFunctions = {
   // accept friend
   async acceptRequest(id, token) {
     try {
-      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       //console.log(token);
       /* define url */
       let response = await fetch(url, {
@@ -697,7 +679,7 @@ let APIFunctions = {
   // reject friend
   async rejectRequest(id, token) {
     try {
-      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;;
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       //console.log(token);
       /* define url */
       let response = await fetch(url, {
@@ -715,7 +697,7 @@ let APIFunctions = {
   // send request
   async sendRequest(id, token) {
     try {
-      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       //console.log(token);
       /* define url */
       let response = await fetch(url, {
@@ -733,7 +715,7 @@ let APIFunctions = {
   // delete friend
   async removeFriend(id, token) {
     try {
-      let url = "http://puigmal.salle.url.edu/api/v2/friends/"+id;;
+      let url = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       //console.log(token);
       /* define url */
       let response = await fetch(url, {

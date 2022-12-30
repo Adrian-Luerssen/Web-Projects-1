@@ -11,7 +11,7 @@
       <section class="description_box">
         <h4 id="Description">{{ description }}</h4>
       </section>
-      <section class = "comments_panel">
+      <section class="comments_panel">
         <section class="comment_box">
           <h4 id="Comment" class="text">Comment:</h4>
           <input
@@ -21,24 +21,35 @@
             name="comment"
             placeholder="Write your comment here"
           />
-          <button class="submit_comment" v-on:click="commentEvent()">Submit</button>
+          <input
+            class="rating_value"
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="5"
+          />
+          <button class="submit_rating" v-on:click="commentEvent()">
+            Submit
+          </button>
         </section>
 
-        <section class="comments">  
-            <h4 id="Comments" class="text">Comments:</h4>
-            <v-list>
-          <v-list-item-group>
-            <v-list-item v-for="comment in comments" :key="comment.id">
-              <v-list-item-content>
-                <article> 
-                
-                  <h4 class ="comment">{{ comment.comentary }} : {{ comment.puntuation }}/10</h4>
-                </article>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-         </section> 
+        <section class="comments">
+          <h4 id="Comments" class="text">Comments:</h4>
+          <v-list>
+            <v-list-item-group>
+              <v-list-item v-for="comment in comments" :key="comment.id">
+                <v-list-item-content>
+                  <article>
+                    <h4 class="comment">
+                      {{ comment.comentary }} : {{ comment.puntuation }}/10
+                    </h4>
+                  </article>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </section>
       </section>
     </article>
     <section class="information_panel">
@@ -54,20 +65,7 @@
         <!-- missing to add the actual value in here-->
         <section class="rating">
           <h4 id="Rating">Rating:</h4>
-          <div id= "stars" class="stars">
-            
-          </div>
-        </section>
-        <section class="user_rating">
-          <input
-            class="rating_value"
-            type="number"
-            id="quantity"
-            name="quantity"
-            min="1"
-            max="5"
-          />
-          <button class="submit_rating" v-on:click="rateEvent()">Submit</button>
+          <div id="stars" class="stars"></div>
         </section>
       </article>
       <section class="buttons">
@@ -126,25 +124,16 @@ export default {
     shareEvent() {
       alert("You have shared the event!");
     },
-    rateEvent() {
+
+    commentEvent() {
       let self = this;
+      let comment = document.getElementById("comment").value;
       let puntuation = document.getElementById("quantity").value;
       API.rateEvent(
         window.location.href.split("/").pop(),
-        localStorage.getItem("API_TOKEN"),
-        puntuation
-      ).then((response) => {
-        console.log(response);
-        self.updateEvent();
-      });
-    },
-    commentEvent(){
-      let self = this;
-      let comment = document.getElementById("comment").value;
-      API.commentEvent(
-        window.location.href.split("/").pop(),
-        localStorage.getItem("API_TOKEN"),
-        comment
+        puntuation,
+        comment,
+        localStorage.getItem("API_TOKEN")
       ).then((response) => {
         console.log(response);
         self.updateEvent();
@@ -172,10 +161,12 @@ export default {
         window.location.href.split("/").pop(),
         localStorage.getItem("API_TOKEN")
       ).then((response) => {
+        self.comments = [];
         console.log(response);
         response.json().then(function (data) {
           console.log(data);
           self.attendants = data.length;
+
           let numPunctuation = 0;
           for (let i = 0; i < data.length; i++) {
             //console.log(data[i].id, "  ", localStorage.getItem("USER_ID"));
@@ -194,9 +185,9 @@ export default {
           }
           if (numPunctuation != 0) {
             self.rating = self.rating / numPunctuation;
-            self.rating = self.rating/2;
+            self.rating = self.rating / 2;
           }
-          console.log("rating: ",self.rating);
+          console.log("rating: ", self.rating);
           //based on rating change class of stars to match
           var ratingElement = document.getElementById("stars");
 
@@ -259,7 +250,7 @@ function closeNav() {
 .checked {
   color: orange;
 }
-.comment{
+.comment {
   display: flex;
   flex-direction: row;
   align-items: center;
