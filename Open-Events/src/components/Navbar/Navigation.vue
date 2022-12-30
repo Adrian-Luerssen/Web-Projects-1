@@ -9,6 +9,7 @@
             <li @mouseenter="showDropdown=true" class="menu-item">Account▼
                 <ul v-if="showDropdown" @mouseleave="showDropdown=false" class="dropdown">
                     <RouterLink v-bind:class="{ active: isActive === window.id }" @click="setActive(window.id)" v-for="window in account" :to=window.path class="dropdown-item" >{{window.title}}</RouterLink>
+                    <p class="dropdown-item" @click="reloadPage()">Logout</p>
                 </ul>
             </li>
             <RouterLink class="div_icon" to="/Profile/ChatList">
@@ -51,7 +52,6 @@ export default {
             account: [
                 new Window(5, "Profile", "/Profile"),
                 new Window(6, "Statistics", "/Profile/Statistics"),
-                new Window(7, "Logout", "#"),
             ]
         }
     },
@@ -59,6 +59,10 @@ export default {
     {
         setActive(value){
             this.isActive = value;
+        },
+
+        reloadPage(){
+            window.location.reload();
         }
     }
 }
