@@ -310,7 +310,7 @@ hr {
     flex-direction: row;
     height: 100vh;
     width: auto;
-    background: #e3a2ba;
+    background: #4C566A;
     box-sizing: border-box;
     font-weight: normal;
     position: relative;
@@ -319,7 +319,7 @@ hr {
 
   .left_information {
     margin-left: 0%;
-    margin-top: 5%;
+    margin-top: 0%;
     align-items: center;
     color: white;
     width: 50%;
@@ -340,15 +340,13 @@ hr {
 
   .description {
     flex-direction: column;
-    padding: 10px 10px;
-    gap: 5px;
     color: white;
     display: grid;
     text-align: left;
     width: 70%;
   }
   .right_information {
-    background-color: #bf6183;
+    background-color: #434C5E;
     display: flex;
     flex-direction: row;
     width: 50%;
@@ -424,15 +422,15 @@ hr {
     grid-column: 2;
   }
   #publish_button {
-    color: black;
-    background-color: #ebd68b;
+    color: white;
+    background-color: #005B88;
     width: 14vh;
     height: 4vh;
     margin-top: 10%;
     margin-left: 50%;
   }
   #publish_button:hover {
-    background-color: #bca860;
+    background-color: #007dbb;
   }
 }
 </style>

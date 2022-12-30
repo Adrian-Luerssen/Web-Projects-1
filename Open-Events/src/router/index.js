@@ -11,6 +11,7 @@ import Other_Profile from "../components/Profile/Other_Profile.vue";
 import Login from "../components/Login/Login.vue";
 import Dialog from "../components/Profile/Dialog.vue";
 import EditEvent from "../components/Events/Edit_Event.vue";
+import ChatList from "../components/Profile/ChatList.vue";
 /* define routes as objects*/
 const routes = [
   {
@@ -79,6 +80,11 @@ const routes = [
     name: "Dialog",
     component: Dialog,
   },
+  {
+    path: "/Profile/ChatList",
+    name: "ChatList",
+    component: ChatList,
+  }
 ];
 
 /* create router */
