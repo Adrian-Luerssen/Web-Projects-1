@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <article class="profile">
-    <button class="back_btn" v-on:click="$router.go(-1)">Back</button>
+      <button class="back_btn" v-on:click="$router.go(-1)">Back</button>
       <h1 id="title">{{ event }}</h1>
       <!-- missing to add the actual value in here-->
       <h4 id="Loaction" class="text">{{ location }}</h4>
@@ -10,72 +10,71 @@
         id="img"
         src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       />
-      
-      <section class="information">
 
+      <section class="information">
         <h4 id="Description">{{ description }}</h4>
         <article class="extra_info">
-        <!-- missing to add the actual value in here-->
+          <!-- missing to add the actual value in here-->
           <h4 id="Number_of_participants" class="text">
             Number of participants: {{ attendants }}
           </h4>
           <!-- missing to add the actual value in here-->
           <h4 id="Capacity" class="text">Capacity: {{ capacity }}</h4>
-        <!-- missing to add the actual value in here-->
+          <!-- missing to add the actual value in here-->
         </article>
       </section>
     </article>
     <section class="information_panel">
       <section class="rating">
-      <section class="event_rating">
-        <h4 id="Rating">Rating:</h4>
-        <div id= "stars" class="stars"> 
-        </div>
+        <section class="event_rating">
+          <h4 id="Rating">Rating:</h4>
+          <div id="stars" class="stars"></div>
+        </section>
       </section>
-      <section class="user_rating">
-        <input
-          class="rating_value"
-          type="number"
-          id="quantity"
-          name="quantity"
-          min="1"
-          max="5"
-        />
-        <button class="submit_rating" v-on:click="rateEvent()">Submit</button>
-      </section>
-    </section>
-      <section class = "comments_panel">
+      <section class="comments_panel">
         <section class="comment_box">
           <h4 id="Comment" class="text">Comment:</h4>
-        <section class="user_comment">
-          <textarea
-          type="text"
-          class="input"
-          id="description"
-          name="description"
-          cols="32"
-          rows="5"
-          placeholder="Enter a comment for this event..."
-          ></textarea>
-          <button class="submit_comment" v-on:click="commentEvent()">Submit</button>
-        </section>
+          <section class="user_comment">
+            <textarea
+              type="text"
+              class="input"
+              id="comment"
+              name="description"
+              cols="32"
+              rows="5"
+              placeholder="Enter a comment for this event..."
+            ></textarea>
+            <input
+              class="rating_value"
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="5"
+            />
+            <button class="submit_comment" v-on:click="commentEvent()">
+              Submit
+            </button>
+          </section>
         </section>
 
-        <section class="comments">  
+        <section class="comments">
           <h4 id="Comments" class="text">Comments:</h4>
           <v-list>
-          <v-list-item-group>
-            <v-list-item v-for="comment in comments" :key="comment.id">
-              <v-list-item-content>
-                <article> 
-                
-                  <h4 class ="comment">{{ comment.comentary }} : {{ comment.puntuation }}/10</h4>
-                </article>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-        </section> 
+            <v-list-item-group>
+              <v-list-item v-for="comment in comments" :key="comment.id">
+                <v-list-item-content>
+                  <article>
+                    <h4 class="comment">
+                      {{ comment.name }}: {{ comment.comentary }}
+                      {{ comment.puntuation }}/10
+                    </h4>
+                  </article>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </section>
       </section>
       <section class="buttons">
         <button class="log_out" v-on:click="joinEvent">{{ joinText }}</button>
@@ -133,25 +132,16 @@ export default {
     shareEvent() {
       alert("You have shared the event!");
     },
-    rateEvent() {
+
+    commentEvent() {
       let self = this;
+      let comment = document.getElementById("comment").value;
       let puntuation = document.getElementById("quantity").value;
       API.rateEvent(
         window.location.href.split("/").pop(),
-        localStorage.getItem("API_TOKEN"),
-        puntuation
-      ).then((response) => {
-        console.log(response);
-        self.updateEvent();
-      });
-    },
-    commentEvent(){
-      let self = this;
-      let comment = document.getElementById("comment").value;
-      API.commentEvent(
-        window.location.href.split("/").pop(),
-        localStorage.getItem("API_TOKEN"),
-        comment
+        puntuation,
+        comment,
+        localStorage.getItem("API_TOKEN")
       ).then((response) => {
         console.log(response);
         self.updateEvent();
@@ -179,10 +169,12 @@ export default {
         window.location.href.split("/").pop(),
         localStorage.getItem("API_TOKEN")
       ).then((response) => {
+        self.comments = [];
         console.log(response);
         response.json().then(function (data) {
           console.log(data);
           self.attendants = data.length;
+
           let numPunctuation = 0;
           for (let i = 0; i < data.length; i++) {
             //console.log(data[i].id, "  ", localStorage.getItem("USER_ID"));
@@ -201,9 +193,9 @@ export default {
           }
           if (numPunctuation != 0) {
             self.rating = self.rating / numPunctuation;
-            self.rating = self.rating/2;
+            self.rating = self.rating / 2;
           }
-          console.log("rating: ",self.rating);
+          console.log("rating: ", self.rating);
           //based on rating change class of stars to match
           var ratingElement = document.getElementById("stars");
 
@@ -266,7 +258,7 @@ function closeNav() {
 .checked {
   color: orange;
 }
-.comment{
+.comment {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -385,7 +377,7 @@ function closeNav() {
 
 @media only screen and (min-width: 767px) {
   .box {
-    background: #4C566A;
+    background: #4c566a;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     display: grid;
@@ -406,7 +398,7 @@ function closeNav() {
     margin-top: 0%;
   }
 
-  #Description{
+  #Description {
     grid-column: 1;
     margin-top: 0%;
     line-height: 1.5;
@@ -420,7 +412,7 @@ function closeNav() {
     grid-column: 2;
     display: grid;
     grid-template-rows: 20% 60% 20%;
-    background-color: #434C5E;
+    background-color: #434c5e;
     width: 100%;
     height: 100%;
   }
@@ -435,11 +427,11 @@ function closeNav() {
     height: 100%;
   }
 
-  .back_btn{
+  .back_btn {
     grid-column: 1;
     grid-row: 1;
-    background-color: #005B88;
-    border: solid #005B88;
+    background-color: #005b88;
+    border: solid #005b88;
     align-self: flex-start;
     color: white;
     width: 20%;
@@ -450,8 +442,8 @@ function closeNav() {
     margin-left: 2%;
   }
   .log_out {
-    background-color: #005B88;
-    border: solid #005B88;
+    background-color: #005b88;
+    border: solid #005b88;
     color: white;
     width: 100%;
     height: 7vh;
@@ -464,11 +456,11 @@ function closeNav() {
   .log_out:hover {
     background-color: #007dbb;
   }
-  .buttons{
+  .buttons {
     grid-row: 3;
   }
 
-  .rating{
+  .rating {
     grid-row: 1;
     display: flex;
     flex-direction: row;
@@ -476,21 +468,21 @@ function closeNav() {
     justify-items: center;
   }
 
-  .event_rating{
+  .event_rating {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
   }
-  .user_rating{
+  .user_rating {
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
   }
-  .comments_panel{
+  .comments_panel {
     grid-row: 2;
     color: white;
     display: grid;
@@ -498,7 +490,7 @@ function closeNav() {
     width: 100%;
   }
 
-  .user_comment{
+  .user_comment {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -506,11 +498,11 @@ function closeNav() {
     width: 100%;
     height: 100%;
   }
-  .submit_comment{
+  .submit_comment {
     width: 20%;
-   height: 70%;
+    height: 70%;
   }
-  .comment_box{
+  .comment_box {
     grid-row: 1;
     display: flex;
     flex-direction: row;
@@ -520,13 +512,12 @@ function closeNav() {
     height: 100%;
   }
 
-
-  .comments{
-    background-color: #3B4252;
+  .comments {
+    background-color: #3b4252;
     padding-top: 10px;
   }
 
-  .extra_info{
+  .extra_info {
     grid-column: 2;
     display: flex;
     flex-direction: column;
