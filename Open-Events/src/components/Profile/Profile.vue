@@ -17,7 +17,7 @@
     <section class="information_panel">
       <article class="information">
         <h4 id="First_name" class="text">First name:</h4>
-        <input type="text" id="first_name_text" name="first_name" />
+        <input type="text" id="first_name_text" name="first_name" v-model = firstName />
         <button
           type="button"
           id="change_first_name_button"
@@ -26,10 +26,11 @@
         >
           Change...
         </button>
-        <h4 id="Last_name" class="text">Last name:</h4>
+        <h4 id="Last_name" class="text" >Last name:</h4>
         <input
           type="text"
           id="last_name_text"
+          v-model = lastName
           name="last_name"
           placeholder="Surname"
         />
@@ -45,6 +46,7 @@
         <input
           type="text"
           id="email_text"
+          v-model = email
           name="email"
           placeholder="user@gmail.com"
         />
@@ -100,28 +102,34 @@ export default {
   data: () => {
     return {
       image: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
     async getProfile() {
+      let self = this;
       API.getProfile(
         localStorage.getItem("USER_ID"),
         localStorage.getItem("API_TOKEN")
       ).then(function (result) {
         result.json().then(function (data) {
           console.log(data);
-          document.getElementById("first_name_text").value = data[0].name;
-          document.getElementById("last_name_text").value = data[0].last_name;
-          document.getElementById("email_text").value = data[0].email;
+          self.firstName = data[0].name;
+          self.lastName = data[0].last_name;
+          self.email = data[0].email;
           //document.getElementById("password_text").value = data[0].password;
-          document.getElementById("img").src = data[0].image;
+          self.image = data[0].image;
         });
       });
     },
 
     storeName: async function (firstname) {
+      let self = this;
       let res = API.updateName(
-        document.getElementById(firstname).value,
+        self.firstName,
         localStorage.getItem("API_TOKEN")
       );
       res.then(function (result) {
@@ -136,8 +144,9 @@ export default {
     },
 
     storeSurname: async function (lastname) {
+      let self = this;
       let res = API.updateSurname(
-        document.getElementById(lastname).value,
+        self.lastName,
         localStorage.getItem("API_TOKEN")
       );
       res.then(function (result) {
@@ -152,8 +161,9 @@ export default {
     },
 
     storeEmail: async function (email) {
+      let self = this;
       let res = API.updateEmail(
-        document.getElementById(email).value,
+        self.email,
         localStorage.getItem("API_TOKEN")
       );
       res.then(function (result) {
@@ -168,8 +178,9 @@ export default {
     },
 
     storePassword: async function (password) {
+      let self = this;
       let res = API.updatePassword(
-        document.getElementById(password).value,
+        self.password,
         localStorage.getItem("API_TOKEN")
       );
       res.then(function (result) {
@@ -183,7 +194,8 @@ export default {
       });
     },
     togglePassword: function myToggle() {
-      var x = document.getElementById("password_text");
+      let self = this;
+      var x = self.password;
       if (x.type === "password") {
         x.type = "text";
       } else {

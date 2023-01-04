@@ -14,6 +14,7 @@
         <input
           class="input"
           type="text"
+          v-model = "title"
           id="title"
           name="title"
           placeholder="Title"
@@ -23,6 +24,7 @@
 
         <textarea
           type="text"
+          v-model = "description"
           class="input"
           id="description"
           name="description"
@@ -38,6 +40,7 @@
         <input
           id="start_date_input"
           type="date"
+          v-model = "start_date"
           name="date"
           placeholder="Start date"
           class="dd/mm/yyyy"
@@ -45,6 +48,7 @@
         <h4 id="end_date_text">End date of the event:</h4>
         <input
           id="end_date_input"
+          v-model = "end_date"
           type="date"
           name="date"
           placeholder="End date"
@@ -53,6 +57,7 @@
         <h4 id="attendance_text">Max number of attendants:</h4>
         <input
           id="attendance_input"
+          v-model = "capacity"
           type="number"
           name="number"
           placeholder="Max attendants"
@@ -60,6 +65,7 @@
         <h4 id="categories_text">Categories:</h4>
         <input
           id="categories_input"
+          v-model = "category"
           type="text"
           name="type"
           placeholder="Type"
@@ -68,6 +74,7 @@
         <input
           id="location_input"
           type="address"
+          v-model = "location"
           name="type"
           placeholder="Address"
           class="address"
@@ -88,10 +95,11 @@
 import API from "../../API.js";
 export default {
   data: () => ({
-    event: "",
+    title: "",
     description: "",
     img: "",
-    date: "",
+    start_date: "",
+    end_date: "",
     event_id: 1,
     capacity: 0,
     location: "",
@@ -109,11 +117,11 @@ export default {
           document.getElementById("location_input").value.split(",")[0],
           self.longitude,
           self.latitude,
-          document.getElementById("description").value,
-          document.getElementById("start_date_input").value,
-          document.getElementById("end_date_input").value,
-          document.getElementById("attendance_input").value,
-          document.getElementById("categories_input").value,
+          this.description,
+          this.start_date,
+          this.end_date,
+          this.capacity,
+          this.location,
           window.location.href.split("/").pop(),
           localStorage.getItem("API_TOKEN")
         );
@@ -129,13 +137,14 @@ export default {
       return year + "-" + month + "-" + day;
     },
     checkInputs: function () {
-      let title = document.getElementById("title").value;
-      let address = document.getElementById("location_input").value;
-      let description = document.getElementById("description").value;
-      let start = document.getElementById("start_date_input").value;
-      let end = document.getElementById("end_date_input").value;
-      let number = document.getElementById("attendance_input").value;
-      let type = document.getElementById("categories_input").value;
+      let title = this.title;
+      let address = this.location;
+      let description = this.description;
+      let start = this.start_date;
+      let end = this.end_date;
+      let number = this.capacity;
+      let type = this.category;
+
       if (
         title == "" ||
         address == "" ||
@@ -211,22 +220,22 @@ export default {
       console.log(response);
       response.json().then(function (data) {
         console.log(data);
-        self.event = data[0].name;
-        document.getElementById("title").value = self.event;
+        self.title = data[0].name;
+        
         self.description = data[0].description;
-        document.getElementById("description").value = self.description;
+        
         self.img = data[0].image;
-        document.getElementById("start_date_input").value = self.displayDate(
+        self.start_date = self.displayDate(
           data[0].eventStart_date
         );
-        document.getElementById("end_date_input").value = self.displayDate(
+        self.end_date = self.displayDate(
           data[0].eventEnd_date
         );
         self.capacity = data[0].n_participators;
-        document.getElementById("attendance_input").value = self.capacity;
+        
         self.location = data[0].location;
-        document.getElementById("location_input").value = self.location;
-        document.getElementById("categories_input").value = data[0].type;
+      
+        self.category = data[0].type;
       });
     });
   },
