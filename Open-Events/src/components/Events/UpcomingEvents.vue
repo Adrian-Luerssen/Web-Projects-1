@@ -141,6 +141,7 @@ function closeNav() {
   justify-content: space-between;
   overflow-x: hidden;
   padding: 1em 1em;
+  overflow-y: scroll;
 }
 .panel_past_events {
   align-self: center;
@@ -258,6 +259,7 @@ function closeNav() {
     flex-direction: row;
     justify-content: space-between;
     background: #e3a2ba;
+    overflow-y: scroll;
   }
   .panel_past_events {
     align-self: center;

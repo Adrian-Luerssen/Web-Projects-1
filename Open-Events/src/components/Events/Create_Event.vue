@@ -191,6 +191,7 @@ export default {
   box-sizing: border-box;
   font-weight: normal;
   position: relative;
+  overflow-y: scroll;
 }
 
 .left_information {

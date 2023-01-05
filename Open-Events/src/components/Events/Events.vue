@@ -188,6 +188,13 @@ function closeNav() {
   margin-left: 3%;
 }
 
+.events_section {
+    grid-column: 2;
+    background-color: #4C566A;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
 .buttons_section {
   align-items: center;
   justify-content: center;
@@ -215,28 +222,36 @@ function closeNav() {
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 25px;
   background-color: #3B4252;
-  height: 15%;
+  height: 30vh;
   padding: 10px 10px;
-  width: 85%;
+  width: 80%;
   border: solid#005B88;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 3vh 10vh;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 60% 20%;
   overflow: auto;
 }
 .image_events {
-  display: none;
-  grid-column: 1;
-  grid-row: 2;
+    margin-top: 10%;
+    margin-left: 10%;
+    grid-template-columns: 1;
+    grid-template-rows: 2;
+    width: 13vh;
+    height: 13vh;
+    border-radius: 80%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 .title {
   display: flex;
   justify-content: flex-start;
-  grid-column: 2;
+  flex-direction: column;
+  grid-column: 1;
   grid-row: 1;
   color: white;
   font-weight: bold;
-  text-align: center;
   font-size: medium;
 }
 .description {
@@ -245,7 +260,9 @@ function closeNav() {
   color: rgb(255, 213, 241);
   text-align: center;
   font-size: small;
-  justify-content: right;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 .date {
@@ -260,6 +277,10 @@ function closeNav() {
   color: #fff;
   grid-column: 2;
   grid-row: 3;
+  font-size: small;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 @media only screen and (min-width: 767px) {
