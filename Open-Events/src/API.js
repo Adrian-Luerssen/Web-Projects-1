@@ -394,13 +394,10 @@ let APIFunctions = {
       return false;
     }
   },
-  async getEventRating(eventid, token) {
-    console.log("heeey");
+
+  async getEventsByRating(token) {
     try {
-      let url =
-        "http://puigmal.salle.url.edu/api/v2/events/" +
-        eventid +
-        "/assistances";
+      let url = "http://puigmal.salle.url.edu/api/v2/events/best";
       //console.log(token);
       /* define url */
       let response = await fetch(url, {
@@ -409,44 +406,10 @@ let APIFunctions = {
           Authorization: "Bearer " + token,
         },
       });
-      let rating = 0;
-      for (let i = 0; i < response.length; i++) {
-        if (response[i].rating != null) {
-          rating += response[i].rating;
-        }
-      }
-      console.log(rating);
-      return rating / response.length;
-    } catch (error) {
-      console.log("Error: ", error);
-      return false;
-    }
-  },
-  async getEventsByRating(token) {
-    let self = this;
-    console.log("getEventsByRating");
-    try {
-      console.log("getevents: ", error);
-      let response;
-      try {
-        response = self.getAllEvents(token);
-      } catch (error) {
-        console.log("Error2: ", error);
-        return false;
-      }
-      for (let i = 0; i < response.length; i++) {
-        //add rating field to each event
-        try {
-          response[i].rating = self.getEventRating(response[i].id, token);
-        } catch (error) {
-          console.log("Error3: ", error);
-          return false;
-        }
-      }
-      //sort events by rating
+      console.log(response);
       return response;
     } catch (error) {
-      console.log("Error4: ", error);
+      console.log("Error: ", error);
       return false;
     }
   },
@@ -485,6 +448,7 @@ let APIFunctions = {
   },
 
   async getEventsByDate(token, date) {
+    console.log("date: ", date);
     try {
       let url = "http://puigmal.salle.url.edu/api/v2/events/search?date="+date;
       let response = await fetch(url, {

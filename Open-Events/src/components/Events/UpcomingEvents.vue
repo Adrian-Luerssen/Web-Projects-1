@@ -145,8 +145,8 @@ function closeNav() {
 }
 .panel_past_events {
   align-self: center;
-  background-color: #bf6183;
-  border: solid #780831;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: 3px;
   font-size: medium;
   border-radius: 5px;
@@ -160,8 +160,8 @@ function closeNav() {
 
 .panel_personal_events {
   align-self: center;
-  background-color: #bf6183;
-  border: solid #780831;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: 3px;
   border-radius: 5px;
   width: 100%;
@@ -174,8 +174,8 @@ function closeNav() {
 
 .panel_upcoming_events {
   align-self: center;
-  background-color: #bf6183;
-  border: solid #780831;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: 3px;
   border-radius: 5px;
   width: 100%;
@@ -189,10 +189,10 @@ function closeNav() {
   margin-left: 15%;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 25px;
-  background-color: #e3a2ba;
+  background-color: #0c71a4;
   height: 7vh;
   width: 65%;
-  border: solid #bf6183;
+  border: solid #005B88;
   display: flex;
   flex-direction: row;
   align-items: left;
@@ -257,13 +257,13 @@ function closeNav() {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: #e3a2ba;
+    background: #3B4252;
     overflow-y: scroll;
   }
   .panel_past_events {
     align-self: center;
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #262a35;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 70vh;
@@ -274,8 +274,8 @@ function closeNav() {
   }
   .panel_personal_events {
     align-self: center;
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #262a35;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 70vh;
@@ -286,8 +286,8 @@ function closeNav() {
   }
   .panel_upcoming_events {
     align-self: center;
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #262a35;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 70vh;
@@ -302,10 +302,10 @@ function closeNav() {
     margin-left: 15%;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 25px;
-    background-color: #e3a2ba;
+    background-color: #0c71a4;
     height: 10vh;
     width: 70%;
-    border: solid #bf6183;
+    border: solid #005B88;
     display: flex;
     flex-direction: row;
     align-items: left;

@@ -87,13 +87,14 @@ export default {
       }
     },
     async getEventsByRating() {
+      console.log("LOADEventsByRating");
       let self = this;
-      console.log("loadEventsByRating");
-      let res = API.getEventsByRating(localStorage.getItem("API_TOKEN"), self.events);
+      let filter = document.getElementById("search_message").value;
+      
+      let res = API.getEventsByRating(localStorage.getItem("API_TOKEN"), filter);
       res.then(function (response) {
         response.json().then(function (data) {
           self.events = data;
-          console.log(self.events);
         });
       });
     },
@@ -388,15 +389,18 @@ function closeNav() {
     border-radius: 25px;
     grid-column: 1;
     grid-row:2;
-    margin-left: 5%;
+    margin-top: 10%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: center;
   }
   .image_events {
     width: 10vh;
     height: 10vh;
     border-radius: 80%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    border-style: solid;
+    border-color: #005B88;  
   }
   .title {
     grid-column: 2;

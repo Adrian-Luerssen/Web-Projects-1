@@ -235,8 +235,8 @@ export default {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #bf6183;
-  border: solid #bf6183;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: thick;
   border-radius: 5px;
   width: 90%;
@@ -248,8 +248,8 @@ export default {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #bf6183;
-  border: solid #bf6183;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: thick;
   border-radius: 5px;
   width: 90%;
@@ -261,8 +261,8 @@ export default {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: #bf6183;
-  border: solid #bf6183;
+  background-color: #3B4252;
+  border: solid #005B88;
   border-width: thick;
   border-radius: 5px;
   width: 90%;
@@ -271,7 +271,7 @@ export default {
 }
 
 .small_panel_friends {
-  background-color: #bf6183;
+  background-color: #2c313c;
   width: 100%;
   height: 20vh;
   overflow-y: scroll;
@@ -279,7 +279,7 @@ export default {
 }
 
 .small_panel_requests {
-  background-color: #bf6183;
+  background-color: #2c313c;
   width: 100%;
   height: 20vh;
   overflow-y: scroll;
@@ -293,7 +293,7 @@ export default {
 }
 
 .small_panel_mightKnow {
-  background-color: #bf6183;
+  background-color: #2c313c;
   height: 31vh;
   width: 100%;
   overflow-y: scroll;
@@ -314,7 +314,7 @@ export default {
 }
 
 .info {
-  background-color: #622f41;
+  background-color: #47859c;
   border: solid white;
   border-width: thin;
   width: 90%;
@@ -325,7 +325,7 @@ export default {
 }
 
 .remove_button_friends {
-  background-color: #e3a2ba;
+  background-color: red;
   color: white;
   width: 4vh;
   height: 4vh;
@@ -335,7 +335,7 @@ export default {
 }
 
 .start_chat_button {
-  background-color: #e3a2ba;
+  background-color: rgb(81, 175, 196);
   color: white;
   width: 4vh;
   height: 4vh;
@@ -405,7 +405,7 @@ export default {
 }
 
 .searchBar {
-  border: solid #bf6183;
+  border: solid #005B88;
   border-width: thick;
   border-radius: 5px;
   width: 90%;
@@ -429,8 +429,8 @@ export default {
   .panel_search {
     margin-top: 5%;
     margin-left: 5%;
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #3B4252;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 50vh;
@@ -440,8 +440,8 @@ export default {
 
 
   .panel_requests {
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #3B4252;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 50vh;
@@ -452,8 +452,8 @@ export default {
 
   .panel_mightKnow {
     margin-top: 5%;
-    background-color: #bf6183;
-    border: solid #bf6183;
+    background-color: #3B4252;
+    border: solid #005B88;
     border-width: thick;
     border-radius: 5px;
     width: 50vh;
@@ -463,7 +463,7 @@ export default {
   }
 
   .small_panel_friends {
-    background-color: #bf6183;
+    background-color: #2c313d;
     width: 48vh;
     height: 65vh;
     overflow-y: scroll;
@@ -471,7 +471,7 @@ export default {
   }
 
   .small_panel_requests {
-    background-color: #bf6183;
+    background-color: #2c313d;
     width: 48vh;
     height: 31vh;
     overflow-y: scroll;
@@ -484,7 +484,7 @@ export default {
   }
 
   .small_panel_mightKnow {
-    background-color: #bf6183;
+    background-color: #2c313d;
     width: 48vh;
     height: 31vh;
     overflow-y: scroll;
@@ -505,7 +505,7 @@ export default {
   }
 
   .info {
-    background-color: #622f41;
+    background-color: #47859c;
     border: solid white;
     border-width: thin;
     width: 43vh;
@@ -516,7 +516,7 @@ export default {
   }
 
   .remove_button_friends {
-    background-color: #e3a2ba;
+    background-color: red;
     color: white;
     width: 4vh;
     height: 4vh;
@@ -526,7 +526,7 @@ export default {
   }
 
   .start_chat_button {
-    background-color: #e3a2ba;
+    background-color: #00edf5;
     color: white;
     width: 4vh;
     height: 4vh;
