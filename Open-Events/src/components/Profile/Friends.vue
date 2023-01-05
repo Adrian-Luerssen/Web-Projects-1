@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="boxFriends">
     <section class="panel_search">
       <h3 class="title_panel">Search users:</h3>
       <input id="SearchUser" class="searchBar" type="text" v-on:input="this.searchUsers();" />
@@ -217,12 +217,18 @@ export default {
 };
 </script>
 <style>
-.box {
-  height: 100vh;
-  display: flex;
+.boxFriends {
+  display: flex ;
   flex-direction: column;
   background: #e3a2ba;
   overflow-x: hidden;
+  height: 90vh;
+  width: 96vw;
+  background-color: #4c566a;
+  align-items: center;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  border-radius: 10px;
 }
 
 .panel_search {
@@ -234,9 +240,8 @@ export default {
   border-width: thick;
   border-radius: 5px;
   width: 90%;
-  height: 85vh;
+  height: 50vh;
   right: 5%;
-  grid-column: 1;
 }
 
 .panel_requests {
@@ -248,30 +253,27 @@ export default {
   border-width: thick;
   border-radius: 5px;
   width: 90%;
-  height: 85vh;
+  height: 50vh;
   right: 5%;
-  grid-column: 1;
 }
 
 .panel_mightKnow {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 80px;
   background-color: #bf6183;
   border: solid #bf6183;
   border-width: thick;
   border-radius: 5px;
   width: 90%;
-  height: 85vh;
+  height: 50vh;
   right: 5%;
-  grid-column: 1;
 }
 
 .small_panel_friends {
   background-color: #bf6183;
   width: 100%;
-  height: 65vh;
+  height: 20vh;
   overflow-y: scroll;
   margin-top: -4%;
 }
@@ -279,7 +281,7 @@ export default {
 .small_panel_requests {
   background-color: #bf6183;
   width: 100%;
-  height: 30vh;
+  height: 20vh;
   overflow-y: scroll;
   margin-top: -4%;
 }
@@ -417,7 +419,8 @@ export default {
 @media only screen and (min-width: 768px) {
   .box {
     height: 100vh;
-    display: grid;
+    display: flex;
+    align-items: center;
     grid-template-columns: 70vh 70vh;
     grid-template-rows: 45vh 55vh;
     background: #e3a2ba;
@@ -437,7 +440,6 @@ export default {
 
 
   .panel_requests {
-    margin-top: 5%;
     background-color: #bf6183;
     border: solid #bf6183;
     border-width: thick;

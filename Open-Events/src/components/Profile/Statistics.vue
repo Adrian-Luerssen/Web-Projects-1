@@ -74,8 +74,10 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     display:flex;
+    max-height: 150vh;
+    position: relative;
     flex-direction: column;
-    height: auto;
+    overflow-y: scroll;
 }
 
 .profile{
@@ -119,6 +121,8 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: auto;
+  position: relative;
+  margin-top: 20%;
   
 }
 .log_out{

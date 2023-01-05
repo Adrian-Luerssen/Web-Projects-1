@@ -140,8 +140,8 @@ function closeNav() {
   flex-direction: column;
   justify-content: space-between;
   overflow-x: hidden;
-  padding: 1em 1em;
   overflow-y: scroll;
+  padding: 1em 1em;
 }
 .panel_past_events {
   align-self: center;
@@ -182,8 +182,7 @@ function closeNav() {
   height: 30vh;
   margin-left: 10%;
   margin-right: 10%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: scroll;
 }
 .event_box {
   margin-bottom: 5%;

@@ -181,17 +181,16 @@ export default {
 
 <style scoped>
 .box {
+  -webkit-overflow-scrolling: touch;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
-  height: auto;
-  width: auto;
   background: #e3a2ba;
   box-sizing: border-box;
   font-weight: normal;
-  position: relative;
   overflow-y: scroll;
+  position: relative;
 }
 
 .left_information {

@@ -1,6 +1,7 @@
 <template>
     <section class="table_panel">
       <!-- search box -->
+    <img class="goChat" src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" @click="$router.push({name: 'ChatList'})"/>
       <section class="search_box">
         <input type="text" v-model="search" class="search_message" id="search_message" placeholder="Search..." />
         <section class="buttons_section">
@@ -157,7 +158,19 @@ function closeNav() {
 
 </script>
 <style scoped>
+
+.goChat {
+  width: 15%;
+  height: 15%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
+  margin-right: 1%;
+}
+
 .search_box {
+  margin-top: 5%;
   width: 100%;
   height: 100%;
   background-color: #bf6183;
@@ -284,6 +297,16 @@ function closeNav() {
 }
 
 @media only screen and (min-width: 767px) {
+
+  .goChat {
+    width: 0%;
+    height: 0%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+    margin-right: 1%;
+  }
   .table_panel {
     min-height: 100vh;
     overflow: hidden; 
