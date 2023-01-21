@@ -186,7 +186,7 @@ export default {
   color: white;
   display: flex;
   flex-direction: column;
-  background: #e3a2ba;
+  background: #4C566A;
   box-sizing: border-box;
   font-weight: normal;
   overflow-y: scroll;
@@ -237,7 +237,7 @@ export default {
   justify-content: center;
 }
 .right_information {
-  background-color: #bf6183;
+  background-color: #344058;
   display: flex;
   flex-direction: row;
   width: 100%;

@@ -278,6 +278,7 @@ function closeNav() {
 
 .user_rating {
   grid-row: 2;
+  grid-column: 2;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -317,11 +318,11 @@ function closeNav() {
   margin-top: 15%;
   margin-left: 5%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   column-gap: 5%;
   row-gap: 20%;
-  width: 40%;
+  width: 100%;
   margin-bottom: 30%;
 }
 

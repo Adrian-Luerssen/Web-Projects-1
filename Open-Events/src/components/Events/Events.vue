@@ -1,7 +1,9 @@
 <template>
     <section class="table_panel">
+      <!-- chat section where only in mobile is the image that goes to chat-->
+      
+        <img class="goChat" src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" @click="$router.push({name: 'ChatList'})"/>
       <!-- search box -->
-    <img class="goChat" src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" @click="$router.push({name: 'ChatList'})"/>
       <section class="search_box">
         <input type="text" v-model="search" class="search_message" id="search_message" placeholder="Search..." />
         <section class="buttons_section">
@@ -163,18 +165,16 @@ function closeNav() {
 .goChat {
   width: 15%;
   height: 15%;
-  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: right;
-  margin-right: 1%;
 }
 
 .search_box {
-  margin-top: 5%;
+  padding-top: 10%;
   width: 100%;
   height: 100%;
-  background-color: #bf6183;
+  background-color: #005B88;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -195,7 +195,8 @@ function closeNav() {
   width: 20vh;
   height: 4vh;
   border-radius: 10px;
-  background: #e3a2ba;
+  background: #3B4252;
+  border: 1px solid white;
   color: white;
   font-size: 2vh;
   font-weight: bold;
@@ -221,8 +222,8 @@ function closeNav() {
   width: 20vh;
   height: 4vh;
   border-radius: 10px;
-  border: 1px solid #e3a2ba;
-  background: #e3a2ba;
+  border: 1px solid white;
+  background: #3B4252;
   color: white;
   font-size: 2vh;
   font-weight: bold;

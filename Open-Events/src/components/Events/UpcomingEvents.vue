@@ -134,14 +134,17 @@ function closeNav() {
 </script>
 <style scoped>
 .box {
-  font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
-  display: flex;
+  display: flex ;
   flex-direction: column;
-  justify-content: space-between;
+  background: #e3a2ba;
   overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 1em 1em;
+  height: 90vh;
+  width: 96vw;
+  background-color: #4c566a;
+  align-items: center;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  border-radius: 10px;
 }
 .panel_past_events {
   align-self: center;
