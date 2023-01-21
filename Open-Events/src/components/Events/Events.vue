@@ -1,9 +1,5 @@
 <template>
     <section class="table_panel">
-      <!-- chat section where only in mobile is the image that goes to chat-->
-      
-        <img class="goChat" src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" @click="$router.push({name: 'ChatList'})"/>
-      <!-- search box -->
       <section class="search_box">
         <input type="text" v-model="search" class="search_message" id="search_message" placeholder="Search..." />
         <section class="buttons_section">
