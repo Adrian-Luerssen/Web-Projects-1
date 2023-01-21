@@ -158,23 +158,16 @@ function closeNav() {
 </script>
 <style scoped>
 
-.goChat {
-  width: 15%;
-  height: 15%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: right;
-}
 
 .search_box {
-  padding-top: 10%;
   width: 100%;
-  height: 100%;
+  height: 90%;
   background-color: #005B88;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   display: flex;
+  overflow: hidden;
 }
 
 .search_message {
@@ -204,6 +197,7 @@ function closeNav() {
     background-color: #4C566A;
     height: 100vh;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 
 .buttons_section {
@@ -305,15 +299,7 @@ function closeNav() {
     align-items: right;
     margin-right: 1%;
   }
-  .table_panel {
-    min-height: 100vh;
-    overflow: hidden; 
-    width: 100%;
-    display: grid;
-    grid-template-columns: 30% 70%;
-    background-color: #4C566A;
-  }
-
+º
   .events_section {
     grid-column: 2;
     background-color: #4C566A;
