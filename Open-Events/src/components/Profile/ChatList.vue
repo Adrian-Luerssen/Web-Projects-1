@@ -1,5 +1,8 @@
 <template class="all_chat">
   <section class="box">
+    <button class="showChatList" @click="showUserList()">
+      <i class="fas fa-bars" id="chatListButton"> HIDE CHAT LIST</i>
+    </button>
     <section class="chat_list">
       <section class="header_dm">
         <input
@@ -87,9 +90,23 @@ export default {
     userid: -1,
     ourid: localStorage.getItem("USER_ID"),
     messages: [],
+    showChatList: true,
   }),
 
   methods: {
+    showUserList: function () {
+      let chats = document.getElementsByClassName("chat_list")[0];
+      let button = document.getElementById("chatListButton");
+      if (this.showChatList) {
+        chats.style.display = "none";
+        button.innerHTML = "SHOW CHAT LIST";
+        this.showChatList = false;
+      } else {
+        chats.style.display = "block";
+        button.innerHTML = "HIDE CHAT LIST";
+        this.showChatList = true;
+      }
+    },
     goToChat: function (chat) {
       this.$router.push({ name: "Chat", params: { chat: chat } });
     },
@@ -203,12 +220,13 @@ export default {
   height: 90vh;
   width: 96vw;
   background-color: #4c566a;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100%;
   margin-left: 2vw;
   margin-top: 2vh;
   border-radius: 10px;
+  overflow-y: scroll;
+}
+.showChatList {
+  display: block;
 }
 
 .chat_list {
@@ -360,5 +378,173 @@ export default {
   border-radius: 10px;
   border: none;
   background-color: #ecf0f1;
+}
+@media only screen and (min-width: 768px) {
+  .showChatList {
+    display: none;
+  }
+
+  .box {
+    height: 90vh;
+    width: 96vw;
+    background-color: #4c566a;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+  }
+
+  .chat_list {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: lightgray;
+    overflow: hidden;
+  }
+
+  .header_dm {
+    height: 10%;
+    width: 100%;
+    background-color: #d7dbdd;
+    position: sticky;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    border: solid lightgray;
+    align-items: center;
+  }
+
+  .chats {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+  }
+  .back_btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-left: 5%;
+  }
+
+  .dm_title {
+    justify-self: center;
+    margin-right: 15%;
+  }
+
+  .chat_box {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ecf0f1;
+    height: 10vh;
+    width: 100%;
+    border-bottom: solid lightgrey;
+    border-left: solid lightgrey;
+    border-right: solid lightgrey;
+    display: grid;
+    grid-template-columns: 12% 76% 8%;
+    grid-template-rows: auto;
+    align-items: center;
+    color: #401826;
+    text-decoration: none;
+  }
+
+  .chat_box:hover {
+    background-color: lightgrey;
+  }
+  .chat_content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .profilePicture {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 7%;
+  }
+
+  .title {
+    color: #401826;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    opacity: 60%;
+    color: #401826;
+  }
+
+  .conversation_management {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+  }
+
+  .user_data_background {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #d7dbdd;
+    border-top-right-radius: 10px;
+    width: 100%;
+  }
+  .picture_chat {
+    margin-top: 5%;
+    margin-left: 20%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .user_data {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50vh;
+    height: 6vh;
+  }
+
+  .message_box {
+    width: 100%;
+    height: 76.5%;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+  }
+
+  .write_message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d7dbdd;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    height: 11.7%;
+  }
+  .message_input {
+    margin-left: 5%;
+    width: 71.4%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    background-color: #ecf0f1;
+  }
+  .send_button {
+    margin-right: 5%;
+    width: 14.3%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    background-color: #ecf0f1;
+  }
 }
 </style>
